@@ -33,6 +33,10 @@ website:
     collapse-level: 1     # At what header level to start collapsing
     # contents: auto      # Creates automatic TOC from page headers (no sections)
     contents:
+      - section: "Pre-reading:"
+        contents:
+        - lessons/01_intro_to_scRNA-seq.qmd  
+
       - section: "Day 1:"
         contents:
           - lessons/01b_introR-R-and-RStudio.qmd  

@@ -35,44 +35,15 @@ website:
     contents:
       - section: "Pre-reading:"
         contents:
-        - lessons/01_intro_to_scRNA-seq.qmd  
+        - lessons/01_intro_to_scRNA-seq.qmd
+        - lessons/02_SC_generation_of_count_matrix.qmd
 
       - section: "Day 1:"
         contents:
-          - lessons/01b_introR-R-and-RStudio.qmd  
+          - lessons/03_SC_quality_control-setup.qmd
       - section: "Day 1 Self-learning:"
         contents:
-          - lessons/02_introR-syntax-and-data-structures.qmd
-          - lessons/03_introR-functions-and-arguments.qmd
-          - lessons/06_reading_and_data_inspection.qmd
-
-      # - section: "Day 2"
-      #   contents:
-      #     - lessons/Day2_activities.qmd
-      #     - lessons/05_introR-data-wrangling.qmd
-      # - section: "Day 2 Self-learning"
-      #   contents:
-      #     - lessons/04_introR_packages.qmd
-      #     - lessons/07_introR-data-wrangling2.qmd
-      #     - lessons/08_identifying-matching-elements.qmd
-      #     - lessons/09_reordering-to-match-datasets.qmd
-      #     - lessons/10_setting_up_to_plot.qmd
-      # 
-      # - section: "Day 3"
-      #   contents:
-      #     - lessons/Day3_activities.qmd
-      #     - lessons/11_ggplot2.qmd
-      # - section: "Day 3 Self-learning"
-      #   contents:
-      #     - lessons/11b_Custom_Functions_ggplot2.qmd
-      #     - lessons/12_boxplot_exercise.qmd
-      #     - lessons/13_exporting_data_and_plots.qmd
-      #     - lessons/14_finding_help.qmd
-      #     - lessons/15_tidyverse.qmd
-      # 
-      # - section: "Day 4"
-      #   contents:
-      #     - lessons/Day4_activities.qmd
+          - lessons/04_cellranger_QC.qmd
           
 
 format:

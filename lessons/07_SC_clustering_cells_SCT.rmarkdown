@@ -4,7 +4,9 @@ author: "Mary Piper, Lorena Pantano, Meeta Mistry, Radhika Khetani, Jihe Liu"
 date: Thursday, November 21, 2019
 ---
 
+
 Approximate time: 90 minutes
+
 
 ```{r}
 #| echo: false
@@ -12,6 +14,7 @@ Approximate time: 90 minutes
 library(Seurat)
 load(bzfile("../data/additional_data/seurat_integrated.RData.bz2"))
 ```
+
 
 ## Learning Objectives:
 
@@ -57,6 +60,7 @@ Before starting with this lesson, let's create a new script for the next few ste
 
 Next, let's load all the libraries that we need.
 
+
 ```{r}
 # Single-cell RNA-seq - clustering
 
@@ -66,6 +70,7 @@ library(tidyverse)
 library(RCurl)
 library(cowplot)
 ```
+
 
 ## Identify significant PCs
 
@@ -77,6 +82,7 @@ It is useful to explore the PCs prior to deciding which PCs to include for the d
 
 The `cells` argument specifies the number of cells with the most negative or postive PCA scores to use for the plotting. The idea is that we are looking for a PC where the heatmap starts to look more "fuzzy", i.e. where the distinctions between the groups of genes is not so distinct.
 
+
 ```{r}
 # Explore heatmap of PCs
 DimHeatmap(seurat_integrated, 
@@ -85,7 +91,9 @@ DimHeatmap(seurat_integrated,
            balanced = TRUE)
 ```
 
+
 This method can be slow and hard to visualize individual genes if we would like to explore a large number of PCs. In the same vein and to explore a large number of PCs, we could print out the top 10 (or more) positive and negative genes by PCA scores driving the PCs.
+
 
 ```{r}
 # Printing out the most variable genes driving PCs
@@ -94,15 +102,18 @@ print(x = seurat_integrated[["pca"]],
       nfeatures = 5)
 ```
 
+
 (b) The **elbow plot** is another helpful way to determine how many PCs to use for clustering so that we are capturing majority of the variation in the data. The elbow plot visualizes the standard deviation of each PC, and we are looking for where the standard deviations begins to plateau. Essentially, **where the elbow appears is usually the threshold for identifying the majority of the variation**. However, this method can be quite subjective. 
 
 Let's draw an elbow plot using the top 40 PCs:
+
 
 ```{r}
 # Plot the elbow plot
 ElbowPlot(object = seurat_integrated, 
           ndims = 40)
 ```
+
 
 Based on this plot, we could roughly determine the majority of the variation by where the elbow occurs around PC8 - PC10, or one could argue that it should be when the data points start to get close to the X-axis, PC30 or so. This gives us a very rough idea of the number of PCs needed to be included, we can extract the information visualized here in a [**more quantitative manner**](elbow_plot_metric.md), which may be a bit more reliable.  
 
@@ -134,11 +145,13 @@ _Image source: [Analysis of Single cell RNA-seq data](https://biocellgen-public.
 
 This is done in Seurat by using the `FindNeighbors()` function:
 
+
 ```{r}
 # Determine the K-nearest neighbor graph
 seurat_integrated <- FindNeighbors(object = seurat_integrated, 
                                 dims = 1:40)
 ```                               
+
 
 ### Find clusters
 
@@ -148,11 +161,13 @@ We will use the `FindClusters()` function to perform the graph-based clustering.
 
 The `FindClusters()` function allows us to enter a series of resolutions and will calculate the "granularity" of the clustering. This is very helpful for testing which resolution works for moving forward without having to run the function for each resolution.
 
+
 ```{r}     
 # Determine the clusters for various resolutions                              
 seurat_integrated <- FindClusters(object = seurat_integrated,
                                resolution = c(0.4, 0.6, 0.8, 1.0, 1.4))
 ```
+
 
 
 ## Visualize clusters of cells
@@ -164,6 +179,7 @@ Both methods aim to place cells with similar local neighborhoods in high-dimensi
 
 We can only visualize the results of one resolution setting at a time. If we look at the metadata of our Seurat object(`seurat_integrated@meta.data`), you should observe a separate column for each of the different resolutions calculated.
 
+
 ```{r}
 #| eval: false
 # Explore resolutions
@@ -171,14 +187,18 @@ seurat_integrated@meta.data %>%
         View()
 ```
 
+
 To **choose a resolution to start with**, we often pick something in the middle of the range like 0.6 or 0.8. We will start with a resolution of 0.8 by assigning the identity of the clusters using the `Idents()` function.
+
 
 ```{r}
 # Assign identity of clusters
 Idents(object = seurat_integrated) <- "integrated_snn_res.0.8"
 ```
 
+
 Now, we can plot the UMAP to look at how cells cluster together at a resolution of 0.8:
+
 
 ```{r}
 #| eval: false
@@ -199,7 +219,9 @@ DimPlot(seurat_integrated,
 ```
 
 
+
 It can be useful to **explore other resolutions as well**. It will give you a quick idea about how the clusters would change based on the resolution parameter. For example, let's switch to a resolution of 0.4:
+
 
 ```{r}
 # Assign identity of clusters
@@ -211,6 +233,7 @@ DimPlot(seurat_integrated,
         label = TRUE,
         label.size = 6)
 ```
+
 
 
 **How does your UMAP plot compare to the one above?**
@@ -227,10 +250,12 @@ Inside your `data` folder you will see a folder called `additional_data`. It con
 
 * **Load in the object to your R session and overwrite the existing one**: 
 
+
 ```{r}
 #| eval: false
 load(bzfile("data/additional_data/seurat_integrated.RData.bz2"))
 ```
+
 
 ***
 ::: callout-tip
@@ -243,6 +268,7 @@ After loading `seurat_integrated.RData.bz2`, check the object clusters with diff
 
 We will now continue with the 0.8 resolution to check the quality control metrics and known markers for the anticipated cell types. Plot the UMAP again to make sure your image now (or still) matches what you see in the lesson:
 
+
 ```{r}
 # Assign identity of clusters
 Idents(object = seurat_integrated) <- "integrated_snn_res.0.8"
@@ -253,3 +279,4 @@ DimPlot(seurat_integrated,
         label = TRUE,
         label.size = 6)
 ```
+

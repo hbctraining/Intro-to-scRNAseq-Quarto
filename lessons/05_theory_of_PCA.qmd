@@ -1,5 +1,5 @@
 ---
-title: "Single-cell RNA-seq: Theory of PCA"
+title: "Theory of PCA"
 author: "Mary Piper, Lorena Pantano, Meeta Mistry, Radhika Khetani, Jihe Liu"
 date: November 30th, 2022
 ---

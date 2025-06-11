@@ -1,4 +1,5 @@
 ---
+title: Introduction to Single-cell RNA-seq Schedule
 sidebar: false
 toc: false
 execute: 
@@ -94,7 +95,7 @@ I. Please **study the contents** and **work through all the code** within the fo
              - Cluster cells and visualize them on the UMAP<br>
         </details>
 
-3. [Clustering quality control](../lessons/08_SC_clustering_quality_control.md)
+3. [Clustering quality control](08_SC_clustering_quality_control.qmd)
       <details>
        <summary><i>Click here for a preview of this lesson</i></summary>
          <br>After separating cells into clusters, it is crtical to evaluate whether they are biologically meaningful or not. At this point we can also decide if we need to re-cluster and/or potentialy go back to a previous QC step.
@@ -104,7 +105,7 @@ I. Please **study the contents** and **work through all the code** within the fo
            - Explore the cell type identities by looking at the expression for known markers across the clusters.<br>
         </details>
 
-4. [Seurat Cheatsheet](../lessons/seurat_cheatsheet.md) 
+4. [Seurat Cheatsheet](seurat_cheatsheet.qmd) 
       <details>
        <summary><i>Click here for a preview of this lesson</i></summary>
          <br>At this point, we have populated our seurat object with many different pieces of information. Knowing how to access different values will allow you to interact more efficiently with your dataset.
@@ -130,9 +131,9 @@ II. **Submit your work**:
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
 | 9:30 - 10:00 | Self-learning lessons discussion | All |
-| 10:00 - 11:00 |[Marker identification](../lessons/09_merged_SC_marker_identification.md) | Noor |
+| 10:00 - 11:00 |[Marker identification](09_merged_SC_marker_identification.qmd) | Noor |
 | 11:00 - 11:10 | Break |
-| 11:10 - 11:30 | [Workflow summary](../lessons/scRNAseq_workflow.md) | Will |
+| 11:10 - 11:30 | [Workflow summary](scRNAseq_workflow.qmd) | Will |
 | 11:30 - 11:45 | Overview and Final Q & A | All |
 | 11:45- 12:00 | [Wrap up](../slides/Workshop_wrapup.pdf) | Will |
 
@@ -145,7 +146,7 @@ II. **Submit your work**:
 
 ## Downstream analyses
 
-* [Differential expression between conditions](../lessons/pseudobulk_DESeq2_scrnaseq.md)
+* [Differential expression between conditions](https://hbctraining.github.io/Pseudobulk-for-scRNAseq/)
 
 ***
 
@@ -156,7 +157,7 @@ We have covered the analysis steps in quite a bit of detail for scRNA-seq explor
 * [Seurat vignettes](https://satijalab.org/seurat/vignettes.html)
 * [Seurat cheatsheet](https://satijalab.org/seurat/essential_commands.html)
 * [Satija Lab: Single Cell Genomics Day](https://satijalab.org/scgd21/)
-* [Additional information about cell cycle scoring](../lessons/cell_cycle_scoring.md)
+* [Additional information about cell cycle scoring](cell_cycle_scoring.qmd)
 * [A nice explanation on CCA and cell label transfer in Seurat](https://divingintogeneticsandgenomics.com/post/cca-alignment/)
 
 ### Scaling up: scRNA-seq analysis on HPC  

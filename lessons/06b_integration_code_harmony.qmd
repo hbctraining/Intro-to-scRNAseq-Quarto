@@ -1,5 +1,5 @@
 ---
-title: "Single-cell RNA-seq: Performing Integration"
+title: "Performing Integration"
 author: "Mary Piper, Meeta Mistry, Radhika Khetani, Jihe Liu, Amelie Jule"
 date: Monday, Novemeber 21st, 2020
 ---

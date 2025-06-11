@@ -1,3 +1,7 @@
+---
+title: "Seurat Object from Counts File "
+---
+
 ### Creating count data object
 
 Generally, all single-cell RNA-seq datasets, regardless of technology or pipeline, will contain **three files**:

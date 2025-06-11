@@ -12,6 +12,7 @@ website:
   page-footer: >
       This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). <br>
       These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited. <br>
+      A portion of these materials and hands-on activities were adapted from the [Satija Lab's](https://satijalab.org/) [Seurat - Guided Clustering Tutorial](https://satijalab.org/seurat/pbmc3k_tutorial.html)
 
   
   navbar:
@@ -51,6 +52,10 @@ website:
         contents:
           - lessons/06_SC_SCT_normalization.qmd
           - lessons/06a_integration_cca_theory.qmd
+      - section: "Day 2 Self-learning"
+        contents:
+          - lessons/06b_integration_code_harmony.qmd
+          - lessons/07_SC_clustering_cells_SCT.qmd
 
           
 

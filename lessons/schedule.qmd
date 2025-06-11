@@ -72,7 +72,7 @@ II. **Submit your work**:
 | 09:30 - 10:15 | Self-learning lessons discussion | All |
 | 10:15 - 11:15|  [Normalization and regressing out unwanted variation](06_SC_SCT_normalization.qmd) | Noor |
 | 11:15 - 11:25 | Break |
-| 11:25 - 12:00| [A brief introduction to Integration](../lessons/06a_integration_cca_theory.md) | Will |
+| 11:25 - 12:00| [A brief introduction to Integration](06a_integration_cca_theory.qmd) | Will |
 
 ### Before the next class:
 I. Please **study the contents** and **work through all the code** within the following lessons:

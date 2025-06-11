@@ -50,6 +50,7 @@ website:
       - section: "Day 2:"
         contents:
           - lessons/06_SC_SCT_normalization.qmd
+          - lessons/06a_integration_cca_theory.qmd
 
           
 

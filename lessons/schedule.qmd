@@ -47,7 +47,7 @@ I. Please **study the contents** and **work through all the code** within the fo
              - Critically evaluate each plot and learn what each QC metric means<br><br>
         </details>
      
-   3. [Theory of PCA](../lessons/05_theory_of_PCA.md)
+   3. [Theory of PCA](05_theory_of_PCA.qmd)
       <details>
        <summary><i>Click here for a preview of this lesson</i></summary>
          <br>Before we can begin the next steps of the workflow, we need to make sure you have a good understanding of Principal Components Analysis (PCA). This method will be utilized in the scRNA-seq analysis workflow, and this foundation will help you better navigate those steps and interpretation of results.<br><br>

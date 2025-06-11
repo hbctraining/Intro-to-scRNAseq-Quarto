@@ -45,6 +45,7 @@ website:
         contents:
           - lessons/04_cellranger_QC.qmd
           - lessons/04_SC_quality_control.qmd
+          - lessons/05_theory_of_PCA.qmd
           
 
 format:

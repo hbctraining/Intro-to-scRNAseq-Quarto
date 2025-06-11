@@ -70,7 +70,7 @@ II. **Submit your work**:
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
 | 09:30 - 10:15 | Self-learning lessons discussion | All |
-| 10:15 - 11:15|  [Normalization and regressing out unwanted variation](../lessons/06_SC_SCT_normalization.md) | Noor |
+| 10:15 - 11:15|  [Normalization and regressing out unwanted variation](06_SC_SCT_normalization.qmd) | Noor |
 | 11:15 - 11:25 | Break |
 | 11:25 - 12:00| [A brief introduction to Integration](../lessons/06a_integration_cca_theory.md) | Will |
 

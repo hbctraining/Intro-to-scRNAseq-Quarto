@@ -47,6 +47,11 @@ website:
           - lessons/04_SC_quality_control.qmd
           - lessons/05_theory_of_PCA.qmd
           
+      - section: "Day 2:"
+        contents:
+          - lessons/06_SC_SCT_normalization.qmd
+
+          
 
 format:
   html:

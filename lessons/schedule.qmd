@@ -17,8 +17,8 @@ execute:
 
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
-| 09:30 - 09:45 | [Workshop introduction](slides/workshop_intro_slides.pdf) | Will |
-| 09:45 - 10:35| [Introduction to Single Cell RNA-sequencing: a practical guide](slides/072624_Chan_scRNAseq_workshop_Arpita_Kulkarni.pdf) | [Dr. Arpita Kulkarni](https://singlecellcore.hms.harvard.edu/people/arpita-kulkarni-phd) |
+| 09:30 - 09:45 | [Workshop introduction](../slides/workshop_intro_slides.pdf) | Will |
+| 09:45 - 10:35| [Introduction to Single Cell RNA-sequencing: a practical guide](../slides/072624_Chan_scRNAseq_workshop_Arpita_Kulkarni.pdf) | [Dr. Arpita Kulkarni](https://singlecellcore.hms.harvard.edu/people/arpita-kulkarni-phd) |
 | 10:35 - 10:40 | Break |
 | 10:40 - 11:00 | scRNA-seq pre-reading discussion | All |
 | 11:00 - 11:45 | [Quality control set-up](03_SC_quality_control-setup.qmd) | Noor |

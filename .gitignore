@@ -3,3 +3,4 @@ data/
 results/
 .DS_Store
 .Rhistory
+lesons/*.html

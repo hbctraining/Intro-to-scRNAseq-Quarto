@@ -23,7 +23,7 @@ website:
       - text: "HBC"
         href: https://bioinformatics.sph.harvard.edu/
       - text: "GitHub"
-        href: https://github.com/hbctraining/intro_r_rmd
+        href: https://github.com/hbctraining/Intro-to-scRNAseq-Quarto
       - text: "Contact us"
         href: mailto:hbctraining@hsph.harvard.edu
   
@@ -56,7 +56,13 @@ website:
         contents:
           - lessons/06b_integration_code_harmony.qmd
           - lessons/07_SC_clustering_cells_SCT.qmd
-
+          - lessons/08_SC_clustering_quality_control.qmd
+          - lessons/seurat_cheatsheet.qmd
+          
+      - section: "Day 3:"
+        contents:
+          - lessons/09_merged_SC_marker_identification.qmd
+          - lessons/scRNAseq_workflow.qmd
           
 
 format:

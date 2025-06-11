@@ -61,7 +61,8 @@ In the following **example script**, you would just have to change the variable 
 
 **You do not need to run this script.**
 
-```{}
+```{r}
+#| eval: false
 #!/bin/bash
 
 #SBATCH --partition=short               # Partition name
@@ -98,7 +99,8 @@ cellranger count \
 
 Once cellranger has finished running, there will be a folder titled `outs/` in a directory named after the `project_name` variable set above. Generation of all the following files is expected from a succesful completion of the `cellranger counts` pipeline:
 
-```{}
+```{r}
+#| eval: false
 ├── cloupe.cloupe
 ├── filtered_feature_bc_matrix
 │   ├── barcodes.tsv.gz
@@ -247,7 +249,7 @@ samples <- c("ctrl", "stim")
 # Loop over each sample and read the metrics summary in
 metrics <- list()
 for (sample in samples) {
-    path_csv <- paste0("data/", sample, "_metrics_summary.csv")
+    path_csv <- paste0("../data/", sample, "_metrics_summary.csv")
     df <- read.csv(path_csv)
     rownames(df) <- sample
     metrics[[sample]] <- df
@@ -264,27 +266,8 @@ metrics$sample <- rownames(metrics)
 
 The information available in this file include: 
 
-```{}
- [1] "Estimated.Number.of.Cells"                     
- [2] "Mean.Reads.per.Cell"                           
- [3] "Median.Genes.per.Cell"                         
- [4] "Number.of.Reads"                               
- [5] "Valid.Barcodes"                                
- [6] "Sequencing.Saturation"                         
- [7] "Q30.Bases.in.Barcode"                          
- [8] "Q30.Bases.in.RNA.Read"                         
- [9] "Q30.Bases.in.UMI"                              
-[10] "Reads.Mapped.to.Genome"                        
-[11] "Reads.Mapped.Confidently.to.Genome"            
-[12] "Reads.Mapped.Confidently.to.Intergenic.Regions"
-[13] "Reads.Mapped.Confidently.to.Intronic.Regions"  
-[14] "Reads.Mapped.Confidently.to.Exonic.Regions"    
-[15] "Reads.Mapped.Confidently.to.Transcriptome"     
-[16] "Reads.Mapped.Antisense.to.Gene"                
-[17] "Fraction.Reads.in.Cells"                       
-[18] "Total.Genes.Detected"                          
-[19] "Median.UMI.Counts.per.Cell"                    
-[20] "sample"
+```{r}
+colnames(metrics)
 ```
 
 With all of this information available as a dataframe, we can use ggplot to visualize these values. As an example of how this information can be used, we can display what percentage of reads map to the various parts of the genome (Intergentic, Intronic, and Exonic).
@@ -317,9 +300,6 @@ df %>% ggplot() +
         fill = "Region")
 
 ```
-
-
-<img src="../img/mapped_regions.png" width="900">
 
 
 ## Matrix folders

@@ -59,22 +59,7 @@ Download the most recent versions of R and RStudio for your laptop:
 
 :::
 
-**(1)** Install the 4 packages listed below from **Bioconductor** using the the `BiocManager::install()` function.
-
-1. `AnnotationHub`
-1. `ensembldb`
-1. `multtest`
-1. `glmGamPoi`
-
-**Please install them one-by-one as follows:**
-
-```{r}
-BiocManager::install("AnnotationHub")
-BiocManager::install("ensembldb")
-& so on ...
-```
-
-**(2)** Install the 11 packages listed below from **CRAN** using the `install.packages()` function. 
+**(1)** Install the 10 packages listed below from **CRAN** using the `install.packages()` function. 
 
 1. `tidyverse`
 2. `Matrix`
@@ -86,26 +71,50 @@ BiocManager::install("ensembldb")
 8. `metap`
 9. `reshape2`
 10. `plyr`
-11. `presto`
 
 **Please install them one-by-one as follows:**
 
-```{r}
+```{r, eval=FALSE}
 install.packages("tidyverse")
 install.packages("Matrix")
 install.packages("RCurl")
-& so on ...
+install.packages("scales")
+install.packages("cowplot")
+install.packages("BiocManager")
+install.packages("Seurat")
+install.packages("metap")
+install.packages("reshape2")
+install.packages("plyr")
 ```
 
-**(3)** Finally, please check that all the packages were installed successfully by **loading them one at a time** using the `library()` function.  
+**(2)** Install the 4 packages listed below from **Bioconductor** using the the `BiocManager::install()` function.
 
-```{r}
+1. `AnnotationHub`
+2. `ensembldb`
+3. `multtest`
+4. `glmGamPoi`
+
+**Please install them one-by-one as follows:**
+
+```{r, eval=FALSE}
+library(BiocManager)
+BiocManager::install("AnnotationHub")
+BiocManager::install("ensembldb")
+BiocManager::install("multtest")
+BiocManager::install("glmGamPoi")
+```
+
+
+**(4)** Finally, please check that all the packages were installed successfully by **loading them one at a time** using the `library()` function.  
+
+```{r, eval=FALSE}
 library(Seurat)
 library(tidyverse)
 library(Matrix)
 library(RCurl)
 library(scales)
 library(cowplot)
+library(BiocManager)
 library(metap)
 library(reshape2)
 library(plyr)
@@ -113,7 +122,6 @@ library(AnnotationHub)
 library(ensembldb)
 library(multtest)
 library(glmGamPoi)
-library(presto)
 ```
 
 **(4)** Once all packages have been loaded, run sessionInfo().  

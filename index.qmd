@@ -86,6 +86,7 @@ BiocManager::install("ensembldb")
 8. `metap`
 9. `reshape2`
 10. `plyr`
+11. `presto`
 
 **Please install them one-by-one as follows:**
 
@@ -112,6 +113,7 @@ library(AnnotationHub)
 library(ensembldb)
 library(multtest)
 library(glmGamPoi)
+library(presto)
 ```
 
 **(4)** Once all packages have been loaded, run sessionInfo().  

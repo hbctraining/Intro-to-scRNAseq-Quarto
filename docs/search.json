@@ -200,7 +200,7 @@
     "href": "lessons/links-to-lessons.html#lessons",
     "title": "",
     "section": "Lessons",
-    "text": "Lessons\n\nPart 1\n\n[Introduction to scRNA-seq01_intro_to_scRNA-seq.qmd)\n[Raw data to count matrix02_SC_generation_of_count_matrix.qmd)\n\n\n\n\nPart II\n\nQuality control set-up\nQuality control\nOverview of Clustering Workflow\nTheory of PCA\nNormalization and regressing out unwanted variation\n\n\nSolution to exercises in above lessons\n\n\n\n\nPart III\n\nIntegration\nClustering\nClustering quality control\nMarker identification\n\n\nSolution to exercises in above lessons"
+    "text": "Lessons\n\nPart 1\n\nIntroduction to scRNA-seq\nRaw data to count matrix\n\n\n\n\nPart II\n\nQuality control set-up\nQuality control\nOverview of Clustering Workflow\nTheory of PCA\nNormalization and regressing out unwanted variation\n\n\nSolution to exercises in above lessons\n\n\n\n\nPart III\n\nIntegration\nClustering\nClustering quality control\nMarker identification\n\n\nSolution to exercises in above lessons"
   },
   {
     "objectID": "lessons/links-to-lessons.html#building-on-this-workshop",

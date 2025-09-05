@@ -17,8 +17,8 @@
 ## Lessons
 
 ### Part 1
-1. [Introduction to scRNA-seq01_intro_to_scRNA-seq.qmd)
-1. [Raw data to count matrix02_SC_generation_of_count_matrix.qmd)
+1. [Introduction to scRNA-seq](01_intro_to_scRNA-seq.qmd)
+1. [Raw data to count matrix](02_SC_generation_of_count_matrix.qmd)
 
 ***
 

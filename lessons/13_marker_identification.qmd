@@ -7,14 +7,15 @@ date: Wednesday, February 5th, 2020
 Approximate time: 75 minutes
 
 ```{r}
+#| label: load_libraries
 #| echo: false
-
+# Load libraries
 library(Seurat)
 library(tidyverse)
 library(ggplot2)
 library(cowplot)
 
-load(bzfile("../data/additional_data/seurat_integrated.RData.bz2"))
+load(bzfile("data/additional_data/seurat_integrated.RData.bz2"))
 ```
 
 ## Learning Objectives:
@@ -99,8 +100,9 @@ The `FindAllMarkers()` function has **three important arguments** which provide 
 You could use any combination of these arguments depending on how stringent/lenient you want to be. Also, by default this function will return to you genes that exhibit both positive and negative expression changes. Typically, we add an argument `only.pos` to opt for keeping only the positive changes. The code to find markers for each cluster is shown below. **We will not run this code.**
 
 ```{r}
+#| label: FindAllMarkers_example
 #| eval: false
-## DO NOT RUN THIS CODE ##
+## DO NOT RUN
 
 # Find markers for every cluster compared to all remaining cells, report only the positive ones
 markers <- FindAllMarkers(object = seurat_integrated, 
@@ -123,6 +125,7 @@ Since we have samples representing different conditions in our dataset, **our be
 Before we start our marker identification we will explicitly set our default assay, we want to use the **normalized data, but not the integrated data**.
 
 ```{r}
+#| label: set_default_assay
 DefaultAssay(seurat_integrated) <- "RNA"
 ```
 
@@ -140,6 +143,7 @@ The function `FindConservedMarkers()`, has the following structure:
 **`FindConservedMarkers()` syntax:**
 
 ```{r}
+#| label: FindConservedMarkers_example
 #| eval: false
 ## DO NOT RUN ##
 FindConservedMarkers(seurat_integrated,
@@ -162,6 +166,7 @@ For our analysis we will be fairly lenient and **use only the log fold change th
 Let's **test it out on one cluster** to see how it works:
 
 ```{r}
+#| label: FindConservedMarkers_cluster_0
 cluster0_conserved_markers <- FindConservedMarkers(seurat_integrated,
                                                     ident.1 = 0,
                                                     grouping.var = "sample",
@@ -195,16 +200,18 @@ When looking at the output, **we suggest looking for markers with large differen
 It can be helpful to add columns with gene annotation information. In order to do that we will load in an annotation file located in your `data` folder, using the code provided below: 
 
 ```{r}
-annotations <- read.csv("../data/annotation.csv")
+#| label: read_in_annotations
+annotations <- read.csv("data/annotation.csv")
 ```
 
 ::: callout-note
-If you are interested in knowing how we obtained this annotation file, take a look at [the linked materials](fetching_annotations.qmd).
+If you are interested in knowing how we obtained this annotation file, take a look at [the linked materials](Aside_fetching_annotations.qmd).
 :::
 
 First, we will turn the row names with gene identifiers into its own columns. Then we will merge this annotation file with our results from the `FindConservedMarkers()`:
 
 ```{r}
+#| label: wrangling_cluster_0_annotations
 # Combine markers with gene descriptions 
 cluster0_ann_markers <- cluster0_conserved_markers %>% 
                 rownames_to_column(var="gene") %>% 
@@ -234,6 +241,7 @@ The function `FindConservedMarkers()` **accepts a single cluster at a time**, an
 
 
 ```{r}
+#| label: create_get_cluster_function
 # Create function to get conserved markers for any given cluster
 get_conserved <- function(cluster){
   FindConservedMarkers(seurat_integrated,
@@ -252,6 +260,7 @@ Now that we have this function created  we can use it as an argument to the appr
 **`map` family syntax:**
 
 ```{r}
+#| label: map_dfr_example
 #| eval: false
 ## DO NOT RUN ##
 map_dfr(inputs_to_function, name_of_function)
@@ -260,6 +269,7 @@ map_dfr(inputs_to_function, name_of_function)
 Now, let's try this function to **find the conserved markers for the clusters that were identified as CD4+ T cells (4,0,6,2)** from our use of known marker genes. Let's see what genes we identify and of there are overlaps or obvious differences that can help us tease this apart a bit more.
 
 ```{r}
+#| label: iterate_conserved_markers_across_select_clusters
 # Iterate function across desired clusters
 conserved_markers <- map_dfr(c(4,0,6,2), get_conserved)
 head(conserved_markers)
@@ -275,6 +285,7 @@ For your data, you may want to run this function on all clusters, in which case 
 We would like to use these gene lists to see of we can **identify which celltypes these clusters identify with.** Let's take a look at the top genes for each of the clusters and see if that gives us any hints. We can view the top 10 markers by average fold change across the two groups, for each cluster for a quick perusal:
 
 ```{r}
+#| label: extract_top_markers
 # Extract top 10 markers per cluster
 top10 <- conserved_markers %>% 
   mutate(avg_fc = (ctrl_avg_log2FC + stim_avg_log2FC) /2) %>% 
@@ -285,6 +296,7 @@ top10 <- conserved_markers %>%
 
 
 ```{r}
+#| label: view_top_markers
 #| eval: false
 # Visualize top 10 markers per cluster
 View(top10)
@@ -307,7 +319,9 @@ For cluster 4, we see a lot of heat shock and DNA damage genes appear in the top
 
 To get a better idea of cell type identity for **cluster 4** we can **explore the expression of different identified markers** by cluster using the `FeaturePlot()` function. We see that only a subset of cluster 4 are highly expressing these genes.
 
-```{r fig.width=8}
+```{r}
+#| label: cluster_4_FeaturePlot
+#| fig.width: 8
 # Plot interesting marker gene expression for cluster 4
 FeaturePlot(object = seurat_integrated, 
             features = c("HSPH1", "HSPE1", "DNAJB1"),
@@ -324,7 +338,9 @@ We can also explore the range in expression of specific markers by using **violi
 Violin plots are similar to box plots, except that they also show the probability density of the data at different values, usually smoothed by a kernel density estimator. A violin plot is more informative than a plain box plot. While a box plot only shows summary statistics such as mean/median and interquartile ranges, the violin plot shows the full distribution of the data. The difference is particularly useful when the data distribution is multimodal (more than one peak). In this case a violin plot shows the presence of different peaks, their position and relative amplitude.
 :::
 
-```{r fig.width=15}
+```{r}
+#| label: cluster_4_ViolinPlot
+#| fig.width: 15
 # Vln plot - cluster 4
 VlnPlot(object = seurat_integrated, 
         features = c("HSPH1", "HSPE1", "DNAJB1"))
@@ -344,6 +360,7 @@ Sometimes the list of markers returned don't sufficiently separate some of the c
 We can try all combinations of comparisons, but we'll start with cluster 2 versus all other CD4+ T cell clusters:
 
 ```{r}
+#| label: FindMarkers_T_cell
 # Determine differentiating markers for CD4+ T cell
 cd4_tcells <- FindMarkers(seurat_integrated,
                           ident.1 = 2,
@@ -363,14 +380,19 @@ cd4_tcells <- cd4_tcells %>%
 ```
 
 ```{r}
+#| label: show_t_cell_markers
 #| eval: false
 # View data
 View(cd4_tcells)
 ```
 
-<p align="center">
-<img src="../img/cd4t_markers_table_SCTv2.png" width="800">
-</p>
+```{r}
+#| label: show_t_cell_markers_table
+#| echo: false
+# View data
+library(DT)
+datatable(cd4_tcells)
+```
 
 Of these top genes the **CREM gene** stands out as a marker of activation with a positive fold change.  We also see markers of naive or memory cells include the SELL and CCR7 genes with negative fold changes, which is in line with previous results. 
 
@@ -403,6 +425,7 @@ Now taking all of this information, we can surmise the cell types of the differe
 We can then reassign the identity of the clusters to these cell types:
 
 ```{r}
+#| label: rename_clusters
 # Rename all identities
 seurat_integrated <- RenameIdents(object = seurat_integrated, 
                                "0" = "Naive or memory CD4+ T cells",
@@ -436,6 +459,7 @@ DimPlot(object = seurat_integrated,
 If we wanted to remove the potentially stressed cells, we could use the `subset()` function:
 
 ```{r}
+#| label: removed_dying_cells_DimPlot
 # Remove the stressed or dying cells
 seurat_subset_labeled <- subset(seurat_integrated,
                                idents = "Stressed cells / Unknown", invert = TRUE)
@@ -451,13 +475,14 @@ DimPlot(object = seurat_subset_labeled,
 
 Now we would want to save our final labelled Seurat object and the output of `sessionInfo()`:
 
-```{r}        
+```{r}      
+#| label: save_output
 # Save final R object
 write_rds(seurat_integrated,
-          file = "../results/seurat_labelled.rds")
+          file = "results/seurat_labelled.rds")
 
 # Create and save a text file with sessionInfo
-sink("../results/sessionInfo_scrnaseq_Feb2023.txt")
+sink("results/sessionInfo_scrnaseq.txt")
 sessionInfo()
 sink()
 ```
@@ -472,7 +497,9 @@ Now that we have our clusters defined and the markers for each of our clusters, 
 
 - Determine if there is a shift in cell populations between `ctrl` and `stim`. Ideally this would be done with replicates to determine if the changes are significant.
 
-```{r fig.width=18}
+```{r}
+#| label: cells_per_celltype_plot
+#| fig.width: 18
 # Add celltype annotation as a column in meta.data 
 seurat_subset_labeled$celltype <- Idents(seurat_subset_labeled)
 
@@ -493,6 +520,7 @@ ggplot(n_cells, aes(x=celltype, y=n, fill=sample)) +
   - For a first pass look, we can use the `FindMarkers()` function we have been using to do a simple wilcox test to see the difference in gene expression between conditions for the B cells
 
 ```{r}
+#| label: FindMarkers_B_cells
 # Subset seurat object to just B cells
 seurat_b_cells <- subset(seurat_subset_labeled, subset = (celltype == "B cells"))
 
@@ -509,7 +537,10 @@ head(b_markers)
 
   - For added visualization, we can used the `EnhancedVolcano()` function to see how the genes fall on a volcano plot.
 
-```{r fig.height=6, fig.width=10}
+```{r}
+#| label: B_cells_volcano_plot
+#| fig.height: 6
+#| fig.width: 10
 library(EnhancedVolcano)
 EnhancedVolcano(b_markers,
     row.names(b_markers),
@@ -521,7 +552,7 @@ EnhancedVolcano(b_markers,
 ```
 
 - Experimentally validate intriguing markers for our identified cell types.
-- Explore a subset of the cell types to discover subclusters of cells as described [here](seurat_subclustering.qmd)
+- Explore a subset of the cell types to discover subclusters of cells as described [here](Aside_seurat_subclustering.qmd)
 - Trajectory analysis, or lineage tracing, could be performed if trying to determine the progression between cell types or cell states. For example, we could explore any of the following using this type of analysis:
 	- Differentiation processes
 	- Expression changes over time

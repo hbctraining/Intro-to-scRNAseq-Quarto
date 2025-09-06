@@ -23,7 +23,7 @@ Load in the `integrated_seurat` object that is available in the `data` folder of
 library(Seurat)
 library(tidyverse)
 
-load(bzfile("../data/additional_data/seurat_integrated.RData.bz2"))
+load(bzfile("data/additional_data/seurat_integrated.RData.bz2"))
 seurat_integrated
 ```
 

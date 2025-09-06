@@ -39,4 +39,4 @@ curl -L "https://www.dropbox.com/scl/fi/0q5qrdo3cvpxxr5g0tqtv/seurat_filtered.RD
 curl -L "https://www.dropbox.com/scl/fi/7ion5yarjsko7rwfojzom/split_seurat.rds?rlkey=9x2b5t82y7hf805szneb6rnt2&st=hsdurfn4&dl=1" -o "lessons/data/split_seurat.rds"
 
 # seurat_phase.rds object
-curl -L "https://www.dropbox.com/scl/fi/t7vf6s94ftu8rf24rr66h/seurat_phase.rds?rlkey=b34o7c285h1icxsrqbmggg4b6&st=j3k3ig2x&dl=0" -o "lessons/data/seurat_phase.rds"
+curl -L "https://www.dropbox.com/scl/fi/t7vf6s94ftu8rf24rr66h/seurat_phase.rds?rlkey=b34o7c285h1icxsrqbmggg4b6&st=j3k3ig2x&dl=1" -o "lessons/data/seurat_phase.rds"

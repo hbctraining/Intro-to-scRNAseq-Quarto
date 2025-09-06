@@ -7,10 +7,11 @@ date: Thursday, November 21, 2019
 Approximate time: 90 minutes
 
 ```{r}
+#| label: load_libraries
 #| echo: false
 # Load libraries
 library(Seurat)
-load(bzfile("../data/additional_data/seurat_integrated.RData.bz2"))
+load(bzfile("data/additional_data/seurat_integrated.RData.bz2"))
 ```
 
 ## Learning Objectives:
@@ -58,6 +59,7 @@ Before starting with this lesson, let's create a new script for the next few ste
 Next, let's load all the libraries that we need.
 
 ```{r}
+#| label: script_set-up
 # Single-cell RNA-seq - clustering
 
 # Load libraries
@@ -78,6 +80,7 @@ It is useful to explore the PCs prior to deciding which PCs to include for the d
 The `cells` argument specifies the number of cells with the most negative or postive PCA scores to use for the plotting. The idea is that we are looking for a PC where the heatmap starts to look more "fuzzy", i.e. where the distinctions between the groups of genes is not so distinct.
 
 ```{r}
+#| label: integrated_DimHeatmap
 # Explore heatmap of PCs
 DimHeatmap(seurat_integrated, 
            dims = 1:9, 
@@ -88,6 +91,7 @@ DimHeatmap(seurat_integrated,
 This method can be slow and hard to visualize individual genes if we would like to explore a large number of PCs. In the same vein and to explore a large number of PCs, we could print out the top 10 (or more) positive and negative genes by PCA scores driving the PCs.
 
 ```{r}
+#| label: genes_driving_PCs
 # Printing out the most variable genes driving PCs
 print(x = seurat_integrated[["pca"]], 
       dims = 1:10, 
@@ -99,12 +103,13 @@ print(x = seurat_integrated[["pca"]],
 Let's draw an elbow plot using the top 40 PCs:
 
 ```{r}
+#| label: PC_elbow_plot
 # Plot the elbow plot
 ElbowPlot(object = seurat_integrated, 
           ndims = 40)
 ```
 
-Based on this plot, we could roughly determine the majority of the variation by where the elbow occurs around PC8 - PC10, or one could argue that it should be when the data points start to get close to the X-axis, PC30 or so. This gives us a very rough idea of the number of PCs needed to be included, we can extract the information visualized here in a [**more quantitative manner**](elbow_plot_metric.md), which may be a bit more reliable.  
+Based on this plot, we could roughly determine the majority of the variation by where the elbow occurs around PC8 - PC10, or one could argue that it should be when the data points start to get close to the X-axis, PC30 or so. This gives us a very rough idea of the number of PCs needed to be included, we can extract the information visualized here in a [**more quantitative manner**](Aside_elbow_plot_metric.qmd), which may be a bit more reliable.  
 
 While the above 2 methods were used a lot more with older methods from Seurat for normalization and identification of variable genes, they are no longer as important as they used to be. This is because the **SCTransform method is more accurate than older methods**.
 
@@ -135,6 +140,7 @@ _Image source: [Analysis of Single cell RNA-seq data](https://biocellgen-public.
 This is done in Seurat by using the `FindNeighbors()` function:
 
 ```{r}
+#| label: FindNeighbors
 # Determine the K-nearest neighbor graph
 seurat_integrated <- FindNeighbors(object = seurat_integrated, 
                                 dims = 1:40)
@@ -148,7 +154,8 @@ We will use the `FindClusters()` function to perform the graph-based clustering.
 
 The `FindClusters()` function allows us to enter a series of resolutions and will calculate the "granularity" of the clustering. This is very helpful for testing which resolution works for moving forward without having to run the function for each resolution.
 
-```{r}     
+```{r}
+#| label: FindClusters
 # Determine the clusters for various resolutions                              
 seurat_integrated <- FindClusters(object = seurat_integrated,
                                resolution = c(0.4, 0.6, 0.8, 1.0, 1.4))
@@ -165,6 +172,7 @@ Both methods aim to place cells with similar local neighborhoods in high-dimensi
 We can only visualize the results of one resolution setting at a time. If we look at the metadata of our Seurat object(`seurat_integrated@meta.data`), you should observe a separate column for each of the different resolutions calculated.
 
 ```{r}
+#| label: evaluate_resolutions
 #| eval: false
 # Explore resolutions
 seurat_integrated@meta.data %>% 
@@ -174,6 +182,7 @@ seurat_integrated@meta.data %>%
 To **choose a resolution to start with**, we often pick something in the middle of the range like 0.6 or 0.8. We will start with a resolution of 0.8 by assigning the identity of the clusters using the `Idents()` function.
 
 ```{r}
+#| label: assign_ident
 # Assign identity of clusters
 Idents(object = seurat_integrated) <- "integrated_snn_res.0.8"
 ```
@@ -181,6 +190,7 @@ Idents(object = seurat_integrated) <- "integrated_snn_res.0.8"
 Now, we can plot the UMAP to look at how cells cluster together at a resolution of 0.8:
 
 ```{r}
+#| label: UMAP_for_0.8_resolution
 #| eval: false
 ## Calculation of UMAP
 ## DO NOT RUN (calculated in the last lesson)
@@ -191,6 +201,7 @@ seurat_integrated <- RunUMAP(seurat_integrated,
 ```
 
 ```{r}
+#| label: integrated_DimPlot_0.8
 # Plot the UMAP
 DimPlot(seurat_integrated,
         reduction = "umap",
@@ -202,6 +213,7 @@ DimPlot(seurat_integrated,
 It can be useful to **explore other resolutions as well**. It will give you a quick idea about how the clusters would change based on the resolution parameter. For example, let's switch to a resolution of 0.4:
 
 ```{r}
+#| label: integrated_DimPlot_0.4
 # Assign identity of clusters
 Idents(object = seurat_integrated) <- "integrated_snn_res.0.4"
 
@@ -228,13 +240,14 @@ Inside your `data` folder you will see a folder called `additional_data`. It con
 * **Load in the object to your R session and overwrite the existing one**: 
 
 ```{r}
+#| label: load_data
 #| eval: false
 load(bzfile("data/additional_data/seurat_integrated.RData.bz2"))
 ```
 
 ***
 ::: callout-tip
-# Exercise
+# [**Exercise 1**](10_clustering_cells_SCT-Answer_key.qmd#exercise-1)
 
 After loading `seurat_integrated.RData.bz2`, check the object clusters with different resolution (0.4, 0.6, 0.8, 1.0, 1.4). For each resolution plot the corresponding UMAP and report how many clusters you observe. Which resolution do you think makes sense?
 :::
@@ -244,6 +257,7 @@ After loading `seurat_integrated.RData.bz2`, check the object clusters with diff
 We will now continue with the 0.8 resolution to check the quality control metrics and known markers for the anticipated cell types. Plot the UMAP again to make sure your image now (or still) matches what you see in the lesson:
 
 ```{r}
+#| label: reassign_0.8_ident_and_DimPlot
 # Assign identity of clusters
 Idents(object = seurat_integrated) <- "integrated_snn_res.0.8"
 

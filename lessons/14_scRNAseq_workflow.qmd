@@ -10,11 +10,10 @@ Approximate time: 20 minutes
 
 * Describe the workflow for single-cell RNA-seq analysis 
 
-
 # Single-cell RNA-seq Workflow
 In this workshop we have walked through an end-to-end workflow for the analysis of single cell RNA-seq data. For each step, code was provided along with in-depth information on the background and theory. Here, we review each step and highlight important concepts beginning with the count matrix.
 
-> _NOTE:_ For more information on how to generate the count matrix from raw reads, please see [this lesson](02_SC_generation_of_count_matrix.qmd) from the pre-reading.
+> _NOTE:_ For more information on how to generate the count matrix from raw reads, please see [this lesson](02_generation_of_count_matrix.qmd) from the pre-reading.
 
 <p align="center">
 <img src="../img/sc_workflow_2022.jpg" width="630">

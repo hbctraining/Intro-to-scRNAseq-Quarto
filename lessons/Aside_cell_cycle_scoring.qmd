@@ -7,7 +7,7 @@ title: "Cell Cycle Scoring"
 
 library(Seurat)
 library(tidyverse)
-load("../data/seurat_filtered.RData")
+load("data/seurat_filtered.RData")
 seurat_phase <- NormalizeData(filtered_seurat)
 ```
 

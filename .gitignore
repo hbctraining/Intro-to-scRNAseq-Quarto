@@ -1,5 +1,5 @@
 /.quarto/
-data/
+lessons/data/
 results/
 .DS_Store
 .Rhistory

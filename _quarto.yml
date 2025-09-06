@@ -37,32 +37,32 @@ website:
       - section: "Pre-reading:"
         contents:
         - lessons/01_intro_to_scRNA-seq.qmd
-        - lessons/02_SC_generation_of_count_matrix.qmd
+        - lessons/02_generation_of_count_matrix.qmd
 
       - section: "Day 1:"
         contents:
-          - lessons/03_SC_quality_control-setup.qmd
+          - lessons/03_quality_control-setup.qmd
       - section: "Day 1 Self-learning:"
         contents:
           - lessons/04_cellranger_QC.qmd
-          - lessons/04_SC_quality_control.qmd
-          - lessons/05_theory_of_PCA.qmd
+          - lessons/05_quality_control.qmd
+          - lessons/06_theory_of_PCA.qmd
           
       - section: "Day 2:"
         contents:
-          - lessons/06_SC_SCT_normalization.qmd
-          - lessons/06a_integration_cca_theory.qmd
+          - lessons/07_SCT_normalization.qmd
+          - lessons/08integration_cca_theory.qmd
       - section: "Day 2 Self-learning"
         contents:
-          - lessons/06b_integration_code_harmony.qmd
-          - lessons/07_SC_clustering_cells_SCT.qmd
-          - lessons/08_SC_clustering_quality_control.qmd
-          - lessons/seurat_cheatsheet.qmd
+          - lessons/09_integration_code_harmony.qmd
+          - lessons/10_clustering_cells_SCT.qmd
+          - lessons/11_clustering_quality_control.qmd
+          - lessons/12_seurat_cheatsheet.qmd
           
       - section: "Day 3:"
         contents:
-          - lessons/09_merged_SC_marker_identification.qmd
-          - lessons/scRNAseq_workflow.qmd
+          - lessons/13_marker_identification.qmd
+          - lessons/14_scRNAseq_workflow.qmd
           
 
 format:

@@ -62,6 +62,7 @@ In the following **example script**, you would just have to change the variable 
 **You do not need to run this script.**
 
 ```{r}
+#| label: cell_ranger
 #| eval: false
 #!/bin/bash
 
@@ -100,6 +101,7 @@ cellranger count \
 Once cellranger has finished running, there will be a folder titled `outs/` in a directory named after the `project_name` variable set above. Generation of all the following files is expected from a succesful completion of the `cellranger counts` pipeline:
 
 ```{r}
+#| label: directory_structure
 #| eval: false
 ├── cloupe.cloupe
 ├── filtered_feature_bc_matrix
@@ -233,12 +235,13 @@ Many of the core pieces of information from the web summary are stored in the `m
 
 We have included these csv files for the control and stimulated samples as links below. You can right-click on the link and "Save as..." into your **project `data` folder**:
 
-* [Control sample]https://www.dropbox.com/scl/fi/qnz44ng51ojmhu44acc8g/ctrl_metrics_summary.csv?rlkey=8zx5g1mtn6mrlwpv0syoz3bv4&st=9d0okyhf&dl=1) `metrics.csv` file
+* [Control sample](https://www.dropbox.com/scl/fi/qnz44ng51ojmhu44acc8g/ctrl_metrics_summary.csv?rlkey=8zx5g1mtn6mrlwpv0syoz3bv4&st=9d0okyhf&dl=1) `metrics.csv` file
 * [Stimulated sample](https://www.dropbox.com/scl/fi/gaa4sabcbhwqpuogfh0us/stim_metrics_summary.csv?rlkey=h2uokc9r2edeinxtzgrpw3ds4&dl=1) `metrics.csv` file
 
 First, to read the files in:
 
 ```{r}
+#| label: read_in_metrics_files
 library(tidyverse)
 library(reshape2)
 library(plyr)
@@ -249,7 +252,7 @@ samples <- c("ctrl", "stim")
 # Loop over each sample and read the metrics summary in
 metrics <- list()
 for (sample in samples) {
-    path_csv <- paste0("../data/", sample, "_metrics_summary.csv")
+    path_csv <- paste0("data/", sample, "_metrics_summary.csv")
     df <- read.csv(path_csv)
     rownames(df) <- sample
     metrics[[sample]] <- df
@@ -267,12 +270,14 @@ metrics$sample <- rownames(metrics)
 The information available in this file include: 
 
 ```{r}
+#| label: colnames_metrics_file
 colnames(metrics)
 ```
 
 With all of this information available as a dataframe, we can use ggplot to visualize these values. As an example of how this information can be used, we can display what percentage of reads map to the various parts of the genome (Intergentic, Intronic, and Exonic).
 
 ```{r}
+#| label: metrics_data_wrangling
 # Columns of interest
 cols <- c("Reads.Mapped.Confidently.to.Intergenic.Regions",
           "Reads.Mapped.Confidently.to.Intronic.Regions",
@@ -298,7 +303,6 @@ df %>% ggplot() +
         y = "Percentage of Reads",
         title = "Percent of Reads Mapped to Each Region",
         fill = "Region")
-
 ```
 
 

@@ -79,7 +79,7 @@ rownames(seurat_integrated) %>% head()
 
 ***
 ::: callout-tip
-# [Exercise 1](12_seurat_cheatsheet-Answer_key.qmd#exercise-1)
+# [**Exercise 1**](12_seurat_cheatsheet-Answer_key.qmd#exercise-1)
 
 1. What are the last 5 cells barcodes and the last 5 genes in the integrated seurat object.
 :::
@@ -141,7 +141,7 @@ seurat_integrated$celltype <- Idents(seurat_integrated)
 ***
 
 ::: callout-tip
-# [Exercise 2](12_seurat_cheatsheet-Answer_key.qmd#exercise-2)
+# [**Exercise 2**](12_seurat_cheatsheet-Answer_key.qmd#exercise-2)
 2. What are the last 5 identities for the cells in the integrated seurat object?
 :::
 
@@ -178,7 +178,7 @@ VariableFeatures(seurat_integrated) <- var_genes
 ***
 
 ::: callout-tip
-# [Exercise 3](12_seurat_cheatsheet-Answer_key.qmd#exercise-3)
+# [**Exercise 3**](12_seurat_cheatsheet-Answer_key.qmd#exercise-3)
 3. What are the the 5 least variable genes in the integrated seurat object?
 :::
 
@@ -235,7 +235,7 @@ dim(seurat_integrated[["integrated"]])
 ***
 
 ::: callout-tip
-# [Exercise 4](12_seurat_cheatsheet-Answer_key.qmd#exercise-4)
+# [**Exercise 4**](12_seurat_cheatsheet-Answer_key.qmd#exercise-4)
 4. What are the dimensions for each assay in the integrated seurat object?
 :::
 
@@ -280,7 +280,7 @@ LayerData(seurat_integrated, assay="RNA", layer="counts")[1:5, 1:5]
 ***
 
 ::: callout-tip
-# [Exercise 5](12_seurat_cheatsheet-Answer_key.qmd#exercise-5)
+# [**Exercise 5**](12_seurat_cheatsheet-Answer_key.qmd#exercise-5)
 5. Show the code to get the entire SCT normalized (data) count matrix.
 :::
 
@@ -309,7 +309,7 @@ FetchData(seurat_integrated, vars=c("rna_PTPRC", "integrated_PTPRC"),
 ***
 
 ::: callout-tip
-# Exercises
+# [**Exercise 6**](12_seurat_cheatsheet-Answer_key.qmd#exercise-6)
 6. Show how you would use the `FetchData()` function to generate a dataframe of UMAP_1, UMAP_2, and sample values for each cell.
 :::
 

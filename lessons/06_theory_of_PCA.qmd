@@ -12,6 +12,14 @@ editor_options:
     wrap: 72
 ---
 
+```{r}
+#| label: load_libraries
+#| echo: false
+# Load libraries
+library(Seurat)
+load("data/seurat_filtered.RData")
+```
+
 Approximate time: 45 minutes
 
 # Learning Objectives
@@ -22,7 +30,7 @@ Approximate time: 45 minutes
 
 # Background
 
-Principal Components Analysis is a dimensionality-reduction method employed to stratify data by their variance. Thus, points that are more closely together on a PCA are more similar to each other, while points that are more dissimilar to each other will be further apart. As a result, you would likely expect similar cells from the same cell type to cluster near each other and apart from distinctly different cell types. In order to demonstrate how Principal Components Analysis works we are going to describe how the process works in high-dimensional data, then work through it using a two-dimensional example data set.
+Principal Components Analysis is a ***dimensionality-reduction method employed to stratify data by their variance***. In other words, points that are more closely together on a PCA are more similar to each other, while points that are more dissimilar to each other will be further apart. As a result, you would likely expect ***similar cells from the same cell type to cluster near each other and apart from distinctly different cell types***. In order to demonstrate how Principal Components Analysis works we are going to describe how the process works in high-dimensional data, then work through it using a two-dimensional example data set.
 
 Consider a single-cell experiment where you have the expression value for every gene in each cell. Let's hypothetically say that our sample has data from 25,000 genes. We could plot this 25,000-dimensional space where each dimension represents a given gene's expression and each point represents a cell in that 25,000-dimensional space. However, that is rather unintuitive and many of those dimensions are uninteresting, so we would like to reduce the dimensionality to the axes that separate the variance the most. This is what we will be doing with a Principal Components Analysis.
 
@@ -75,11 +83,11 @@ ggplot(expression_tibble, aes(x = Gene_A, y = Gene_B, label = cells)) +
   theme(plot.title = element_text(hjust = 0.5))
 ```
 
-Now if were were to consider a real data set, it would have ***X*** genes and ***Y*** cells, then this plot would have ***X*** dimensions and ***Y*** points.
+Now if were were to consider our data set, it would have ***nrow(filtered_seurat)*** genes and ***ncol(filtered_seurat)*** cells, then this plot would have ***nrow(filtered_seurat)*** dimensions and ***ncol(filtered_seurat)*** points.
 
 ## Re-centering the dataset
 
-When performing PCA, the first step is to re-center the data so that the center of the data is the origin. In order to do this, we need to do two steps:
+The first step of PCA is to find the central spot among all of our datapoints (cells) and use that as the origin to re-center the data. In order to do this, we need to do two steps:
 
 **1. Find the center of the data**
 
@@ -100,7 +108,7 @@ names(center_of_data) <- c("Gene_A", "Gene_B")
 center_of_data
 ```
 
-The new center of the data will be where ***( `r center_of_data` )*** is currently. We can visualize this center and inspect that this is does in fact appear to be roughly in the middle of the data.
+The new center of the data will be where ***( `r center_of_data` )*** currently is. We can visualize this center and inspect that this is does in fact appear to be roughly in the middle of the data.
 
 ``` {r new_center_plot}
 # View where the center of the data is located
@@ -134,7 +142,7 @@ recentered_expression_tibble <- expression_tibble %>%
 recentered_expression_tibble
 ```
 
-As with any data analysis, it is always a good idea to visualize your data to ensure that it appears to behaving how you intended. So let's visualize our re-centered data to ensure that the data appears centered around the origin. 
+*As with any data analysis, it is always a good idea to visualize your data to ensure that it appears to behaving how you intended.* So let's visualize our re-centered data to ensure that the data appears centered around the origin. 
 
 ```{r plot_recentered_data}
 # Plot the raw data after it has been shifted to have the center of the data align with the origin
@@ -202,7 +210,7 @@ This value should match the covariance found in our covariance matrix for the co
 ::: callout-tip
 # [**Exercise 1**](06_theory_of_PCA_Answer-key.qmd#exercise-1)
 
-There are a couple properties of variance and co-variance that we can verify:
+There are a couple properties of variance and covariance that we can verify:
 
 *cov(X,X)* is equal to *var(X)*. We can observe this is mathematically below:
 
@@ -219,7 +227,7 @@ As a result, you will sometimes see covariance matrices written as:
 
 3. Is the value the same? Does it match the value in the covariance matrix for Gene A and Gene A?
 
-4. *cov(X,Y)* is equal to *cov(Y,X)*. We can observe this is mathematically below:
+4. Another property of covariance is that *cov(X,Y)* is equal to *cov(Y,X)*. We can observe this is mathematically below:
 
 <img src="https://latex.codecogs.com/svg.image?&space;cov(X,Y)=\frac{1}{n-1}\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})=\frac{1}{n-1}\sum_{i=1}^{n}(y_{i}-\bar{y})(x_{i}-\bar{x})=cov(Y,X)" width="500">
 
@@ -403,7 +411,7 @@ names(prcomp_eigenvalues) <- c("PC_1", "PC_2")
 prcomp_eigenvalues
 ```
 
-We can compare this with our estimation of eiganvalues by hand:
+We can compare this with our estimation of eigenvalues by hand:
 
 ```{r eigenvalue_hand}
 # Print the eigenvalues we found

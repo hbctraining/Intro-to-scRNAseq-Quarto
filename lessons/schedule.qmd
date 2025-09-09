@@ -19,7 +19,7 @@ execute:
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
 | 09:30 - 09:45 | [Workshop introduction](../slides/workshop_intro_slides.pdf) | Will |
-| 09:45 - 10:35| [Introduction to Single Cell RNA-sequencing: a practical guide](../slides/072624_Chan_scRNAseq_workshop_Arpita_Kulkarni.pdf) | [Dr. Mandovi Chatterjee](https://singlecellcore.hms.harvard.edu/people/mandovi-chatterjee) |
+| 09:45 - 10:35| [Introduction to Single Cell RNA-sequencing: a practical guide](../slides/HBC_single_cell_analysis_course-SEP_2025.pdf) | [Dr. Mandovi Chatterjee](https://singlecellcore.hms.harvard.edu/people/mandovi-chatterjee) |
 | 10:35 - 10:40 | Break |
 | 10:40 - 11:00 | scRNA-seq pre-reading discussion | All |
 | 11:00 - 11:45 | [Quality control set-up](03_quality_control-setup.qmd) | Noor |

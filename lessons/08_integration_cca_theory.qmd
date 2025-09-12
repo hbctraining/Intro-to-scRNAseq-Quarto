@@ -131,8 +131,9 @@ Next, Seurat will jointly reduce the dimensionality of both datasets using diago
 In this new shared low-dimensional space, Seurat will identify anchors or mutual nearest neighbors (MNNs) across datasets. These MNNs are pairs of cells that can be thought of as **'best buddies'**.
 
 For each cell in one condition:
-   - The cell's closest neighbor in the other condition is identified based on gene expression values - its 'best buddy'.
-   - The reciprocal analysis is performed, and if the two cells are 'best buddies' in both directions, then those cells will be marked as **anchors** to 'anchor' the two datasets together.
+
+- The cell's closest neighbor in the other condition is identified based on gene expression values - its 'best buddy'.
+- The reciprocal analysis is performed, and if the two cells are 'best buddies' in both directions, then those cells will be marked as **anchors** to 'anchor' the two datasets together.
 	
 
 **4. Filter anchors** to remove incorrect anchors:

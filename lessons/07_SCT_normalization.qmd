@@ -266,6 +266,7 @@ seurat_phase@meta.data$mitoFr <- cut(seurat_phase@meta.data$mitoRatio,
 
 1. Next, plot the PCA similar to how we did with cell cycle regression. *Hint: use the new `mitoFr`variable to split cells and color them accordingly.*
 2. Evaluate the PCA plot generated in #2.
+
 	* Determine whether or not you observe an effect.
 	* Describe what you see. 
 	* Would you regress out mitochondrial fraction as a source of unwanted variation?
@@ -288,6 +289,7 @@ _**Image credit:** Hafemeister C and Satija R. Normalization and variance stabil
 The conclusion is, **we cannot treat all genes the same.**
 
 The proposed solution was the use of **Pearson residuals for transformation**, as implemented in Seurat's `SCTransform` function. With this approach:
+
 * Measurements are multiplied by a gene-specific weight
 * Each gene is weighted based on how much evidence there is that it is non-uniformly expressed across cells
 * More evidence == more of a weight; Genes that are expressed in only a small fraction of cells will be favored (useful for finding rare cell populations)
@@ -368,6 +370,7 @@ for (i in 1:length(split_seurat)) {
 ```
 
 Please note that in the for loop above, we specify that `vst.flavor = "v2"` to use the updated version of SCT. "v2" was introduced in early 2022, and is now commonly used. This update improves:
+
 * Speed and memory consumption
 * The stability of parameter estimates
 * Variable feature identification in subsequent steps

@@ -675,8 +675,8 @@ This second PCA plot is <b>post-regression</b>, and displays how effective the r
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Low"</span>,<span class="st">"Medium"</span>,<span class="st">"Medium high"</span>, <span class="st">"High"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol type="1">
-<li>Next, plot the PCA similar to how we did with cell cycle regression. <em>Hint: use the new <code>mitoFr</code>variable to split cells and color them accordingly.</em></li>
-<li>Evaluate the PCA plot generated in #2.
+<li><p>Next, plot the PCA similar to how we did with cell cycle regression. <em>Hint: use the new <code>mitoFr</code>variable to split cells and color them accordingly.</em></p></li>
+<li><p>Evaluate the PCA plot generated in #2.</p>
 <ul>
 <li>Determine whether or not you observe an effect.</li>
 <li>Describe what you see.</li>
@@ -696,7 +696,13 @@ This second PCA plot is <b>post-regression</b>, and displays how effective the r
 </p>
 <p><em><strong>Image credit:</strong> Hafemeister C and Satija R. Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression, Genom Biology 2019 (https://doi.org/10.1101/576827)</em></p>
 <p>The conclusion is, <strong>we cannot treat all genes the same.</strong></p>
-<p>The proposed solution was the use of <strong>Pearson residuals for transformation</strong>, as implemented in Seurat’s <code>SCTransform</code> function. With this approach: * Measurements are multiplied by a gene-specific weight * Each gene is weighted based on how much evidence there is that it is non-uniformly expressed across cells * More evidence == more of a weight; Genes that are expressed in only a small fraction of cells will be favored (useful for finding rare cell populations) * Not just a consideration of the expression level is, but also the distribution of expression</p>
+<p>The proposed solution was the use of <strong>Pearson residuals for transformation</strong>, as implemented in Seurat’s <code>SCTransform</code> function. With this approach:</p>
+<ul>
+<li>Measurements are multiplied by a gene-specific weight</li>
+<li>Each gene is weighted based on how much evidence there is that it is non-uniformly expressed across cells</li>
+<li>More evidence == more of a weight; Genes that are expressed in only a small fraction of cells will be favored (useful for finding rare cell populations)</li>
+<li>Not just a consideration of the expression level is, but also the distribution of expression</li>
+</ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -790,7 +796,12 @@ Note
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">vst.flavor =</span> <span class="st">"v2"</span>)</span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Please note that in the for loop above, we specify that <code>vst.flavor = "v2"</code> to use the updated version of SCT. “v2” was introduced in early 2022, and is now commonly used. This update improves: * Speed and memory consumption * The stability of parameter estimates * Variable feature identification in subsequent steps</p>
+<p>Please note that in the for loop above, we specify that <code>vst.flavor = "v2"</code> to use the updated version of SCT. “v2” was introduced in early 2022, and is now commonly used. This update improves:</p>
+<ul>
+<li>Speed and memory consumption</li>
+<li>The stability of parameter estimates</li>
+<li>Variable feature identification in subsequent steps</li>
+</ul>
 <p>For more information, please see the <a href="https://satijalab.org/seurat/articles/sctransform_v2_vignette.html">Seurat vignette’s section on SCTransform, v2 regularization</a>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1612,160 +1623,163 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb21-282"><a href="#cb21-282" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-283"><a href="#cb21-283" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Next, plot the PCA similar to how we did with cell cycle regression. *Hint: use the new `mitoFr`variable to split cells and color them accordingly.*</span>
 <span id="cb21-284"><a href="#cb21-284" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Evaluate the PCA plot generated in #2.</span>
-<span id="cb21-285"><a href="#cb21-285" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>Determine whether or not you observe an effect.</span>
-<span id="cb21-286"><a href="#cb21-286" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>Describe what you see. </span>
-<span id="cb21-287"><a href="#cb21-287" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>Would you regress out mitochondrial fraction as a source of unwanted variation?</span>
-<span id="cb21-288"><a href="#cb21-288" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb21-289"><a href="#cb21-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-290"><a href="#cb21-290" aria-hidden="true" tabindex="-1"></a>***</span>
-<span id="cb21-291"><a href="#cb21-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-285"><a href="#cb21-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-286"><a href="#cb21-286" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>Determine whether or not you observe an effect.</span>
+<span id="cb21-287"><a href="#cb21-287" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>Describe what you see. </span>
+<span id="cb21-288"><a href="#cb21-288" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>Would you regress out mitochondrial fraction as a source of unwanted variation?</span>
+<span id="cb21-289"><a href="#cb21-289" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb21-290"><a href="#cb21-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-291"><a href="#cb21-291" aria-hidden="true" tabindex="-1"></a>***</span>
 <span id="cb21-292"><a href="#cb21-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-293"><a href="#cb21-293" aria-hidden="true" tabindex="-1"></a><span class="fu">## Normalization and regressing out sources of unwanted variation using SCTransform</span></span>
-<span id="cb21-294"><a href="#cb21-294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-295"><a href="#cb21-295" aria-hidden="true" tabindex="-1"></a>In the <span class="co">[</span><span class="ot">Hafemeister and Satija, 2019 paper</span><span class="co">](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1874-1)</span> the authors explored the issues with simple transformations. Specifically they evaluated the standard log normalization approach and found that genes with different abundances are affected differently and that **effective normalization (using the log transform) is only observed with low/medium abundance genes (Figure 1D, below)**. Additionally, **substantial imbalances in variance were observed with the log-normalized data (Figure 1E, below)**. In particular, cells with low total UMI counts exhibited disproportionately higher variance for high-abundance genes, dampening the variance contribution from other gene abundances.&nbsp;</span>
-<span id="cb21-296"><a href="#cb21-296" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-297"><a href="#cb21-297" aria-hidden="true" tabindex="-1"></a>&lt;p align="center"&gt;</span>
-<span id="cb21-298"><a href="#cb21-298" aria-hidden="true" tabindex="-1"></a>&lt;img src="../img/SCT_Fig1.png" width="600"&gt;</span>
-<span id="cb21-299"><a href="#cb21-299" aria-hidden="true" tabindex="-1"></a>&lt;/p&gt;</span>
-<span id="cb21-300"><a href="#cb21-300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-301"><a href="#cb21-301" aria-hidden="true" tabindex="-1"></a>_**Image credit:** Hafemeister C and Satija R. Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression, Genom Biology 2019 (https://doi.org/10.1101/576827)_</span>
-<span id="cb21-302"><a href="#cb21-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-293"><a href="#cb21-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-294"><a href="#cb21-294" aria-hidden="true" tabindex="-1"></a><span class="fu">## Normalization and regressing out sources of unwanted variation using SCTransform</span></span>
+<span id="cb21-295"><a href="#cb21-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-296"><a href="#cb21-296" aria-hidden="true" tabindex="-1"></a>In the <span class="co">[</span><span class="ot">Hafemeister and Satija, 2019 paper</span><span class="co">](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1874-1)</span> the authors explored the issues with simple transformations. Specifically they evaluated the standard log normalization approach and found that genes with different abundances are affected differently and that **effective normalization (using the log transform) is only observed with low/medium abundance genes (Figure 1D, below)**. Additionally, **substantial imbalances in variance were observed with the log-normalized data (Figure 1E, below)**. In particular, cells with low total UMI counts exhibited disproportionately higher variance for high-abundance genes, dampening the variance contribution from other gene abundances.&nbsp;</span>
+<span id="cb21-297"><a href="#cb21-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-298"><a href="#cb21-298" aria-hidden="true" tabindex="-1"></a>&lt;p align="center"&gt;</span>
+<span id="cb21-299"><a href="#cb21-299" aria-hidden="true" tabindex="-1"></a>&lt;img src="../img/SCT_Fig1.png" width="600"&gt;</span>
+<span id="cb21-300"><a href="#cb21-300" aria-hidden="true" tabindex="-1"></a>&lt;/p&gt;</span>
+<span id="cb21-301"><a href="#cb21-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-302"><a href="#cb21-302" aria-hidden="true" tabindex="-1"></a>_**Image credit:** Hafemeister C and Satija R. Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression, Genom Biology 2019 (https://doi.org/10.1101/576827)_</span>
 <span id="cb21-303"><a href="#cb21-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-304"><a href="#cb21-304" aria-hidden="true" tabindex="-1"></a>The conclusion is, **we cannot treat all genes the same.**</span>
-<span id="cb21-305"><a href="#cb21-305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-306"><a href="#cb21-306" aria-hidden="true" tabindex="-1"></a>The proposed solution was the use of **Pearson residuals for transformation**, as implemented in Seurat's <span class="in">`SCTransform`</span> function. With this approach:</span>
-<span id="cb21-307"><a href="#cb21-307" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Measurements are multiplied by a gene-specific weight</span>
-<span id="cb21-308"><a href="#cb21-308" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Each gene is weighted based on how much evidence there is that it is non-uniformly expressed across cells</span>
-<span id="cb21-309"><a href="#cb21-309" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>More evidence == more of a weight; Genes that are expressed in only a small fraction of cells will be favored (useful for finding rare cell populations)</span>
-<span id="cb21-310"><a href="#cb21-310" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Not just a consideration of the expression level is, but also the distribution of expression</span>
-<span id="cb21-311"><a href="#cb21-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-312"><a href="#cb21-312" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb21-313"><a href="#cb21-313" aria-hidden="true" tabindex="-1"></a><span class="fu"># Why don't we just run SCTransform to normalize?</span></span>
-<span id="cb21-314"><a href="#cb21-314" aria-hidden="true" tabindex="-1"></a>While the functions <span class="in">`NormalizeData`</span>, <span class="in">`VariableFeatures`</span> and <span class="in">`ScaleData`</span> can be replaced by the function <span class="in">`SCTransform`</span>, the latter uses a more sophisticated way to perform the normalization and scaling. We suggest using log normalization because it is good to observe the data and any trends using a simple transformation, as methods like SCT can alter the data in a way that is not as intuitive to interpret. </span>
-<span id="cb21-315"><a href="#cb21-315" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb21-316"><a href="#cb21-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-317"><a href="#cb21-317" aria-hidden="true" tabindex="-1"></a>Now that we have established which effects are observed in our data, we can use the SCTransform method to regress out these effects. The **SCTransform** method was proposed as a better alternative to the log transform normalization method that we used for exploring sources of unwanted variation. The method not only **normalizes data, but it also performs a variance stabilization and allows for additional covariates to be regressed out**.</span>
+<span id="cb21-304"><a href="#cb21-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-305"><a href="#cb21-305" aria-hidden="true" tabindex="-1"></a>The conclusion is, **we cannot treat all genes the same.**</span>
+<span id="cb21-306"><a href="#cb21-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-307"><a href="#cb21-307" aria-hidden="true" tabindex="-1"></a>The proposed solution was the use of **Pearson residuals for transformation**, as implemented in Seurat's <span class="in">`SCTransform`</span> function. With this approach:</span>
+<span id="cb21-308"><a href="#cb21-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-309"><a href="#cb21-309" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Measurements are multiplied by a gene-specific weight</span>
+<span id="cb21-310"><a href="#cb21-310" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Each gene is weighted based on how much evidence there is that it is non-uniformly expressed across cells</span>
+<span id="cb21-311"><a href="#cb21-311" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>More evidence == more of a weight; Genes that are expressed in only a small fraction of cells will be favored (useful for finding rare cell populations)</span>
+<span id="cb21-312"><a href="#cb21-312" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Not just a consideration of the expression level is, but also the distribution of expression</span>
+<span id="cb21-313"><a href="#cb21-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-314"><a href="#cb21-314" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb21-315"><a href="#cb21-315" aria-hidden="true" tabindex="-1"></a><span class="fu"># Why don't we just run SCTransform to normalize?</span></span>
+<span id="cb21-316"><a href="#cb21-316" aria-hidden="true" tabindex="-1"></a>While the functions <span class="in">`NormalizeData`</span>, <span class="in">`VariableFeatures`</span> and <span class="in">`ScaleData`</span> can be replaced by the function <span class="in">`SCTransform`</span>, the latter uses a more sophisticated way to perform the normalization and scaling. We suggest using log normalization because it is good to observe the data and any trends using a simple transformation, as methods like SCT can alter the data in a way that is not as intuitive to interpret. </span>
+<span id="cb21-317"><a href="#cb21-317" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb21-318"><a href="#cb21-318" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-319"><a href="#cb21-319" aria-hidden="true" tabindex="-1"></a>As described earlier, all genes cannot be treated the same. As such, the **SCTransform method constructs a generalized linear model (GLM) for each gene** with UMI counts as the response and sequencing depth as the explanatory variable. Information is pooled across genes with similar abundances, to regularize parameter estimates and **obtain residuals which represent effectively normalized data values** which are no longer correlated with sequencing depth.</span>
+<span id="cb21-319"><a href="#cb21-319" aria-hidden="true" tabindex="-1"></a>Now that we have established which effects are observed in our data, we can use the SCTransform method to regress out these effects. The **SCTransform** method was proposed as a better alternative to the log transform normalization method that we used for exploring sources of unwanted variation. The method not only **normalizes data, but it also performs a variance stabilization and allows for additional covariates to be regressed out**.</span>
 <span id="cb21-320"><a href="#cb21-320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-321"><a href="#cb21-321" aria-hidden="true" tabindex="-1"></a>&lt;p align="center"&gt;</span>
-<span id="cb21-322"><a href="#cb21-322" aria-hidden="true" tabindex="-1"></a>&lt;img src="../img/SCT_UMAP.png" width="400"&gt;</span>
-<span id="cb21-323"><a href="#cb21-323" aria-hidden="true" tabindex="-1"></a>&lt;/p&gt;</span>
-<span id="cb21-324"><a href="#cb21-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-325"><a href="#cb21-325" aria-hidden="true" tabindex="-1"></a>_**Image credit:** Hafemeister C and Satija R. Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression, Genom Biology 2019 (https://doi.org/10.1101/576827)_</span>
+<span id="cb21-321"><a href="#cb21-321" aria-hidden="true" tabindex="-1"></a>As described earlier, all genes cannot be treated the same. As such, the **SCTransform method constructs a generalized linear model (GLM) for each gene** with UMI counts as the response and sequencing depth as the explanatory variable. Information is pooled across genes with similar abundances, to regularize parameter estimates and **obtain residuals which represent effectively normalized data values** which are no longer correlated with sequencing depth.</span>
+<span id="cb21-322"><a href="#cb21-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-323"><a href="#cb21-323" aria-hidden="true" tabindex="-1"></a>&lt;p align="center"&gt;</span>
+<span id="cb21-324"><a href="#cb21-324" aria-hidden="true" tabindex="-1"></a>&lt;img src="../img/SCT_UMAP.png" width="400"&gt;</span>
+<span id="cb21-325"><a href="#cb21-325" aria-hidden="true" tabindex="-1"></a>&lt;/p&gt;</span>
 <span id="cb21-326"><a href="#cb21-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-327"><a href="#cb21-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-328"><a href="#cb21-328" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb21-329"><a href="#cb21-329" aria-hidden="true" tabindex="-1"></a>Since the UMI counts are part of the GLM, the effects are automatically regressed out. The user can include any additional covariates (<span class="in">`vars.to.regress`</span>) that may have an effect on expression and will be included in the model. </span>
-<span id="cb21-330"><a href="#cb21-330" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb21-331"><a href="#cb21-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-332"><a href="#cb21-332" aria-hidden="true" tabindex="-1"></a>To run the SCTransform we have the code below as an example. **Do not run this code**, as we prefer to run this for each sample separately in the next section below.</span>
+<span id="cb21-327"><a href="#cb21-327" aria-hidden="true" tabindex="-1"></a>_**Image credit:** Hafemeister C and Satija R. Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression, Genom Biology 2019 (https://doi.org/10.1101/576827)_</span>
+<span id="cb21-328"><a href="#cb21-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-329"><a href="#cb21-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-330"><a href="#cb21-330" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb21-331"><a href="#cb21-331" aria-hidden="true" tabindex="-1"></a>Since the UMI counts are part of the GLM, the effects are automatically regressed out. The user can include any additional covariates (<span class="in">`vars.to.regress`</span>) that may have an effect on expression and will be included in the model. </span>
+<span id="cb21-332"><a href="#cb21-332" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb21-333"><a href="#cb21-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-334"><a href="#cb21-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-337"><a href="#cb21-337" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-338"><a href="#cb21-338" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: SCTransform_example</span></span>
-<span id="cb21-339"><a href="#cb21-339" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-340"><a href="#cb21-340" aria-hidden="true" tabindex="-1"></a><span class="do">## DO NOT RUN CODE ##</span></span>
-<span id="cb21-341"><a href="#cb21-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-342"><a href="#cb21-342" aria-hidden="true" tabindex="-1"></a><span class="co"># SCTransform</span></span>
-<span id="cb21-343"><a href="#cb21-343" aria-hidden="true" tabindex="-1"></a>seurat_phase <span class="ot">&lt;-</span> <span class="fu">SCTransform</span>(seurat_phase, <span class="at">vars.to.regress =</span> <span class="fu">c</span>(<span class="st">"mitoRatio"</span>))</span>
-<span id="cb21-344"><a href="#cb21-344" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-345"><a href="#cb21-345" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-346"><a href="#cb21-346" aria-hidden="true" tabindex="-1"></a><span class="fu">## Iterating over samples in a dataset</span></span>
+<span id="cb21-334"><a href="#cb21-334" aria-hidden="true" tabindex="-1"></a>To run the SCTransform we have the code below as an example. **Do not run this code**, as we prefer to run this for each sample separately in the next section below.</span>
+<span id="cb21-335"><a href="#cb21-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-336"><a href="#cb21-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-339"><a href="#cb21-339" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-340"><a href="#cb21-340" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: SCTransform_example</span></span>
+<span id="cb21-341"><a href="#cb21-341" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb21-342"><a href="#cb21-342" aria-hidden="true" tabindex="-1"></a><span class="do">## DO NOT RUN CODE ##</span></span>
+<span id="cb21-343"><a href="#cb21-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-344"><a href="#cb21-344" aria-hidden="true" tabindex="-1"></a><span class="co"># SCTransform</span></span>
+<span id="cb21-345"><a href="#cb21-345" aria-hidden="true" tabindex="-1"></a>seurat_phase <span class="ot">&lt;-</span> <span class="fu">SCTransform</span>(seurat_phase, <span class="at">vars.to.regress =</span> <span class="fu">c</span>(<span class="st">"mitoRatio"</span>))</span>
+<span id="cb21-346"><a href="#cb21-346" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb21-347"><a href="#cb21-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-348"><a href="#cb21-348" aria-hidden="true" tabindex="-1"></a>Since we have two samples in our dataset (from two conditions), we want to keep them as separate objects and transform them as that is what is required for integration. We will first split the cells in <span class="in">`seurat_phase`</span> object into "Control" and "Stimulated":</span>
+<span id="cb21-348"><a href="#cb21-348" aria-hidden="true" tabindex="-1"></a><span class="fu">## Iterating over samples in a dataset</span></span>
 <span id="cb21-349"><a href="#cb21-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-352"><a href="#cb21-352" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-353"><a href="#cb21-353" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: split_seurat_object</span></span>
-<span id="cb21-354"><a href="#cb21-354" aria-hidden="true" tabindex="-1"></a><span class="co"># Split seurat object by condition to perform cell cycle scoring and SCT on all samples</span></span>
-<span id="cb21-355"><a href="#cb21-355" aria-hidden="true" tabindex="-1"></a>split_seurat <span class="ot">&lt;-</span> <span class="fu">SplitObject</span>(seurat_phase, <span class="at">split.by =</span> <span class="st">"sample"</span>)</span>
-<span id="cb21-356"><a href="#cb21-356" aria-hidden="true" tabindex="-1"></a>split_seurat</span>
-<span id="cb21-357"><a href="#cb21-357" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-358"><a href="#cb21-358" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-359"><a href="#cb21-359" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb21-360"><a href="#cb21-360" aria-hidden="true" tabindex="-1"></a>If you only wanted to integrate on a subset of your samples (e.g. all Ctrl replicates only), you could select which ones you wanted from the <span class="in">`split_seurat`</span> object as shown below and move forward with those.</span>
-<span id="cb21-361"><a href="#cb21-361" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-364"><a href="#cb21-364" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-365"><a href="#cb21-365" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: split_seurat_subset_example</span></span>
-<span id="cb21-366"><a href="#cb21-366" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-367"><a href="#cb21-367" aria-hidden="true" tabindex="-1"></a><span class="do">## DO NOT RUN</span></span>
-<span id="cb21-368"><a href="#cb21-368" aria-hidden="true" tabindex="-1"></a>ctrl_reps <span class="ot">&lt;-</span> split_seurat[<span class="fu">c</span>(<span class="st">"ctrl_1"</span>, <span class="st">"ctrl_2"</span>)]</span>
-<span id="cb21-369"><a href="#cb21-369" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-370"><a href="#cb21-370" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb21-371"><a href="#cb21-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-372"><a href="#cb21-372" aria-hidden="true" tabindex="-1"></a>Now we will **use a 'for loop'** to run the <span class="in">`SCTransform()`</span> on each sample, and regress out mitochondrial expression by specifying in the <span class="in">`vars.to.regress`</span> argument of the <span class="in">`SCTransform()`</span> function.</span>
+<span id="cb21-350"><a href="#cb21-350" aria-hidden="true" tabindex="-1"></a>Since we have two samples in our dataset (from two conditions), we want to keep them as separate objects and transform them as that is what is required for integration. We will first split the cells in <span class="in">`seurat_phase`</span> object into "Control" and "Stimulated":</span>
+<span id="cb21-351"><a href="#cb21-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-354"><a href="#cb21-354" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-355"><a href="#cb21-355" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: split_seurat_object</span></span>
+<span id="cb21-356"><a href="#cb21-356" aria-hidden="true" tabindex="-1"></a><span class="co"># Split seurat object by condition to perform cell cycle scoring and SCT on all samples</span></span>
+<span id="cb21-357"><a href="#cb21-357" aria-hidden="true" tabindex="-1"></a>split_seurat <span class="ot">&lt;-</span> <span class="fu">SplitObject</span>(seurat_phase, <span class="at">split.by =</span> <span class="st">"sample"</span>)</span>
+<span id="cb21-358"><a href="#cb21-358" aria-hidden="true" tabindex="-1"></a>split_seurat</span>
+<span id="cb21-359"><a href="#cb21-359" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-360"><a href="#cb21-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-361"><a href="#cb21-361" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb21-362"><a href="#cb21-362" aria-hidden="true" tabindex="-1"></a>If you only wanted to integrate on a subset of your samples (e.g. all Ctrl replicates only), you could select which ones you wanted from the <span class="in">`split_seurat`</span> object as shown below and move forward with those.</span>
+<span id="cb21-363"><a href="#cb21-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-366"><a href="#cb21-366" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-367"><a href="#cb21-367" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: split_seurat_subset_example</span></span>
+<span id="cb21-368"><a href="#cb21-368" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb21-369"><a href="#cb21-369" aria-hidden="true" tabindex="-1"></a><span class="do">## DO NOT RUN</span></span>
+<span id="cb21-370"><a href="#cb21-370" aria-hidden="true" tabindex="-1"></a>ctrl_reps <span class="ot">&lt;-</span> split_seurat[<span class="fu">c</span>(<span class="st">"ctrl_1"</span>, <span class="st">"ctrl_2"</span>)]</span>
+<span id="cb21-371"><a href="#cb21-371" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-372"><a href="#cb21-372" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb21-373"><a href="#cb21-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-374"><a href="#cb21-374" aria-hidden="true" tabindex="-1"></a>Before we run this <span class="in">`for loop`</span>, we know that the output can generate large R objects/variables in terms of memory. If we have a large dataset, then we might need to **adjust the limit for allowable object sizes within R** (*Default is 500 * 1024 ^ 2 = 500 Mb*) using the following code:</span>
+<span id="cb21-374"><a href="#cb21-374" aria-hidden="true" tabindex="-1"></a>Now we will **use a 'for loop'** to run the <span class="in">`SCTransform()`</span> on each sample, and regress out mitochondrial expression by specifying in the <span class="in">`vars.to.regress`</span> argument of the <span class="in">`SCTransform()`</span> function.</span>
 <span id="cb21-375"><a href="#cb21-375" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-378"><a href="#cb21-378" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-379"><a href="#cb21-379" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: increase_memory</span></span>
-<span id="cb21-380"><a href="#cb21-380" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">future.globals.maxSize =</span> <span class="dv">4000</span> <span class="sc">*</span> <span class="dv">1024</span><span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb21-381"><a href="#cb21-381" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-382"><a href="#cb21-382" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-383"><a href="#cb21-383" aria-hidden="true" tabindex="-1"></a>Now, we run the following loop to **perform the SCTransform on all samples**. This may take some time (~10 minutes):</span>
+<span id="cb21-376"><a href="#cb21-376" aria-hidden="true" tabindex="-1"></a>Before we run this <span class="in">`for loop`</span>, we know that the output can generate large R objects/variables in terms of memory. If we have a large dataset, then we might need to **adjust the limit for allowable object sizes within R** (*Default is 500 * 1024 ^ 2 = 500 Mb*) using the following code:</span>
+<span id="cb21-377"><a href="#cb21-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-380"><a href="#cb21-380" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-381"><a href="#cb21-381" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: increase_memory</span></span>
+<span id="cb21-382"><a href="#cb21-382" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">future.globals.maxSize =</span> <span class="dv">4000</span> <span class="sc">*</span> <span class="dv">1024</span><span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb21-383"><a href="#cb21-383" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb21-384"><a href="#cb21-384" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-387"><a href="#cb21-387" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-388"><a href="#cb21-388" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: SCTransform_all_samples</span></span>
-<span id="cb21-389"><a href="#cb21-389" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(split_seurat)) {</span>
-<span id="cb21-390"><a href="#cb21-390" aria-hidden="true" tabindex="-1"></a>    split_seurat[[i]] <span class="ot">&lt;-</span> <span class="fu">SCTransform</span>(split_seurat[[i]], </span>
-<span id="cb21-391"><a href="#cb21-391" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">vars.to.regress =</span> <span class="fu">c</span>(<span class="st">"mitoRatio"</span>),</span>
-<span id="cb21-392"><a href="#cb21-392" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">vst.flavor =</span> <span class="st">"v2"</span>)</span>
-<span id="cb21-393"><a href="#cb21-393" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb21-394"><a href="#cb21-394" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-395"><a href="#cb21-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-396"><a href="#cb21-396" aria-hidden="true" tabindex="-1"></a>Please note that in the for loop above, we specify that <span class="in">`vst.flavor = "v2"`</span> to use the updated version of SCT. "v2" was introduced in early 2022, and is now commonly used. This update improves:</span>
-<span id="cb21-397"><a href="#cb21-397" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Speed and memory consumption</span>
-<span id="cb21-398"><a href="#cb21-398" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>The stability of parameter estimates</span>
-<span id="cb21-399"><a href="#cb21-399" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Variable feature identification in subsequent steps</span>
-<span id="cb21-400"><a href="#cb21-400" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-401"><a href="#cb21-401" aria-hidden="true" tabindex="-1"></a>For more information, please see the <span class="co">[</span><span class="ot">Seurat vignette's section on SCTransform, v2 regularization</span><span class="co">](https://satijalab.org/seurat/articles/sctransform_v2_vignette.html)</span>. </span>
-<span id="cb21-402"><a href="#cb21-402" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-403"><a href="#cb21-403" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb21-404"><a href="#cb21-404" aria-hidden="true" tabindex="-1"></a>By default, after normalizing, adjusting the variance, and regressing out uninteresting sources of variation, SCTransform will rank the genes by residual variance and output the 3000 most variant genes. If the dataset has larger cell numbers, then it may be beneficial to adjust this parameter higher using the <span class="in">`variable.features.n`</span> argument._ </span>
-<span id="cb21-405"><a href="#cb21-405" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb21-406"><a href="#cb21-406" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-407"><a href="#cb21-407" aria-hidden="true" tabindex="-1"></a>Note, the last line of output specifies **"Set default assay to SCT"**. This specifies that moving forward we would like to use the data after SCT was implemented. We can view the different assays that we have stored in our seurat object.</span>
-<span id="cb21-408"><a href="#cb21-408" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-411"><a href="#cb21-411" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-412"><a href="#cb21-412" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: check_assays</span></span>
-<span id="cb21-413"><a href="#cb21-413" aria-hidden="true" tabindex="-1"></a><span class="co"># Check which assays are stored in objects</span></span>
-<span id="cb21-414"><a href="#cb21-414" aria-hidden="true" tabindex="-1"></a>split_seurat<span class="sc">$</span>ctrl<span class="sc">@</span>assays</span>
-<span id="cb21-415"><a href="#cb21-415" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-416"><a href="#cb21-416" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-417"><a href="#cb21-417" aria-hidden="true" tabindex="-1"></a>Now we can see that in addition to the raw RNA counts, we now have a SCT component in our <span class="in">`assays`</span> slot. The most variable features will be the only genes stored inside the SCT assay. As we move through the scRNA-seq analysis, we will choose the most appropriate assay to use for the different steps in the analysis. </span>
-<span id="cb21-418"><a href="#cb21-418" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-419"><a href="#cb21-419" aria-hidden="true" tabindex="-1"></a>***</span>
-<span id="cb21-420"><a href="#cb21-420" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-421"><a href="#cb21-421" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb21-422"><a href="#cb21-422" aria-hidden="true" tabindex="-1"></a><span class="fu"># [**Exercise 2**](07_SCT_normalization-Answer_key.qmd#exercise-2)</span></span>
+<span id="cb21-385"><a href="#cb21-385" aria-hidden="true" tabindex="-1"></a>Now, we run the following loop to **perform the SCTransform on all samples**. This may take some time (~10 minutes):</span>
+<span id="cb21-386"><a href="#cb21-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-389"><a href="#cb21-389" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-390"><a href="#cb21-390" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: SCTransform_all_samples</span></span>
+<span id="cb21-391"><a href="#cb21-391" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(split_seurat)) {</span>
+<span id="cb21-392"><a href="#cb21-392" aria-hidden="true" tabindex="-1"></a>    split_seurat[[i]] <span class="ot">&lt;-</span> <span class="fu">SCTransform</span>(split_seurat[[i]], </span>
+<span id="cb21-393"><a href="#cb21-393" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">vars.to.regress =</span> <span class="fu">c</span>(<span class="st">"mitoRatio"</span>),</span>
+<span id="cb21-394"><a href="#cb21-394" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">vst.flavor =</span> <span class="st">"v2"</span>)</span>
+<span id="cb21-395"><a href="#cb21-395" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb21-396"><a href="#cb21-396" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-397"><a href="#cb21-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-398"><a href="#cb21-398" aria-hidden="true" tabindex="-1"></a>Please note that in the for loop above, we specify that <span class="in">`vst.flavor = "v2"`</span> to use the updated version of SCT. "v2" was introduced in early 2022, and is now commonly used. This update improves:</span>
+<span id="cb21-399"><a href="#cb21-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-400"><a href="#cb21-400" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Speed and memory consumption</span>
+<span id="cb21-401"><a href="#cb21-401" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>The stability of parameter estimates</span>
+<span id="cb21-402"><a href="#cb21-402" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Variable feature identification in subsequent steps</span>
+<span id="cb21-403"><a href="#cb21-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-404"><a href="#cb21-404" aria-hidden="true" tabindex="-1"></a>For more information, please see the <span class="co">[</span><span class="ot">Seurat vignette's section on SCTransform, v2 regularization</span><span class="co">](https://satijalab.org/seurat/articles/sctransform_v2_vignette.html)</span>. </span>
+<span id="cb21-405"><a href="#cb21-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-406"><a href="#cb21-406" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb21-407"><a href="#cb21-407" aria-hidden="true" tabindex="-1"></a>By default, after normalizing, adjusting the variance, and regressing out uninteresting sources of variation, SCTransform will rank the genes by residual variance and output the 3000 most variant genes. If the dataset has larger cell numbers, then it may be beneficial to adjust this parameter higher using the <span class="in">`variable.features.n`</span> argument._ </span>
+<span id="cb21-408"><a href="#cb21-408" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb21-409"><a href="#cb21-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-410"><a href="#cb21-410" aria-hidden="true" tabindex="-1"></a>Note, the last line of output specifies **"Set default assay to SCT"**. This specifies that moving forward we would like to use the data after SCT was implemented. We can view the different assays that we have stored in our seurat object.</span>
+<span id="cb21-411"><a href="#cb21-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-414"><a href="#cb21-414" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-415"><a href="#cb21-415" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: check_assays</span></span>
+<span id="cb21-416"><a href="#cb21-416" aria-hidden="true" tabindex="-1"></a><span class="co"># Check which assays are stored in objects</span></span>
+<span id="cb21-417"><a href="#cb21-417" aria-hidden="true" tabindex="-1"></a>split_seurat<span class="sc">$</span>ctrl<span class="sc">@</span>assays</span>
+<span id="cb21-418"><a href="#cb21-418" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-419"><a href="#cb21-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-420"><a href="#cb21-420" aria-hidden="true" tabindex="-1"></a>Now we can see that in addition to the raw RNA counts, we now have a SCT component in our <span class="in">`assays`</span> slot. The most variable features will be the only genes stored inside the SCT assay. As we move through the scRNA-seq analysis, we will choose the most appropriate assay to use for the different steps in the analysis. </span>
+<span id="cb21-421"><a href="#cb21-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-422"><a href="#cb21-422" aria-hidden="true" tabindex="-1"></a>***</span>
 <span id="cb21-423"><a href="#cb21-423" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-424"><a href="#cb21-424" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Are the same assays available for the "stim" samples within the <span class="in">`split_seurat`</span> object? What is the code you used to check that?</span>
-<span id="cb21-425"><a href="#cb21-425" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-426"><a href="#cb21-426" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Any observations for the genes or features listed under *"First 10 features:"* and the *"Top 10 variable features:"* for "ctrl" versus "stim"?</span>
-<span id="cb21-427"><a href="#cb21-427" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb21-424"><a href="#cb21-424" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb21-425"><a href="#cb21-425" aria-hidden="true" tabindex="-1"></a><span class="fu"># [**Exercise 2**](07_SCT_normalization-Answer_key.qmd#exercise-2)</span></span>
+<span id="cb21-426"><a href="#cb21-426" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-427"><a href="#cb21-427" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Are the same assays available for the "stim" samples within the <span class="in">`split_seurat`</span> object? What is the code you used to check that?</span>
 <span id="cb21-428"><a href="#cb21-428" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-429"><a href="#cb21-429" aria-hidden="true" tabindex="-1"></a>***</span>
-<span id="cb21-430"><a href="#cb21-430" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-431"><a href="#cb21-431" aria-hidden="true" tabindex="-1"></a><span class="fu">### Save the object</span></span>
-<span id="cb21-432"><a href="#cb21-432" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-433"><a href="#cb21-433" aria-hidden="true" tabindex="-1"></a>Before finishing up, let's save this object to the <span class="in">`data/`</span> folder. It can take a while to get back to this stage especially when working with large datasets, it is best practice to save the object as an easily loadable file locally.</span>
-<span id="cb21-434"><a href="#cb21-434" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-437"><a href="#cb21-437" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-438"><a href="#cb21-438" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: save_seurat_object</span></span>
-<span id="cb21-439"><a href="#cb21-439" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the split seurat object</span></span>
-<span id="cb21-440"><a href="#cb21-440" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(split_seurat, <span class="st">"data/split_seurat.rds"</span>)</span>
-<span id="cb21-441"><a href="#cb21-441" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-442"><a href="#cb21-442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-443"><a href="#cb21-443" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb21-444"><a href="#cb21-444" aria-hidden="true" tabindex="-1"></a>To load the <span class="in">`.rds`</span> file back into your environment you would use the following code:</span>
-<span id="cb21-447"><a href="#cb21-447" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-448"><a href="#cb21-448" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load_seurat_object_example</span></span>
-<span id="cb21-449"><a href="#cb21-449" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-450"><a href="#cb21-450" aria-hidden="true" tabindex="-1"></a><span class="do">## DO NOT RUN</span></span>
-<span id="cb21-451"><a href="#cb21-451" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the split seurat object into the environment</span></span>
-<span id="cb21-452"><a href="#cb21-452" aria-hidden="true" tabindex="-1"></a>split_seurat <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/split_seurat.rds"</span>)</span>
-<span id="cb21-453"><a href="#cb21-453" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-454"><a href="#cb21-454" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb21-429"><a href="#cb21-429" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Any observations for the genes or features listed under *"First 10 features:"* and the *"Top 10 variable features:"* for "ctrl" versus "stim"?</span>
+<span id="cb21-430"><a href="#cb21-430" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb21-431"><a href="#cb21-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-432"><a href="#cb21-432" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb21-433"><a href="#cb21-433" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-434"><a href="#cb21-434" aria-hidden="true" tabindex="-1"></a><span class="fu">### Save the object</span></span>
+<span id="cb21-435"><a href="#cb21-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-436"><a href="#cb21-436" aria-hidden="true" tabindex="-1"></a>Before finishing up, let's save this object to the <span class="in">`data/`</span> folder. It can take a while to get back to this stage especially when working with large datasets, it is best practice to save the object as an easily loadable file locally.</span>
+<span id="cb21-437"><a href="#cb21-437" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-440"><a href="#cb21-440" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-441"><a href="#cb21-441" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: save_seurat_object</span></span>
+<span id="cb21-442"><a href="#cb21-442" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the split seurat object</span></span>
+<span id="cb21-443"><a href="#cb21-443" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(split_seurat, <span class="st">"data/split_seurat.rds"</span>)</span>
+<span id="cb21-444"><a href="#cb21-444" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-445"><a href="#cb21-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-446"><a href="#cb21-446" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb21-447"><a href="#cb21-447" aria-hidden="true" tabindex="-1"></a>To load the <span class="in">`.rds`</span> file back into your environment you would use the following code:</span>
+<span id="cb21-450"><a href="#cb21-450" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-451"><a href="#cb21-451" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load_seurat_object_example</span></span>
+<span id="cb21-452"><a href="#cb21-452" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb21-453"><a href="#cb21-453" aria-hidden="true" tabindex="-1"></a><span class="do">## DO NOT RUN</span></span>
+<span id="cb21-454"><a href="#cb21-454" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the split seurat object into the environment</span></span>
+<span id="cb21-455"><a href="#cb21-455" aria-hidden="true" tabindex="-1"></a>split_seurat <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/split_seurat.rds"</span>)</span>
+<span id="cb21-456"><a href="#cb21-456" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-457"><a href="#cb21-457" aria-hidden="true" tabindex="-1"></a>:::</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

@@ -127,6 +127,7 @@ Before we start our marker identification we will explicitly set our default ass
 ```{r}
 #| label: set_default_assay
 DefaultAssay(seurat_integrated) <- "RNA"
+Idents(seurat_integrated) <- "integrated_snn_res.0.8"
 ```
 
 The default assay should have already been `RNA`, because we set it up in the previous clustering quality control lesson. But we encourage you to run this line of code above to be absolutely sure in case the active slot was changed somewhere upstream in your analysis. 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,8 +22,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -65,15 +66,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e5cb4ee4193d6a2f28a249434e39fb42.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-67e3698c9357a87fd1a0e9aab97ce577.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -104,19 +106,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
 <script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="../site_libs/datatables-binding-0.34.0/datatables.js"></script>
+<script src="../site_libs/datatables-binding-0.33/datatables.js"></script>
 <script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
 <script src="../site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
-<link href="../site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
-<script src="../site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 
 
 <link rel="stylesheet" href="../css/styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -510,7 +512,8 @@ Note
 </p>
 <p>Before we start our marker identification we will explicitly set our default assay, we want to use the <strong>normalized data, but not the integrated data</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DefaultAssay</span>(seurat_integrated) <span class="ot">&lt;-</span> <span class="st">"RNA"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DefaultAssay</span>(seurat_integrated) <span class="ot">&lt;-</span> <span class="st">"RNA"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Idents</span>(seurat_integrated) <span class="ot">&lt;-</span> <span class="st">"integrated_snn_res.0.8"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The default assay should have already been <code>RNA</code>, because we set it up in the previous clustering quality control lesson. But we encourage you to run this line of code above to be absolutely sure in case the active slot was changed somewhere upstream in your analysis.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1116,287 +1119,293 @@ LY6E      0  -3.232020 0.126 0.848         0</code></pre>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
+      return false;
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
         }
-        return container.innerHTML
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1404,185 +1413,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb25" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Marker identification"</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Mary Piper, Lorena Pantano, Meeta Mistry, Radhika Khetani, Jihe Liu"</span></span>
@@ -1612,9 +1597,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>Now that we have identified our desired clusters, we can move on to marker identification, which will allow us to verify the identity of certain clusters and help surmise the identity of any unknown clusters. </span>
 <span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>&lt;p align="center"&gt;</span>
-<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a>&lt;img src="../img/sc_workflow_2022.jpg" width="630"&gt;</span>
-<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>&lt;/p&gt;</span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> align</span><span class="op">=</span><span class="st">"center"</span><span class="dt">&gt;</span></span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"../img/sc_workflow_2022.jpg"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"630"</span><span class="dt">&gt;</span></span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
 <span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>***</span>
 <span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a></span>
@@ -1639,9 +1624,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-56"><a href="#cb25-56" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-57"><a href="#cb25-57" aria-hidden="true" tabindex="-1"></a>Our clustering analysis resulted in the following clusters:</span>
 <span id="cb25-58"><a href="#cb25-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-59"><a href="#cb25-59" aria-hidden="true" tabindex="-1"></a>&lt;p align="center"&gt;</span>
-<span id="cb25-60"><a href="#cb25-60" aria-hidden="true" tabindex="-1"></a>&lt;img src="../img/SC_umap_SCTv2.png" width="800"&gt;</span>
-<span id="cb25-61"><a href="#cb25-61" aria-hidden="true" tabindex="-1"></a>&lt;/p&gt;</span>
+<span id="cb25-59"><a href="#cb25-59" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> align</span><span class="op">=</span><span class="st">"center"</span><span class="dt">&gt;</span></span>
+<span id="cb25-60"><a href="#cb25-60" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"../img/SC_umap_SCTv2.png"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"800"</span><span class="dt">&gt;</span></span>
+<span id="cb25-61"><a href="#cb25-61" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
 <span id="cb25-62"><a href="#cb25-62" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-63"><a href="#cb25-63" aria-hidden="true" tabindex="-1"></a>**Remember that we had the following questions from the clustering analysis**: </span>
 <span id="cb25-64"><a href="#cb25-64" aria-hidden="true" tabindex="-1"></a></span>
@@ -1667,9 +1652,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-84"><a href="#cb25-84" aria-hidden="true" tabindex="-1"></a>The default is a Wilcoxon Rank Sum test, but there are other options available. </span>
 <span id="cb25-85"><a href="#cb25-85" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb25-86"><a href="#cb25-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-87"><a href="#cb25-87" aria-hidden="true" tabindex="-1"></a>&lt;p align="center"&gt;</span>
-<span id="cb25-88"><a href="#cb25-88" aria-hidden="true" tabindex="-1"></a>&lt;img src="../img/marker_ident_function1.png" width="350"&gt;</span>
-<span id="cb25-89"><a href="#cb25-89" aria-hidden="true" tabindex="-1"></a>&lt;/p&gt;</span>
+<span id="cb25-87"><a href="#cb25-87" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> align</span><span class="op">=</span><span class="st">"center"</span><span class="dt">&gt;</span></span>
+<span id="cb25-88"><a href="#cb25-88" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"../img/marker_ident_function1.png"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"350"</span><span class="dt">&gt;</span></span>
+<span id="cb25-89"><a href="#cb25-89" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
 <span id="cb25-90"><a href="#cb25-90" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-91"><a href="#cb25-91" aria-hidden="true" tabindex="-1"></a>The <span class="in">`FindAllMarkers()`</span> function has **three important arguments** which provide thresholds for determining whether a gene is a marker:</span>
 <span id="cb25-92"><a href="#cb25-92" aria-hidden="true" tabindex="-1"></a></span>
@@ -1703,445 +1688,446 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-122"><a href="#cb25-122" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-123"><a href="#cb25-123" aria-hidden="true" tabindex="-1"></a>Since we have samples representing different conditions in our dataset, **our best option is to find conserved markers**. This function internally separates out cells by sample group/condition, and then performs differential gene expression testing for a single specified cluster against all other clusters (or a second cluster, if specified). Gene-level p-values are computed for each condition and then combined across groups using meta-analysis methods from the MetaDE R package.</span>
 <span id="cb25-124"><a href="#cb25-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-125"><a href="#cb25-125" aria-hidden="true" tabindex="-1"></a>&lt;p align="center"&gt;</span>
-<span id="cb25-126"><a href="#cb25-126" aria-hidden="true" tabindex="-1"></a>&lt;img src="../img/marker_ident_function2.png" width="350"&gt;</span>
-<span id="cb25-127"><a href="#cb25-127" aria-hidden="true" tabindex="-1"></a>&lt;/p&gt;</span>
+<span id="cb25-125"><a href="#cb25-125" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> align</span><span class="op">=</span><span class="st">"center"</span><span class="dt">&gt;</span></span>
+<span id="cb25-126"><a href="#cb25-126" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"../img/marker_ident_function2.png"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"350"</span><span class="dt">&gt;</span></span>
+<span id="cb25-127"><a href="#cb25-127" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
 <span id="cb25-128"><a href="#cb25-128" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-129"><a href="#cb25-129" aria-hidden="true" tabindex="-1"></a>Before we start our marker identification we will explicitly set our default assay, we want to use the **normalized data, but not the integrated data**.</span>
 <span id="cb25-130"><a href="#cb25-130" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-133"><a href="#cb25-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb25-134"><a href="#cb25-134" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: set_default_assay</span></span>
 <span id="cb25-135"><a href="#cb25-135" aria-hidden="true" tabindex="-1"></a><span class="fu">DefaultAssay</span>(seurat_integrated) <span class="ot">&lt;-</span> <span class="st">"RNA"</span></span>
-<span id="cb25-136"><a href="#cb25-136" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-137"><a href="#cb25-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-138"><a href="#cb25-138" aria-hidden="true" tabindex="-1"></a>The default assay should have already been <span class="in">`RNA`</span>, because we set it up in the previous clustering quality control lesson. But we encourage you to run this line of code above to be absolutely sure in case the active slot was changed somewhere upstream in your analysis. </span>
-<span id="cb25-139"><a href="#cb25-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-140"><a href="#cb25-140" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb25-141"><a href="#cb25-141" aria-hidden="true" tabindex="-1"></a><span class="fu"># Why don't we use SCT normalized data?</span></span>
-<span id="cb25-142"><a href="#cb25-142" aria-hidden="true" tabindex="-1"></a>Note that the raw and normalized counts are stored in the <span class="in">`counts`</span> and <span class="in">`data`</span> slots of <span class="in">`RNA`</span> assay, respectively. By default, the functions for finding markers will use normalized data if RNA is the DefaultAssay. The number of features in the <span class="in">`RNA`</span> assay corresponds to all genes in our dataset.</span>
-<span id="cb25-143"><a href="#cb25-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-144"><a href="#cb25-144" aria-hidden="true" tabindex="-1"></a>Now if we consider the <span class="in">`SCT`</span> assay, functions for finding markers would use the <span class="in">`scale.data`</span> slot which is the pearson residuals that come out of regularized NB regression. Differential expression on these values can be difficult interpret. Additionally, only the variable features are represented in this assay and so we may not have data for some of our marker genes.</span>
-<span id="cb25-145"><a href="#cb25-145" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb25-146"><a href="#cb25-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-147"><a href="#cb25-147" aria-hidden="true" tabindex="-1"></a>The function <span class="in">`FindConservedMarkers()`</span>, has the following structure:</span>
-<span id="cb25-148"><a href="#cb25-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-149"><a href="#cb25-149" aria-hidden="true" tabindex="-1"></a>**`FindConservedMarkers()` syntax:**</span>
-<span id="cb25-150"><a href="#cb25-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-153"><a href="#cb25-153" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-154"><a href="#cb25-154" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: FindConservedMarkers_example</span></span>
-<span id="cb25-155"><a href="#cb25-155" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb25-156"><a href="#cb25-156" aria-hidden="true" tabindex="-1"></a><span class="do">## DO NOT RUN ##</span></span>
-<span id="cb25-157"><a href="#cb25-157" aria-hidden="true" tabindex="-1"></a><span class="fu">FindConservedMarkers</span>(seurat_integrated,</span>
-<span id="cb25-158"><a href="#cb25-158" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ident.1 =</span> cluster,</span>
-<span id="cb25-159"><a href="#cb25-159" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grouping.var =</span> <span class="st">"sample"</span>,</span>
-<span id="cb25-160"><a href="#cb25-160" aria-hidden="true" tabindex="-1"></a>                      <span class="at">only.pos =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb25-161"><a href="#cb25-161" aria-hidden="true" tabindex="-1"></a>                      <span class="at">min.diff.pct =</span> <span class="fl">0.25</span>,</span>
-<span id="cb25-162"><a href="#cb25-162" aria-hidden="true" tabindex="-1"></a>                      <span class="at">min.pct =</span> <span class="fl">0.25</span>,</span>
-<span id="cb25-163"><a href="#cb25-163" aria-hidden="true" tabindex="-1"></a>                      <span class="at">logfc.threshold =</span> <span class="fl">0.25</span>)</span>
-<span id="cb25-164"><a href="#cb25-164" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-165"><a href="#cb25-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-166"><a href="#cb25-166" aria-hidden="true" tabindex="-1"></a>You will recognize some of the arguments we described previously for the <span class="in">`FindAllMarkers()`</span> function; this is because internally it is using that function to first find markers within each group. Here, we list **some additional arguments** which provide for when using <span class="in">`FindConservedMarkers()`</span>:</span>
-<span id="cb25-167"><a href="#cb25-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-168"><a href="#cb25-168" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`ident.1`</span>: this function only evaluates one cluster at a time; here you would specify the cluster of interest.</span>
-<span id="cb25-169"><a href="#cb25-169" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`grouping.var`</span>: the variable (column header) in your metadata which specifies the separation of cells into groups</span>
-<span id="cb25-170"><a href="#cb25-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-171"><a href="#cb25-171" aria-hidden="true" tabindex="-1"></a>For our analysis we will be fairly lenient and **use only the log fold change threshold greater than 0.25**. We will also specify to return only the positive markers for each cluster.</span>
-<span id="cb25-172"><a href="#cb25-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-136"><a href="#cb25-136" aria-hidden="true" tabindex="-1"></a><span class="fu">Idents</span>(seurat_integrated) <span class="ot">&lt;-</span> <span class="st">"integrated_snn_res.0.8"</span></span>
+<span id="cb25-137"><a href="#cb25-137" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-138"><a href="#cb25-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-139"><a href="#cb25-139" aria-hidden="true" tabindex="-1"></a>The default assay should have already been <span class="in">`RNA`</span>, because we set it up in the previous clustering quality control lesson. But we encourage you to run this line of code above to be absolutely sure in case the active slot was changed somewhere upstream in your analysis. </span>
+<span id="cb25-140"><a href="#cb25-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-141"><a href="#cb25-141" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb25-142"><a href="#cb25-142" aria-hidden="true" tabindex="-1"></a><span class="fu"># Why don't we use SCT normalized data?</span></span>
+<span id="cb25-143"><a href="#cb25-143" aria-hidden="true" tabindex="-1"></a>Note that the raw and normalized counts are stored in the <span class="in">`counts`</span> and <span class="in">`data`</span> slots of <span class="in">`RNA`</span> assay, respectively. By default, the functions for finding markers will use normalized data if RNA is the DefaultAssay. The number of features in the <span class="in">`RNA`</span> assay corresponds to all genes in our dataset.</span>
+<span id="cb25-144"><a href="#cb25-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-145"><a href="#cb25-145" aria-hidden="true" tabindex="-1"></a>Now if we consider the <span class="in">`SCT`</span> assay, functions for finding markers would use the <span class="in">`scale.data`</span> slot which is the pearson residuals that come out of regularized NB regression. Differential expression on these values can be difficult interpret. Additionally, only the variable features are represented in this assay and so we may not have data for some of our marker genes.</span>
+<span id="cb25-146"><a href="#cb25-146" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb25-147"><a href="#cb25-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-148"><a href="#cb25-148" aria-hidden="true" tabindex="-1"></a>The function <span class="in">`FindConservedMarkers()`</span>, has the following structure:</span>
+<span id="cb25-149"><a href="#cb25-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-150"><a href="#cb25-150" aria-hidden="true" tabindex="-1"></a>**`FindConservedMarkers()` syntax:**</span>
+<span id="cb25-151"><a href="#cb25-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-154"><a href="#cb25-154" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-155"><a href="#cb25-155" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: FindConservedMarkers_example</span></span>
+<span id="cb25-156"><a href="#cb25-156" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb25-157"><a href="#cb25-157" aria-hidden="true" tabindex="-1"></a><span class="do">## DO NOT RUN ##</span></span>
+<span id="cb25-158"><a href="#cb25-158" aria-hidden="true" tabindex="-1"></a><span class="fu">FindConservedMarkers</span>(seurat_integrated,</span>
+<span id="cb25-159"><a href="#cb25-159" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ident.1 =</span> cluster,</span>
+<span id="cb25-160"><a href="#cb25-160" aria-hidden="true" tabindex="-1"></a>                      <span class="at">grouping.var =</span> <span class="st">"sample"</span>,</span>
+<span id="cb25-161"><a href="#cb25-161" aria-hidden="true" tabindex="-1"></a>                      <span class="at">only.pos =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb25-162"><a href="#cb25-162" aria-hidden="true" tabindex="-1"></a>                      <span class="at">min.diff.pct =</span> <span class="fl">0.25</span>,</span>
+<span id="cb25-163"><a href="#cb25-163" aria-hidden="true" tabindex="-1"></a>                      <span class="at">min.pct =</span> <span class="fl">0.25</span>,</span>
+<span id="cb25-164"><a href="#cb25-164" aria-hidden="true" tabindex="-1"></a>                      <span class="at">logfc.threshold =</span> <span class="fl">0.25</span>)</span>
+<span id="cb25-165"><a href="#cb25-165" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-166"><a href="#cb25-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-167"><a href="#cb25-167" aria-hidden="true" tabindex="-1"></a>You will recognize some of the arguments we described previously for the <span class="in">`FindAllMarkers()`</span> function; this is because internally it is using that function to first find markers within each group. Here, we list **some additional arguments** which provide for when using <span class="in">`FindConservedMarkers()`</span>:</span>
+<span id="cb25-168"><a href="#cb25-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-169"><a href="#cb25-169" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`ident.1`</span>: this function only evaluates one cluster at a time; here you would specify the cluster of interest.</span>
+<span id="cb25-170"><a href="#cb25-170" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`grouping.var`</span>: the variable (column header) in your metadata which specifies the separation of cells into groups</span>
+<span id="cb25-171"><a href="#cb25-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-172"><a href="#cb25-172" aria-hidden="true" tabindex="-1"></a>For our analysis we will be fairly lenient and **use only the log fold change threshold greater than 0.25**. We will also specify to return only the positive markers for each cluster.</span>
 <span id="cb25-173"><a href="#cb25-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-174"><a href="#cb25-174" aria-hidden="true" tabindex="-1"></a>Let's **test it out on one cluster** to see how it works:</span>
-<span id="cb25-175"><a href="#cb25-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-178"><a href="#cb25-178" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-179"><a href="#cb25-179" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: FindConservedMarkers_cluster_0</span></span>
-<span id="cb25-180"><a href="#cb25-180" aria-hidden="true" tabindex="-1"></a>cluster0_conserved_markers <span class="ot">&lt;-</span> <span class="fu">FindConservedMarkers</span>(seurat_integrated,</span>
-<span id="cb25-181"><a href="#cb25-181" aria-hidden="true" tabindex="-1"></a>                                                    <span class="at">ident.1 =</span> <span class="dv">0</span>,</span>
-<span id="cb25-182"><a href="#cb25-182" aria-hidden="true" tabindex="-1"></a>                                                    <span class="at">grouping.var =</span> <span class="st">"sample"</span>,</span>
-<span id="cb25-183"><a href="#cb25-183" aria-hidden="true" tabindex="-1"></a>                                                    <span class="at">only.pos =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb25-184"><a href="#cb25-184" aria-hidden="true" tabindex="-1"></a>                                                    <span class="at">logfc.threshold =</span> <span class="fl">0.25</span>)</span>
-<span id="cb25-185"><a href="#cb25-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-186"><a href="#cb25-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-187"><a href="#cb25-187" aria-hidden="true" tabindex="-1"></a>&lt;img src="../img/conserved_markers_table.png" width="800"&gt;</span>
-<span id="cb25-188"><a href="#cb25-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-174"><a href="#cb25-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-175"><a href="#cb25-175" aria-hidden="true" tabindex="-1"></a>Let's **test it out on one cluster** to see how it works:</span>
+<span id="cb25-176"><a href="#cb25-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-179"><a href="#cb25-179" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-180"><a href="#cb25-180" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: FindConservedMarkers_cluster_0</span></span>
+<span id="cb25-181"><a href="#cb25-181" aria-hidden="true" tabindex="-1"></a>cluster0_conserved_markers <span class="ot">&lt;-</span> <span class="fu">FindConservedMarkers</span>(seurat_integrated,</span>
+<span id="cb25-182"><a href="#cb25-182" aria-hidden="true" tabindex="-1"></a>                                                    <span class="at">ident.1 =</span> <span class="dv">0</span>,</span>
+<span id="cb25-183"><a href="#cb25-183" aria-hidden="true" tabindex="-1"></a>                                                    <span class="at">grouping.var =</span> <span class="st">"sample"</span>,</span>
+<span id="cb25-184"><a href="#cb25-184" aria-hidden="true" tabindex="-1"></a>                                                    <span class="at">only.pos =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb25-185"><a href="#cb25-185" aria-hidden="true" tabindex="-1"></a>                                                    <span class="at">logfc.threshold =</span> <span class="fl">0.25</span>)</span>
+<span id="cb25-186"><a href="#cb25-186" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-187"><a href="#cb25-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-188"><a href="#cb25-188" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"../img/conserved_markers_table.png"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"800"</span><span class="dt">&gt;</span></span>
 <span id="cb25-189"><a href="#cb25-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-190"><a href="#cb25-190" aria-hidden="true" tabindex="-1"></a>**The output from the `FindConservedMarkers()` function**, is a matrix containing a ranked list of putative markers listed by gene ID for the cluster we specified, and associated statistics. Note that the same set of statistics are computed for each group (in our case, Ctrl and Stim) and the last two columns correspond to the combined p-value across the two groups. We describe some of these columns below:</span>
-<span id="cb25-191"><a href="#cb25-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-192"><a href="#cb25-192" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**gene:** gene symbol</span>
-<span id="cb25-193"><a href="#cb25-193" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**condition_p_val:** p-value not adjusted for multiple test correction for condition</span>
-<span id="cb25-194"><a href="#cb25-194" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**condition_avg_logFC:** average log fold change for condition. Positive values indicate that the gene is more highly expressed in the cluster.   </span>
-<span id="cb25-195"><a href="#cb25-195" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**condition_pct.1:** percentage of cells where the gene is detected in the cluster for condition      </span>
-<span id="cb25-196"><a href="#cb25-196" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**condition_pct.2:** percentage of cells where the gene is detected on average in the other clusters for condition</span>
-<span id="cb25-197"><a href="#cb25-197" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**condition_p_val_adj:** adjusted p-value for condition, based on bonferroni correction using all genes in the dataset, used to determine significance</span>
-<span id="cb25-198"><a href="#cb25-198" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**max_pval:** largest p value of p value calculated by each group/condition</span>
-<span id="cb25-199"><a href="#cb25-199" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**minimump_p_val:** combined p value</span>
-<span id="cb25-200"><a href="#cb25-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-201"><a href="#cb25-201" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb25-202"><a href="#cb25-202" aria-hidden="true" tabindex="-1"></a>Since each cell is being treated as a replicate this will result in inflated p-values within each group! A gene may have an incredibly low p-value &lt; 1e-50 but that doesn't translate as a highly reliable marker gene. </span>
-<span id="cb25-203"><a href="#cb25-203" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb25-204"><a href="#cb25-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-205"><a href="#cb25-205" aria-hidden="true" tabindex="-1"></a>When looking at the output, **we suggest looking for markers with large differences in expression between `pct.1` and `pct.2` and larger fold changes**. For instance if <span class="in">`pct.1`</span> = 0.90 and <span class="in">`pct.2`</span> = 0.80, it may not be as exciting of a marker. However, if <span class="in">`pct.2`</span> = 0.1 instead, the bigger difference would be more convincing. Also, of interest is if the majority of cells expressing the marker is in my cluster of interest. If <span class="in">`pct.1`</span> is low, such as 0.3, it may not be as interesting. Both of these are also possible parameters to include when running the function, as described above.</span>
-<span id="cb25-206"><a href="#cb25-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-190"><a href="#cb25-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-191"><a href="#cb25-191" aria-hidden="true" tabindex="-1"></a>**The output from the `FindConservedMarkers()` function**, is a matrix containing a ranked list of putative markers listed by gene ID for the cluster we specified, and associated statistics. Note that the same set of statistics are computed for each group (in our case, Ctrl and Stim) and the last two columns correspond to the combined p-value across the two groups. We describe some of these columns below:</span>
+<span id="cb25-192"><a href="#cb25-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-193"><a href="#cb25-193" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**gene:** gene symbol</span>
+<span id="cb25-194"><a href="#cb25-194" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**condition_p_val:** p-value not adjusted for multiple test correction for condition</span>
+<span id="cb25-195"><a href="#cb25-195" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**condition_avg_logFC:** average log fold change for condition. Positive values indicate that the gene is more highly expressed in the cluster.   </span>
+<span id="cb25-196"><a href="#cb25-196" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**condition_pct.1:** percentage of cells where the gene is detected in the cluster for condition      </span>
+<span id="cb25-197"><a href="#cb25-197" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**condition_pct.2:** percentage of cells where the gene is detected on average in the other clusters for condition</span>
+<span id="cb25-198"><a href="#cb25-198" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**condition_p_val_adj:** adjusted p-value for condition, based on bonferroni correction using all genes in the dataset, used to determine significance</span>
+<span id="cb25-199"><a href="#cb25-199" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**max_pval:** largest p value of p value calculated by each group/condition</span>
+<span id="cb25-200"><a href="#cb25-200" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**minimump_p_val:** combined p value</span>
+<span id="cb25-201"><a href="#cb25-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-202"><a href="#cb25-202" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb25-203"><a href="#cb25-203" aria-hidden="true" tabindex="-1"></a>Since each cell is being treated as a replicate this will result in inflated p-values within each group! A gene may have an incredibly low p-value &lt; 1e-50 but that doesn't translate as a highly reliable marker gene. </span>
+<span id="cb25-204"><a href="#cb25-204" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb25-205"><a href="#cb25-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-206"><a href="#cb25-206" aria-hidden="true" tabindex="-1"></a>When looking at the output, **we suggest looking for markers with large differences in expression between `pct.1` and `pct.2` and larger fold changes**. For instance if <span class="in">`pct.1`</span> = 0.90 and <span class="in">`pct.2`</span> = 0.80, it may not be as exciting of a marker. However, if <span class="in">`pct.2`</span> = 0.1 instead, the bigger difference would be more convincing. Also, of interest is if the majority of cells expressing the marker is in my cluster of interest. If <span class="in">`pct.1`</span> is low, such as 0.3, it may not be as interesting. Both of these are also possible parameters to include when running the function, as described above.</span>
 <span id="cb25-207"><a href="#cb25-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-208"><a href="#cb25-208" aria-hidden="true" tabindex="-1"></a><span class="fu">### Adding Gene Annotations</span></span>
-<span id="cb25-209"><a href="#cb25-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-210"><a href="#cb25-210" aria-hidden="true" tabindex="-1"></a>It can be helpful to add columns with gene annotation information. In order to do that we will load in an annotation file located in your <span class="in">`data`</span> folder, using the code provided below: </span>
-<span id="cb25-211"><a href="#cb25-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-214"><a href="#cb25-214" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-215"><a href="#cb25-215" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: read_in_annotations</span></span>
-<span id="cb25-216"><a href="#cb25-216" aria-hidden="true" tabindex="-1"></a>annotations <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/annotation.csv"</span>)</span>
-<span id="cb25-217"><a href="#cb25-217" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-218"><a href="#cb25-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-219"><a href="#cb25-219" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb25-220"><a href="#cb25-220" aria-hidden="true" tabindex="-1"></a>If you are interested in knowing how we obtained this annotation file, take a look at <span class="co">[</span><span class="ot">the linked materials</span><span class="co">](Aside_fetching_annotations.qmd)</span>.</span>
-<span id="cb25-221"><a href="#cb25-221" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb25-222"><a href="#cb25-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-223"><a href="#cb25-223" aria-hidden="true" tabindex="-1"></a>First, we will turn the row names with gene identifiers into its own columns. Then we will merge this annotation file with our results from the <span class="in">`FindConservedMarkers()`</span>:</span>
-<span id="cb25-224"><a href="#cb25-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-227"><a href="#cb25-227" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-228"><a href="#cb25-228" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: wrangling_cluster_0_annotations</span></span>
-<span id="cb25-229"><a href="#cb25-229" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine markers with gene descriptions </span></span>
-<span id="cb25-230"><a href="#cb25-230" aria-hidden="true" tabindex="-1"></a>cluster0_ann_markers <span class="ot">&lt;-</span> cluster0_conserved_markers <span class="sc">%&gt;%</span> </span>
-<span id="cb25-231"><a href="#cb25-231" aria-hidden="true" tabindex="-1"></a>                <span class="fu">rownames_to_column</span>(<span class="at">var=</span><span class="st">"gene"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-232"><a href="#cb25-232" aria-hidden="true" tabindex="-1"></a>                <span class="fu">left_join</span>(<span class="at">y =</span> <span class="fu">unique</span>(annotations[, <span class="fu">c</span>(<span class="st">"gene_name"</span>, <span class="st">"description"</span>)]),</span>
-<span id="cb25-233"><a href="#cb25-233" aria-hidden="true" tabindex="-1"></a>                          <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"gene"</span> <span class="ot">=</span> <span class="st">"gene_name"</span>))</span>
-<span id="cb25-234"><a href="#cb25-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-235"><a href="#cb25-235" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cluster0_ann_markers)</span>
-<span id="cb25-236"><a href="#cb25-236" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-237"><a href="#cb25-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-238"><a href="#cb25-238" aria-hidden="true" tabindex="-1"></a>***</span>
-<span id="cb25-239"><a href="#cb25-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-240"><a href="#cb25-240" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb25-241"><a href="#cb25-241" aria-hidden="true" tabindex="-1"></a><span class="fu"># Exercises</span></span>
-<span id="cb25-242"><a href="#cb25-242" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>In the previous lesson, we identified cluster 10 as FCGR3A+ monocytes by inspecting the expression of known cell markers FCGR3A and MS4A7. Use <span class="in">`FindConservedMarkers()`</span> function to find conserved markers for cluster 10. What do you observe? Do you see FCGR3A and MS4A7 as highly expressed genes in cluster 10?</span>
-<span id="cb25-243"><a href="#cb25-243" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb25-244"><a href="#cb25-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-245"><a href="#cb25-245" aria-hidden="true" tabindex="-1"></a>***</span>
-<span id="cb25-246"><a href="#cb25-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-247"><a href="#cb25-247" aria-hidden="true" tabindex="-1"></a><span class="fu">### Running on multiple samples</span></span>
-<span id="cb25-248"><a href="#cb25-248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-249"><a href="#cb25-249" aria-hidden="true" tabindex="-1"></a>The function <span class="in">`FindConservedMarkers()`</span> **accepts a single cluster at a time**, and we could run this function as many times as we have clusters. However, this is not very efficient. Instead we will first create a function to find the conserved markers including all the parameters we want to include. We will also **add a few lines of code to modify the output**. Our function will:</span>
-<span id="cb25-250"><a href="#cb25-250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-251"><a href="#cb25-251" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Run the <span class="in">`FindConservedMarkers()`</span> function</span>
-<span id="cb25-252"><a href="#cb25-252" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Transfer row names to a column using <span class="in">`rownames_to_column()`</span> function</span>
-<span id="cb25-253"><a href="#cb25-253" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Merge in annotations</span>
-<span id="cb25-254"><a href="#cb25-254" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Create the column of cluster IDs using the <span class="in">`cbind()`</span> function</span>
-<span id="cb25-255"><a href="#cb25-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-208"><a href="#cb25-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-209"><a href="#cb25-209" aria-hidden="true" tabindex="-1"></a><span class="fu">### Adding Gene Annotations</span></span>
+<span id="cb25-210"><a href="#cb25-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-211"><a href="#cb25-211" aria-hidden="true" tabindex="-1"></a>It can be helpful to add columns with gene annotation information. In order to do that we will load in an annotation file located in your <span class="in">`data`</span> folder, using the code provided below: </span>
+<span id="cb25-212"><a href="#cb25-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-215"><a href="#cb25-215" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-216"><a href="#cb25-216" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: read_in_annotations</span></span>
+<span id="cb25-217"><a href="#cb25-217" aria-hidden="true" tabindex="-1"></a>annotations <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/annotation.csv"</span>)</span>
+<span id="cb25-218"><a href="#cb25-218" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-219"><a href="#cb25-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-220"><a href="#cb25-220" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb25-221"><a href="#cb25-221" aria-hidden="true" tabindex="-1"></a>If you are interested in knowing how we obtained this annotation file, take a look at <span class="co">[</span><span class="ot">the linked materials</span><span class="co">](Aside_fetching_annotations.qmd)</span>.</span>
+<span id="cb25-222"><a href="#cb25-222" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb25-223"><a href="#cb25-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-224"><a href="#cb25-224" aria-hidden="true" tabindex="-1"></a>First, we will turn the row names with gene identifiers into its own columns. Then we will merge this annotation file with our results from the <span class="in">`FindConservedMarkers()`</span>:</span>
+<span id="cb25-225"><a href="#cb25-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-228"><a href="#cb25-228" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-229"><a href="#cb25-229" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: wrangling_cluster_0_annotations</span></span>
+<span id="cb25-230"><a href="#cb25-230" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine markers with gene descriptions </span></span>
+<span id="cb25-231"><a href="#cb25-231" aria-hidden="true" tabindex="-1"></a>cluster0_ann_markers <span class="ot">&lt;-</span> cluster0_conserved_markers <span class="sc">%&gt;%</span> </span>
+<span id="cb25-232"><a href="#cb25-232" aria-hidden="true" tabindex="-1"></a>                <span class="fu">rownames_to_column</span>(<span class="at">var=</span><span class="st">"gene"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-233"><a href="#cb25-233" aria-hidden="true" tabindex="-1"></a>                <span class="fu">left_join</span>(<span class="at">y =</span> <span class="fu">unique</span>(annotations[, <span class="fu">c</span>(<span class="st">"gene_name"</span>, <span class="st">"description"</span>)]),</span>
+<span id="cb25-234"><a href="#cb25-234" aria-hidden="true" tabindex="-1"></a>                          <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"gene"</span> <span class="ot">=</span> <span class="st">"gene_name"</span>))</span>
+<span id="cb25-235"><a href="#cb25-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-236"><a href="#cb25-236" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cluster0_ann_markers)</span>
+<span id="cb25-237"><a href="#cb25-237" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-238"><a href="#cb25-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-239"><a href="#cb25-239" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb25-240"><a href="#cb25-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-241"><a href="#cb25-241" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb25-242"><a href="#cb25-242" aria-hidden="true" tabindex="-1"></a><span class="fu"># Exercises</span></span>
+<span id="cb25-243"><a href="#cb25-243" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>In the previous lesson, we identified cluster 10 as FCGR3A+ monocytes by inspecting the expression of known cell markers FCGR3A and MS4A7. Use <span class="in">`FindConservedMarkers()`</span> function to find conserved markers for cluster 10. What do you observe? Do you see FCGR3A and MS4A7 as highly expressed genes in cluster 10?</span>
+<span id="cb25-244"><a href="#cb25-244" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb25-245"><a href="#cb25-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-246"><a href="#cb25-246" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb25-247"><a href="#cb25-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-248"><a href="#cb25-248" aria-hidden="true" tabindex="-1"></a><span class="fu">### Running on multiple samples</span></span>
+<span id="cb25-249"><a href="#cb25-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-250"><a href="#cb25-250" aria-hidden="true" tabindex="-1"></a>The function <span class="in">`FindConservedMarkers()`</span> **accepts a single cluster at a time**, and we could run this function as many times as we have clusters. However, this is not very efficient. Instead we will first create a function to find the conserved markers including all the parameters we want to include. We will also **add a few lines of code to modify the output**. Our function will:</span>
+<span id="cb25-251"><a href="#cb25-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-252"><a href="#cb25-252" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Run the <span class="in">`FindConservedMarkers()`</span> function</span>
+<span id="cb25-253"><a href="#cb25-253" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Transfer row names to a column using <span class="in">`rownames_to_column()`</span> function</span>
+<span id="cb25-254"><a href="#cb25-254" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Merge in annotations</span>
+<span id="cb25-255"><a href="#cb25-255" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Create the column of cluster IDs using the <span class="in">`cbind()`</span> function</span>
 <span id="cb25-256"><a href="#cb25-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-259"><a href="#cb25-259" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-260"><a href="#cb25-260" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_get_cluster_function</span></span>
-<span id="cb25-261"><a href="#cb25-261" aria-hidden="true" tabindex="-1"></a><span class="co"># Create function to get conserved markers for any given cluster</span></span>
-<span id="cb25-262"><a href="#cb25-262" aria-hidden="true" tabindex="-1"></a>get_conserved <span class="ot">&lt;-</span> <span class="cf">function</span>(cluster){</span>
-<span id="cb25-263"><a href="#cb25-263" aria-hidden="true" tabindex="-1"></a>  <span class="fu">FindConservedMarkers</span>(seurat_integrated,</span>
-<span id="cb25-264"><a href="#cb25-264" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ident.1 =</span> cluster,</span>
-<span id="cb25-265"><a href="#cb25-265" aria-hidden="true" tabindex="-1"></a>                       <span class="at">grouping.var =</span> <span class="st">"sample"</span>,</span>
-<span id="cb25-266"><a href="#cb25-266" aria-hidden="true" tabindex="-1"></a>                       <span class="at">only.pos =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb25-267"><a href="#cb25-267" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">"gene"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb25-268"><a href="#cb25-268" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(<span class="at">y =</span> <span class="fu">unique</span>(annotations[, <span class="fu">c</span>(<span class="st">"gene_name"</span>, <span class="st">"description"</span>)]),</span>
-<span id="cb25-269"><a href="#cb25-269" aria-hidden="true" tabindex="-1"></a>               <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"gene"</span> <span class="ot">=</span> <span class="st">"gene_name"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb25-270"><a href="#cb25-270" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cbind</span>(<span class="at">cluster_id =</span> cluster, .)</span>
-<span id="cb25-271"><a href="#cb25-271" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb25-272"><a href="#cb25-272" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-273"><a href="#cb25-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-274"><a href="#cb25-274" aria-hidden="true" tabindex="-1"></a>Now that we have this function created  we can use it as an argument to the appropriate <span class="in">`map`</span> function. We want the output of the <span class="in">`map`</span> family of functions to be a **dataframe with each cluster output bound together by rows**, we will use the <span class="in">`map_dfr()`</span> function.</span>
-<span id="cb25-275"><a href="#cb25-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-276"><a href="#cb25-276" aria-hidden="true" tabindex="-1"></a>**`map` family syntax:**</span>
-<span id="cb25-277"><a href="#cb25-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-280"><a href="#cb25-280" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-281"><a href="#cb25-281" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: map_dfr_example</span></span>
-<span id="cb25-282"><a href="#cb25-282" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb25-283"><a href="#cb25-283" aria-hidden="true" tabindex="-1"></a><span class="do">## DO NOT RUN ##</span></span>
-<span id="cb25-284"><a href="#cb25-284" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfr</span>(inputs_to_function, name_of_function)</span>
-<span id="cb25-285"><a href="#cb25-285" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-286"><a href="#cb25-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-287"><a href="#cb25-287" aria-hidden="true" tabindex="-1"></a>Now, let's try this function to **find the conserved markers for the clusters that were identified as CD4+ T cells (4,0,6,2)** from our use of known marker genes. Let's see what genes we identify and of there are overlaps or obvious differences that can help us tease this apart a bit more.</span>
-<span id="cb25-288"><a href="#cb25-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-291"><a href="#cb25-291" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-292"><a href="#cb25-292" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: iterate_conserved_markers_across_select_clusters</span></span>
-<span id="cb25-293"><a href="#cb25-293" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate function across desired clusters</span></span>
-<span id="cb25-294"><a href="#cb25-294" aria-hidden="true" tabindex="-1"></a>conserved_markers <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">6</span>,<span class="dv">2</span>), get_conserved)</span>
-<span id="cb25-295"><a href="#cb25-295" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(conserved_markers)</span>
-<span id="cb25-296"><a href="#cb25-296" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-297"><a href="#cb25-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-298"><a href="#cb25-298" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb25-299"><a href="#cb25-299" aria-hidden="true" tabindex="-1"></a><span class="fu"># Finding markers for all clusters</span></span>
-<span id="cb25-300"><a href="#cb25-300" aria-hidden="true" tabindex="-1"></a>For your data, you may want to run this function on all clusters, in which case you could input <span class="in">`0:20`</span> instead of <span class="in">`c(4,0,6,2)`</span>; however, it would take quite a while to run. Also, it is possible that when you run this function on all clusters, in **some cases you will have clusters that do not have enough cells for a particular group** - and  your function will fail. For these clusters you will need to use <span class="in">`FindAllMarkers()`</span>.</span>
-<span id="cb25-301"><a href="#cb25-301" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb25-302"><a href="#cb25-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-303"><a href="#cb25-303" aria-hidden="true" tabindex="-1"></a><span class="fu">### Evaluating marker genes</span></span>
-<span id="cb25-304"><a href="#cb25-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-305"><a href="#cb25-305" aria-hidden="true" tabindex="-1"></a>We would like to use these gene lists to see of we can **identify which celltypes these clusters identify with.** Let's take a look at the top genes for each of the clusters and see if that gives us any hints. We can view the top 10 markers by average fold change across the two groups, for each cluster for a quick perusal:</span>
-<span id="cb25-306"><a href="#cb25-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-309"><a href="#cb25-309" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-310"><a href="#cb25-310" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: extract_top_markers</span></span>
-<span id="cb25-311"><a href="#cb25-311" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract top 10 markers per cluster</span></span>
-<span id="cb25-312"><a href="#cb25-312" aria-hidden="true" tabindex="-1"></a>top10 <span class="ot">&lt;-</span> conserved_markers <span class="sc">%&gt;%</span> </span>
-<span id="cb25-313"><a href="#cb25-313" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">avg_fc =</span> (ctrl_avg_log2FC <span class="sc">+</span> stim_avg_log2FC) <span class="sc">/</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-314"><a href="#cb25-314" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cluster_id) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-315"><a href="#cb25-315" aria-hidden="true" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="at">n =</span> <span class="dv">10</span>, </span>
-<span id="cb25-316"><a href="#cb25-316" aria-hidden="true" tabindex="-1"></a>        <span class="at">wt =</span> avg_fc)</span>
-<span id="cb25-317"><a href="#cb25-317" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-318"><a href="#cb25-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-257"><a href="#cb25-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-260"><a href="#cb25-260" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-261"><a href="#cb25-261" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_get_cluster_function</span></span>
+<span id="cb25-262"><a href="#cb25-262" aria-hidden="true" tabindex="-1"></a><span class="co"># Create function to get conserved markers for any given cluster</span></span>
+<span id="cb25-263"><a href="#cb25-263" aria-hidden="true" tabindex="-1"></a>get_conserved <span class="ot">&lt;-</span> <span class="cf">function</span>(cluster){</span>
+<span id="cb25-264"><a href="#cb25-264" aria-hidden="true" tabindex="-1"></a>  <span class="fu">FindConservedMarkers</span>(seurat_integrated,</span>
+<span id="cb25-265"><a href="#cb25-265" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ident.1 =</span> cluster,</span>
+<span id="cb25-266"><a href="#cb25-266" aria-hidden="true" tabindex="-1"></a>                       <span class="at">grouping.var =</span> <span class="st">"sample"</span>,</span>
+<span id="cb25-267"><a href="#cb25-267" aria-hidden="true" tabindex="-1"></a>                       <span class="at">only.pos =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-268"><a href="#cb25-268" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">"gene"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-269"><a href="#cb25-269" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(<span class="at">y =</span> <span class="fu">unique</span>(annotations[, <span class="fu">c</span>(<span class="st">"gene_name"</span>, <span class="st">"description"</span>)]),</span>
+<span id="cb25-270"><a href="#cb25-270" aria-hidden="true" tabindex="-1"></a>               <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"gene"</span> <span class="ot">=</span> <span class="st">"gene_name"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-271"><a href="#cb25-271" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cbind</span>(<span class="at">cluster_id =</span> cluster, .)</span>
+<span id="cb25-272"><a href="#cb25-272" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb25-273"><a href="#cb25-273" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-274"><a href="#cb25-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-275"><a href="#cb25-275" aria-hidden="true" tabindex="-1"></a>Now that we have this function created  we can use it as an argument to the appropriate <span class="in">`map`</span> function. We want the output of the <span class="in">`map`</span> family of functions to be a **dataframe with each cluster output bound together by rows**, we will use the <span class="in">`map_dfr()`</span> function.</span>
+<span id="cb25-276"><a href="#cb25-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-277"><a href="#cb25-277" aria-hidden="true" tabindex="-1"></a>**`map` family syntax:**</span>
+<span id="cb25-278"><a href="#cb25-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-281"><a href="#cb25-281" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-282"><a href="#cb25-282" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: map_dfr_example</span></span>
+<span id="cb25-283"><a href="#cb25-283" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb25-284"><a href="#cb25-284" aria-hidden="true" tabindex="-1"></a><span class="do">## DO NOT RUN ##</span></span>
+<span id="cb25-285"><a href="#cb25-285" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfr</span>(inputs_to_function, name_of_function)</span>
+<span id="cb25-286"><a href="#cb25-286" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-287"><a href="#cb25-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-288"><a href="#cb25-288" aria-hidden="true" tabindex="-1"></a>Now, let's try this function to **find the conserved markers for the clusters that were identified as CD4+ T cells (4,0,6,2)** from our use of known marker genes. Let's see what genes we identify and of there are overlaps or obvious differences that can help us tease this apart a bit more.</span>
+<span id="cb25-289"><a href="#cb25-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-292"><a href="#cb25-292" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-293"><a href="#cb25-293" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: iterate_conserved_markers_across_select_clusters</span></span>
+<span id="cb25-294"><a href="#cb25-294" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate function across desired clusters</span></span>
+<span id="cb25-295"><a href="#cb25-295" aria-hidden="true" tabindex="-1"></a>conserved_markers <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">6</span>,<span class="dv">2</span>), get_conserved)</span>
+<span id="cb25-296"><a href="#cb25-296" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(conserved_markers)</span>
+<span id="cb25-297"><a href="#cb25-297" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-298"><a href="#cb25-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-299"><a href="#cb25-299" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb25-300"><a href="#cb25-300" aria-hidden="true" tabindex="-1"></a><span class="fu"># Finding markers for all clusters</span></span>
+<span id="cb25-301"><a href="#cb25-301" aria-hidden="true" tabindex="-1"></a>For your data, you may want to run this function on all clusters, in which case you could input <span class="in">`0:20`</span> instead of <span class="in">`c(4,0,6,2)`</span>; however, it would take quite a while to run. Also, it is possible that when you run this function on all clusters, in **some cases you will have clusters that do not have enough cells for a particular group** - and  your function will fail. For these clusters you will need to use <span class="in">`FindAllMarkers()`</span>.</span>
+<span id="cb25-302"><a href="#cb25-302" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb25-303"><a href="#cb25-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-304"><a href="#cb25-304" aria-hidden="true" tabindex="-1"></a><span class="fu">### Evaluating marker genes</span></span>
+<span id="cb25-305"><a href="#cb25-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-306"><a href="#cb25-306" aria-hidden="true" tabindex="-1"></a>We would like to use these gene lists to see of we can **identify which celltypes these clusters identify with.** Let's take a look at the top genes for each of the clusters and see if that gives us any hints. We can view the top 10 markers by average fold change across the two groups, for each cluster for a quick perusal:</span>
+<span id="cb25-307"><a href="#cb25-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-310"><a href="#cb25-310" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-311"><a href="#cb25-311" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: extract_top_markers</span></span>
+<span id="cb25-312"><a href="#cb25-312" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract top 10 markers per cluster</span></span>
+<span id="cb25-313"><a href="#cb25-313" aria-hidden="true" tabindex="-1"></a>top10 <span class="ot">&lt;-</span> conserved_markers <span class="sc">%&gt;%</span> </span>
+<span id="cb25-314"><a href="#cb25-314" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">avg_fc =</span> (ctrl_avg_log2FC <span class="sc">+</span> stim_avg_log2FC) <span class="sc">/</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-315"><a href="#cb25-315" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cluster_id) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-316"><a href="#cb25-316" aria-hidden="true" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="at">n =</span> <span class="dv">10</span>, </span>
+<span id="cb25-317"><a href="#cb25-317" aria-hidden="true" tabindex="-1"></a>        <span class="at">wt =</span> avg_fc)</span>
+<span id="cb25-318"><a href="#cb25-318" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb25-319"><a href="#cb25-319" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-322"><a href="#cb25-322" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-323"><a href="#cb25-323" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: view_top_markers</span></span>
-<span id="cb25-324"><a href="#cb25-324" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb25-325"><a href="#cb25-325" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize top 10 markers per cluster</span></span>
-<span id="cb25-326"><a href="#cb25-326" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(top10)</span>
-<span id="cb25-327"><a href="#cb25-327" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-328"><a href="#cb25-328" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-329"><a href="#cb25-329" aria-hidden="true" tabindex="-1"></a>&lt;p align="center"&gt;</span>
-<span id="cb25-330"><a href="#cb25-330" aria-hidden="true" tabindex="-1"></a>&lt;img src="../img/tcell_marker_table_SCTv2.png" width="800"&gt;</span>
-<span id="cb25-331"><a href="#cb25-331" aria-hidden="true" tabindex="-1"></a>&lt;/p&gt;</span>
-<span id="cb25-332"><a href="#cb25-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-333"><a href="#cb25-333" aria-hidden="true" tabindex="-1"></a>When we look at the entire list, we see clusters 0 and 6 have some overlapping genes, like CCR7 and SELL which correspond to **markers of memory T cells**. It is possible that these two clusters are more similar to one another and could be merged together as naive T cells. On the other hand, with cluster 2 we observe CREM as one of our top genes; a **marker gene of activation**. This suggests that perhaps cluster 2 represents activated T cells.</span>
-<span id="cb25-334"><a href="#cb25-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-335"><a href="#cb25-335" aria-hidden="true" tabindex="-1"></a>| Cell State | Marker |</span>
-<span id="cb25-336"><a href="#cb25-336" aria-hidden="true" tabindex="-1"></a>|:---:|:---:|</span>
-<span id="cb25-337"><a href="#cb25-337" aria-hidden="true" tabindex="-1"></a>| Naive T cells | CCR7, SELL | </span>
-<span id="cb25-338"><a href="#cb25-338" aria-hidden="true" tabindex="-1"></a>| Activated T cells | CREM, CD69 |</span>
-<span id="cb25-339"><a href="#cb25-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-340"><a href="#cb25-340" aria-hidden="true" tabindex="-1"></a>For cluster 4, we see a lot of heat shock and DNA damage genes appear in the top gene list. Based on these markers, it is likely that these are **stressed or dying cells**. However, if we explore the quality metrics for these cells in more detail (i.e. mitoRatio and nUMI overlayed on the cluster) we don't really support for this argument. There is a breadth of research supporting the association of heat shock proteins with reactive T cells in the induction of anti‐inflammatory cytokines in chronic inflammation. This is a cluster for which we would need a deeper understanding of immune cells to really tease apart the results and make a final conclusion.</span>
-<span id="cb25-341"><a href="#cb25-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-342"><a href="#cb25-342" aria-hidden="true" tabindex="-1"></a><span class="fu">### Visualizing marker genes</span></span>
-<span id="cb25-343"><a href="#cb25-343" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-344"><a href="#cb25-344" aria-hidden="true" tabindex="-1"></a>To get a better idea of cell type identity for **cluster 4** we can **explore the expression of different identified markers** by cluster using the <span class="in">`FeaturePlot()`</span> function. We see that only a subset of cluster 4 are highly expressing these genes.</span>
-<span id="cb25-345"><a href="#cb25-345" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-348"><a href="#cb25-348" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-349"><a href="#cb25-349" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: cluster_4_FeaturePlot</span></span>
-<span id="cb25-350"><a href="#cb25-350" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.width: 8</span></span>
-<span id="cb25-351"><a href="#cb25-351" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot interesting marker gene expression for cluster 4</span></span>
-<span id="cb25-352"><a href="#cb25-352" aria-hidden="true" tabindex="-1"></a><span class="fu">FeaturePlot</span>(<span class="at">object =</span> seurat_integrated, </span>
-<span id="cb25-353"><a href="#cb25-353" aria-hidden="true" tabindex="-1"></a>            <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"HSPH1"</span>, <span class="st">"HSPE1"</span>, <span class="st">"DNAJB1"</span>),</span>
-<span id="cb25-354"><a href="#cb25-354" aria-hidden="true" tabindex="-1"></a>            <span class="at">order =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb25-355"><a href="#cb25-355" aria-hidden="true" tabindex="-1"></a>            <span class="at">min.cutoff =</span> <span class="st">'q10'</span>, </span>
-<span id="cb25-356"><a href="#cb25-356" aria-hidden="true" tabindex="-1"></a>            <span class="at">label =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb25-357"><a href="#cb25-357" aria-hidden="true" tabindex="-1"></a>            <span class="at">repel =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb25-358"><a href="#cb25-358" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-359"><a href="#cb25-359" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-360"><a href="#cb25-360" aria-hidden="true" tabindex="-1"></a>We can also explore the range in expression of specific markers by using **violin plots**:</span>
-<span id="cb25-361"><a href="#cb25-361" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-362"><a href="#cb25-362" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb25-363"><a href="#cb25-363" aria-hidden="true" tabindex="-1"></a><span class="fu"># Violin plots</span></span>
-<span id="cb25-364"><a href="#cb25-364" aria-hidden="true" tabindex="-1"></a>Violin plots are similar to box plots, except that they also show the probability density of the data at different values, usually smoothed by a kernel density estimator. A violin plot is more informative than a plain box plot. While a box plot only shows summary statistics such as mean/median and interquartile ranges, the violin plot shows the full distribution of the data. The difference is particularly useful when the data distribution is multimodal (more than one peak). In this case a violin plot shows the presence of different peaks, their position and relative amplitude.</span>
-<span id="cb25-365"><a href="#cb25-365" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb25-366"><a href="#cb25-366" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-369"><a href="#cb25-369" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-370"><a href="#cb25-370" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: cluster_4_ViolinPlot</span></span>
-<span id="cb25-371"><a href="#cb25-371" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.width: 15</span></span>
-<span id="cb25-372"><a href="#cb25-372" aria-hidden="true" tabindex="-1"></a><span class="co"># Vln plot - cluster 4</span></span>
-<span id="cb25-373"><a href="#cb25-373" aria-hidden="true" tabindex="-1"></a><span class="fu">VlnPlot</span>(<span class="at">object =</span> seurat_integrated, </span>
-<span id="cb25-374"><a href="#cb25-374" aria-hidden="true" tabindex="-1"></a>        <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"HSPH1"</span>, <span class="st">"HSPE1"</span>, <span class="st">"DNAJB1"</span>))</span>
-<span id="cb25-375"><a href="#cb25-375" aria-hidden="true" tabindex="-1"></a><span class="in">```</span>        </span>
-<span id="cb25-376"><a href="#cb25-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-377"><a href="#cb25-377" aria-hidden="true" tabindex="-1"></a>These results and plots can help us determine the identity of these clusters or verify what we hypothesize the identity to be after exploring the canonical markers of expected cell types previously.</span>
-<span id="cb25-378"><a href="#cb25-378" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-320"><a href="#cb25-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-323"><a href="#cb25-323" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-324"><a href="#cb25-324" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: view_top_markers</span></span>
+<span id="cb25-325"><a href="#cb25-325" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb25-326"><a href="#cb25-326" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize top 10 markers per cluster</span></span>
+<span id="cb25-327"><a href="#cb25-327" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(top10)</span>
+<span id="cb25-328"><a href="#cb25-328" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-329"><a href="#cb25-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-330"><a href="#cb25-330" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> align</span><span class="op">=</span><span class="st">"center"</span><span class="dt">&gt;</span></span>
+<span id="cb25-331"><a href="#cb25-331" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"../img/tcell_marker_table_SCTv2.png"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"800"</span><span class="dt">&gt;</span></span>
+<span id="cb25-332"><a href="#cb25-332" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb25-333"><a href="#cb25-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-334"><a href="#cb25-334" aria-hidden="true" tabindex="-1"></a>When we look at the entire list, we see clusters 0 and 6 have some overlapping genes, like CCR7 and SELL which correspond to **markers of memory T cells**. It is possible that these two clusters are more similar to one another and could be merged together as naive T cells. On the other hand, with cluster 2 we observe CREM as one of our top genes; a **marker gene of activation**. This suggests that perhaps cluster 2 represents activated T cells.</span>
+<span id="cb25-335"><a href="#cb25-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-336"><a href="#cb25-336" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Cell State <span class="pp">|</span> Marker <span class="pp">|</span></span>
+<span id="cb25-337"><a href="#cb25-337" aria-hidden="true" tabindex="-1"></a><span class="pp">|:---:|:---:|</span></span>
+<span id="cb25-338"><a href="#cb25-338" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Naive T cells <span class="pp">|</span> CCR7, SELL <span class="pp">|</span> </span>
+<span id="cb25-339"><a href="#cb25-339" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Activated T cells <span class="pp">|</span> CREM, CD69 <span class="pp">|</span></span>
+<span id="cb25-340"><a href="#cb25-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-341"><a href="#cb25-341" aria-hidden="true" tabindex="-1"></a>For cluster 4, we see a lot of heat shock and DNA damage genes appear in the top gene list. Based on these markers, it is likely that these are **stressed or dying cells**. However, if we explore the quality metrics for these cells in more detail (i.e. mitoRatio and nUMI overlayed on the cluster) we don't really support for this argument. There is a breadth of research supporting the association of heat shock proteins with reactive T cells in the induction of anti‐inflammatory cytokines in chronic inflammation. This is a cluster for which we would need a deeper understanding of immune cells to really tease apart the results and make a final conclusion.</span>
+<span id="cb25-342"><a href="#cb25-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-343"><a href="#cb25-343" aria-hidden="true" tabindex="-1"></a><span class="fu">### Visualizing marker genes</span></span>
+<span id="cb25-344"><a href="#cb25-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-345"><a href="#cb25-345" aria-hidden="true" tabindex="-1"></a>To get a better idea of cell type identity for **cluster 4** we can **explore the expression of different identified markers** by cluster using the <span class="in">`FeaturePlot()`</span> function. We see that only a subset of cluster 4 are highly expressing these genes.</span>
+<span id="cb25-346"><a href="#cb25-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-349"><a href="#cb25-349" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-350"><a href="#cb25-350" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: cluster_4_FeaturePlot</span></span>
+<span id="cb25-351"><a href="#cb25-351" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.width: 8</span></span>
+<span id="cb25-352"><a href="#cb25-352" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot interesting marker gene expression for cluster 4</span></span>
+<span id="cb25-353"><a href="#cb25-353" aria-hidden="true" tabindex="-1"></a><span class="fu">FeaturePlot</span>(<span class="at">object =</span> seurat_integrated, </span>
+<span id="cb25-354"><a href="#cb25-354" aria-hidden="true" tabindex="-1"></a>            <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"HSPH1"</span>, <span class="st">"HSPE1"</span>, <span class="st">"DNAJB1"</span>),</span>
+<span id="cb25-355"><a href="#cb25-355" aria-hidden="true" tabindex="-1"></a>            <span class="at">order =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb25-356"><a href="#cb25-356" aria-hidden="true" tabindex="-1"></a>            <span class="at">min.cutoff =</span> <span class="st">'q10'</span>, </span>
+<span id="cb25-357"><a href="#cb25-357" aria-hidden="true" tabindex="-1"></a>            <span class="at">label =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb25-358"><a href="#cb25-358" aria-hidden="true" tabindex="-1"></a>            <span class="at">repel =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-359"><a href="#cb25-359" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-360"><a href="#cb25-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-361"><a href="#cb25-361" aria-hidden="true" tabindex="-1"></a>We can also explore the range in expression of specific markers by using **violin plots**:</span>
+<span id="cb25-362"><a href="#cb25-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-363"><a href="#cb25-363" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb25-364"><a href="#cb25-364" aria-hidden="true" tabindex="-1"></a><span class="fu"># Violin plots</span></span>
+<span id="cb25-365"><a href="#cb25-365" aria-hidden="true" tabindex="-1"></a>Violin plots are similar to box plots, except that they also show the probability density of the data at different values, usually smoothed by a kernel density estimator. A violin plot is more informative than a plain box plot. While a box plot only shows summary statistics such as mean/median and interquartile ranges, the violin plot shows the full distribution of the data. The difference is particularly useful when the data distribution is multimodal (more than one peak). In this case a violin plot shows the presence of different peaks, their position and relative amplitude.</span>
+<span id="cb25-366"><a href="#cb25-366" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb25-367"><a href="#cb25-367" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-370"><a href="#cb25-370" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-371"><a href="#cb25-371" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: cluster_4_ViolinPlot</span></span>
+<span id="cb25-372"><a href="#cb25-372" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.width: 15</span></span>
+<span id="cb25-373"><a href="#cb25-373" aria-hidden="true" tabindex="-1"></a><span class="co"># Vln plot - cluster 4</span></span>
+<span id="cb25-374"><a href="#cb25-374" aria-hidden="true" tabindex="-1"></a><span class="fu">VlnPlot</span>(<span class="at">object =</span> seurat_integrated, </span>
+<span id="cb25-375"><a href="#cb25-375" aria-hidden="true" tabindex="-1"></a>        <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"HSPH1"</span>, <span class="st">"HSPE1"</span>, <span class="st">"DNAJB1"</span>))</span>
+<span id="cb25-376"><a href="#cb25-376" aria-hidden="true" tabindex="-1"></a><span class="in">```</span>        </span>
+<span id="cb25-377"><a href="#cb25-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-378"><a href="#cb25-378" aria-hidden="true" tabindex="-1"></a>These results and plots can help us determine the identity of these clusters or verify what we hypothesize the identity to be after exploring the canonical markers of expected cell types previously.</span>
 <span id="cb25-379"><a href="#cb25-379" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-380"><a href="#cb25-380" aria-hidden="true" tabindex="-1"></a><span class="fu">## Identifying gene markers for each cluster</span></span>
-<span id="cb25-381"><a href="#cb25-381" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-382"><a href="#cb25-382" aria-hidden="true" tabindex="-1"></a>Sometimes the list of markers returned don't sufficiently separate some of the clusters. For instance, we had previously identified clusters 0, 4, 6 and 2 as CD4+ T cells, but when looking at marker gene lists we identfied markers to help us further subset cells. We were lucky and the signal observed from <span class="in">`FindAllMarkers()`</span> helped us differentiate between naive and activated cells. Another option to identify biologically meaningful differences would be to use the **`FindMarkers()` function to determine the genes that are differentially expressed between two specific clusters**. </span>
-<span id="cb25-383"><a href="#cb25-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-384"><a href="#cb25-384" aria-hidden="true" tabindex="-1"></a>&lt;p align="center"&gt;</span>
-<span id="cb25-385"><a href="#cb25-385" aria-hidden="true" tabindex="-1"></a>&lt;img src="../img/marker_ident_function3.png" width="350"&gt;</span>
-<span id="cb25-386"><a href="#cb25-386" aria-hidden="true" tabindex="-1"></a>&lt;/p&gt;</span>
-<span id="cb25-387"><a href="#cb25-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-388"><a href="#cb25-388" aria-hidden="true" tabindex="-1"></a>We can try all combinations of comparisons, but we'll start with cluster 2 versus all other CD4+ T cell clusters:</span>
-<span id="cb25-389"><a href="#cb25-389" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-392"><a href="#cb25-392" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-393"><a href="#cb25-393" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: FindMarkers_T_cell</span></span>
-<span id="cb25-394"><a href="#cb25-394" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine differentiating markers for CD4+ T cell</span></span>
-<span id="cb25-395"><a href="#cb25-395" aria-hidden="true" tabindex="-1"></a>cd4_tcells <span class="ot">&lt;-</span> <span class="fu">FindMarkers</span>(seurat_integrated,</span>
-<span id="cb25-396"><a href="#cb25-396" aria-hidden="true" tabindex="-1"></a>                          <span class="at">ident.1 =</span> <span class="dv">2</span>,</span>
-<span id="cb25-397"><a href="#cb25-397" aria-hidden="true" tabindex="-1"></a>                          <span class="at">ident.2 =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">6</span>))                  </span>
-<span id="cb25-398"><a href="#cb25-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-399"><a href="#cb25-399" aria-hidden="true" tabindex="-1"></a><span class="co"># Add gene symbols to the DE table</span></span>
-<span id="cb25-400"><a href="#cb25-400" aria-hidden="true" tabindex="-1"></a>cd4_tcells <span class="ot">&lt;-</span> cd4_tcells <span class="sc">%&gt;%</span></span>
-<span id="cb25-401"><a href="#cb25-401" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">"gene"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb25-402"><a href="#cb25-402" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(<span class="at">y =</span> <span class="fu">unique</span>(annotations[, <span class="fu">c</span>(<span class="st">"gene_name"</span>, <span class="st">"description"</span>)]),</span>
-<span id="cb25-403"><a href="#cb25-403" aria-hidden="true" tabindex="-1"></a>             <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"gene"</span> <span class="ot">=</span> <span class="st">"gene_name"</span>))</span>
-<span id="cb25-404"><a href="#cb25-404" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-405"><a href="#cb25-405" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder columns and sort by padj      </span></span>
-<span id="cb25-406"><a href="#cb25-406" aria-hidden="true" tabindex="-1"></a>cd4_tcells <span class="ot">&lt;-</span> cd4_tcells[, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">6</span><span class="sc">:</span><span class="dv">7</span>)]</span>
-<span id="cb25-407"><a href="#cb25-407" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-408"><a href="#cb25-408" aria-hidden="true" tabindex="-1"></a>cd4_tcells <span class="ot">&lt;-</span> cd4_tcells <span class="sc">%&gt;%</span></span>
-<span id="cb25-409"><a href="#cb25-409" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(p_val_adj) </span>
-<span id="cb25-410"><a href="#cb25-410" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-411"><a href="#cb25-411" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-414"><a href="#cb25-414" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-415"><a href="#cb25-415" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: show_t_cell_markers</span></span>
-<span id="cb25-416"><a href="#cb25-416" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb25-417"><a href="#cb25-417" aria-hidden="true" tabindex="-1"></a><span class="co"># View data</span></span>
-<span id="cb25-418"><a href="#cb25-418" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(cd4_tcells)</span>
-<span id="cb25-419"><a href="#cb25-419" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-420"><a href="#cb25-420" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-423"><a href="#cb25-423" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-424"><a href="#cb25-424" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: show_t_cell_markers_table</span></span>
-<span id="cb25-425"><a href="#cb25-425" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb25-426"><a href="#cb25-426" aria-hidden="true" tabindex="-1"></a><span class="co"># View data</span></span>
-<span id="cb25-427"><a href="#cb25-427" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
-<span id="cb25-428"><a href="#cb25-428" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(cd4_tcells)</span>
-<span id="cb25-429"><a href="#cb25-429" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-430"><a href="#cb25-430" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-431"><a href="#cb25-431" aria-hidden="true" tabindex="-1"></a>Of these top genes the **CREM gene** stands out as a marker of activation with a positive fold change.  We also see markers of naive or memory cells include the SELL and CCR7 genes with negative fold changes, which is in line with previous results. </span>
-<span id="cb25-432"><a href="#cb25-432" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-433"><a href="#cb25-433" aria-hidden="true" tabindex="-1"></a>As markers for the naive and activated states both showed up in the marker list, it is helpful to visualize expression. Based on these plots it seems as though clusters 0 and 2 are reliably the naive T cells. However, for the activated T cells it is hard to tell. We might say that clusters 4 and 18 are activated T cells, but the CD69 expression is not as apparent as CREM. We will label the naive cells and leave the remaining clusters labeled as CD4+ T cells.</span>
-<span id="cb25-434"><a href="#cb25-434" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-435"><a href="#cb25-435" aria-hidden="true" tabindex="-1"></a>Now taking all of this information, we can surmise the cell types of the different clusters and plot the cells with cell type labels.</span>
-<span id="cb25-436"><a href="#cb25-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-380"><a href="#cb25-380" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-381"><a href="#cb25-381" aria-hidden="true" tabindex="-1"></a><span class="fu">## Identifying gene markers for each cluster</span></span>
+<span id="cb25-382"><a href="#cb25-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-383"><a href="#cb25-383" aria-hidden="true" tabindex="-1"></a>Sometimes the list of markers returned don't sufficiently separate some of the clusters. For instance, we had previously identified clusters 0, 4, 6 and 2 as CD4+ T cells, but when looking at marker gene lists we identfied markers to help us further subset cells. We were lucky and the signal observed from <span class="in">`FindAllMarkers()`</span> helped us differentiate between naive and activated cells. Another option to identify biologically meaningful differences would be to use the **`FindMarkers()` function to determine the genes that are differentially expressed between two specific clusters**. </span>
+<span id="cb25-384"><a href="#cb25-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-385"><a href="#cb25-385" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> align</span><span class="op">=</span><span class="st">"center"</span><span class="dt">&gt;</span></span>
+<span id="cb25-386"><a href="#cb25-386" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"../img/marker_ident_function3.png"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"350"</span><span class="dt">&gt;</span></span>
+<span id="cb25-387"><a href="#cb25-387" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb25-388"><a href="#cb25-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-389"><a href="#cb25-389" aria-hidden="true" tabindex="-1"></a>We can try all combinations of comparisons, but we'll start with cluster 2 versus all other CD4+ T cell clusters:</span>
+<span id="cb25-390"><a href="#cb25-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-393"><a href="#cb25-393" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-394"><a href="#cb25-394" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: FindMarkers_T_cell</span></span>
+<span id="cb25-395"><a href="#cb25-395" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine differentiating markers for CD4+ T cell</span></span>
+<span id="cb25-396"><a href="#cb25-396" aria-hidden="true" tabindex="-1"></a>cd4_tcells <span class="ot">&lt;-</span> <span class="fu">FindMarkers</span>(seurat_integrated,</span>
+<span id="cb25-397"><a href="#cb25-397" aria-hidden="true" tabindex="-1"></a>                          <span class="at">ident.1 =</span> <span class="dv">2</span>,</span>
+<span id="cb25-398"><a href="#cb25-398" aria-hidden="true" tabindex="-1"></a>                          <span class="at">ident.2 =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">6</span>))                  </span>
+<span id="cb25-399"><a href="#cb25-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-400"><a href="#cb25-400" aria-hidden="true" tabindex="-1"></a><span class="co"># Add gene symbols to the DE table</span></span>
+<span id="cb25-401"><a href="#cb25-401" aria-hidden="true" tabindex="-1"></a>cd4_tcells <span class="ot">&lt;-</span> cd4_tcells <span class="sc">%&gt;%</span></span>
+<span id="cb25-402"><a href="#cb25-402" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">"gene"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-403"><a href="#cb25-403" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(<span class="at">y =</span> <span class="fu">unique</span>(annotations[, <span class="fu">c</span>(<span class="st">"gene_name"</span>, <span class="st">"description"</span>)]),</span>
+<span id="cb25-404"><a href="#cb25-404" aria-hidden="true" tabindex="-1"></a>             <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"gene"</span> <span class="ot">=</span> <span class="st">"gene_name"</span>))</span>
+<span id="cb25-405"><a href="#cb25-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-406"><a href="#cb25-406" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder columns and sort by padj      </span></span>
+<span id="cb25-407"><a href="#cb25-407" aria-hidden="true" tabindex="-1"></a>cd4_tcells <span class="ot">&lt;-</span> cd4_tcells[, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">6</span><span class="sc">:</span><span class="dv">7</span>)]</span>
+<span id="cb25-408"><a href="#cb25-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-409"><a href="#cb25-409" aria-hidden="true" tabindex="-1"></a>cd4_tcells <span class="ot">&lt;-</span> cd4_tcells <span class="sc">%&gt;%</span></span>
+<span id="cb25-410"><a href="#cb25-410" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(p_val_adj) </span>
+<span id="cb25-411"><a href="#cb25-411" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-412"><a href="#cb25-412" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-415"><a href="#cb25-415" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-416"><a href="#cb25-416" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: show_t_cell_markers</span></span>
+<span id="cb25-417"><a href="#cb25-417" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb25-418"><a href="#cb25-418" aria-hidden="true" tabindex="-1"></a><span class="co"># View data</span></span>
+<span id="cb25-419"><a href="#cb25-419" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(cd4_tcells)</span>
+<span id="cb25-420"><a href="#cb25-420" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-421"><a href="#cb25-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-424"><a href="#cb25-424" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-425"><a href="#cb25-425" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: show_t_cell_markers_table</span></span>
+<span id="cb25-426"><a href="#cb25-426" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb25-427"><a href="#cb25-427" aria-hidden="true" tabindex="-1"></a><span class="co"># View data</span></span>
+<span id="cb25-428"><a href="#cb25-428" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb25-429"><a href="#cb25-429" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(cd4_tcells)</span>
+<span id="cb25-430"><a href="#cb25-430" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-431"><a href="#cb25-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-432"><a href="#cb25-432" aria-hidden="true" tabindex="-1"></a>Of these top genes the **CREM gene** stands out as a marker of activation with a positive fold change.  We also see markers of naive or memory cells include the SELL and CCR7 genes with negative fold changes, which is in line with previous results. </span>
+<span id="cb25-433"><a href="#cb25-433" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-434"><a href="#cb25-434" aria-hidden="true" tabindex="-1"></a>As markers for the naive and activated states both showed up in the marker list, it is helpful to visualize expression. Based on these plots it seems as though clusters 0 and 2 are reliably the naive T cells. However, for the activated T cells it is hard to tell. We might say that clusters 4 and 18 are activated T cells, but the CD69 expression is not as apparent as CREM. We will label the naive cells and leave the remaining clusters labeled as CD4+ T cells.</span>
+<span id="cb25-435"><a href="#cb25-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-436"><a href="#cb25-436" aria-hidden="true" tabindex="-1"></a>Now taking all of this information, we can surmise the cell types of the different clusters and plot the cells with cell type labels.</span>
 <span id="cb25-437"><a href="#cb25-437" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-438"><a href="#cb25-438" aria-hidden="true" tabindex="-1"></a>| Cluster ID    | Cell Type |</span>
-<span id="cb25-439"><a href="#cb25-439" aria-hidden="true" tabindex="-1"></a>|:-----:|:-----:|</span>
-<span id="cb25-440"><a href="#cb25-440" aria-hidden="true" tabindex="-1"></a>|0  | Naive or memory CD4+ T cells|</span>
-<span id="cb25-441"><a href="#cb25-441" aria-hidden="true" tabindex="-1"></a>|1  | CD14+ monocytes |</span>
-<span id="cb25-442"><a href="#cb25-442" aria-hidden="true" tabindex="-1"></a>|2  | Activated T cells|</span>
-<span id="cb25-443"><a href="#cb25-443" aria-hidden="true" tabindex="-1"></a>|3  | CD14+ monocytes|</span>
-<span id="cb25-444"><a href="#cb25-444" aria-hidden="true" tabindex="-1"></a>|4  | Stressed cells / Unknown|</span>
-<span id="cb25-445"><a href="#cb25-445" aria-hidden="true" tabindex="-1"></a>|5  | CD8+ T cells |</span>
-<span id="cb25-446"><a href="#cb25-446" aria-hidden="true" tabindex="-1"></a>|6  | Naive or memory CD4+ T cells |</span>
-<span id="cb25-447"><a href="#cb25-447" aria-hidden="true" tabindex="-1"></a>|7  | B cells |</span>
-<span id="cb25-448"><a href="#cb25-448" aria-hidden="true" tabindex="-1"></a>|8  | NK cells |</span>
-<span id="cb25-449"><a href="#cb25-449" aria-hidden="true" tabindex="-1"></a>|9  | CD8+ T cells |</span>
-<span id="cb25-450"><a href="#cb25-450" aria-hidden="true" tabindex="-1"></a>|10 | FCGR3A+ monocytes |</span>
-<span id="cb25-451"><a href="#cb25-451" aria-hidden="true" tabindex="-1"></a>|11 | B cells |</span>
-<span id="cb25-452"><a href="#cb25-452" aria-hidden="true" tabindex="-1"></a>|12 | NK cells |</span>
-<span id="cb25-453"><a href="#cb25-453" aria-hidden="true" tabindex="-1"></a>|13 | B cells|</span>
-<span id="cb25-454"><a href="#cb25-454" aria-hidden="true" tabindex="-1"></a>|14 | Conventional dendritic cells |</span>
-<span id="cb25-455"><a href="#cb25-455" aria-hidden="true" tabindex="-1"></a>|15| Megakaryocytes |</span>
-<span id="cb25-456"><a href="#cb25-456" aria-hidden="true" tabindex="-1"></a>|16| Plasmacytoid dendritic cells |</span>
-<span id="cb25-457"><a href="#cb25-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-438"><a href="#cb25-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-439"><a href="#cb25-439" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Cluster ID    <span class="pp">|</span> Cell Type <span class="pp">|</span></span>
+<span id="cb25-440"><a href="#cb25-440" aria-hidden="true" tabindex="-1"></a><span class="pp">|:-----:|:-----:|</span></span>
+<span id="cb25-441"><a href="#cb25-441" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>0  <span class="pp">|</span> Naive or memory CD4+ T cells<span class="pp">|</span></span>
+<span id="cb25-442"><a href="#cb25-442" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>1  <span class="pp">|</span> CD14+ monocytes <span class="pp">|</span></span>
+<span id="cb25-443"><a href="#cb25-443" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>2  <span class="pp">|</span> Activated T cells<span class="pp">|</span></span>
+<span id="cb25-444"><a href="#cb25-444" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>3  <span class="pp">|</span> CD14+ monocytes<span class="pp">|</span></span>
+<span id="cb25-445"><a href="#cb25-445" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>4  <span class="pp">|</span> Stressed cells / Unknown<span class="pp">|</span></span>
+<span id="cb25-446"><a href="#cb25-446" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>5  <span class="pp">|</span> CD8+ T cells <span class="pp">|</span></span>
+<span id="cb25-447"><a href="#cb25-447" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>6  <span class="pp">|</span> Naive or memory CD4+ T cells <span class="pp">|</span></span>
+<span id="cb25-448"><a href="#cb25-448" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>7  <span class="pp">|</span> B cells <span class="pp">|</span></span>
+<span id="cb25-449"><a href="#cb25-449" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>8  <span class="pp">|</span> NK cells <span class="pp">|</span></span>
+<span id="cb25-450"><a href="#cb25-450" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>9  <span class="pp">|</span> CD8+ T cells <span class="pp">|</span></span>
+<span id="cb25-451"><a href="#cb25-451" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>10 <span class="pp">|</span> FCGR3A+ monocytes <span class="pp">|</span></span>
+<span id="cb25-452"><a href="#cb25-452" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>11 <span class="pp">|</span> B cells <span class="pp">|</span></span>
+<span id="cb25-453"><a href="#cb25-453" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>12 <span class="pp">|</span> NK cells <span class="pp">|</span></span>
+<span id="cb25-454"><a href="#cb25-454" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>13 <span class="pp">|</span> B cells<span class="pp">|</span></span>
+<span id="cb25-455"><a href="#cb25-455" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>14 <span class="pp">|</span> Conventional dendritic cells <span class="pp">|</span></span>
+<span id="cb25-456"><a href="#cb25-456" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>15<span class="pp">|</span> Megakaryocytes <span class="pp">|</span></span>
+<span id="cb25-457"><a href="#cb25-457" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>16<span class="pp">|</span> Plasmacytoid dendritic cells <span class="pp">|</span></span>
 <span id="cb25-458"><a href="#cb25-458" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-459"><a href="#cb25-459" aria-hidden="true" tabindex="-1"></a>We can then reassign the identity of the clusters to these cell types:</span>
-<span id="cb25-460"><a href="#cb25-460" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-463"><a href="#cb25-463" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-464"><a href="#cb25-464" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: rename_clusters</span></span>
-<span id="cb25-465"><a href="#cb25-465" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename all identities</span></span>
-<span id="cb25-466"><a href="#cb25-466" aria-hidden="true" tabindex="-1"></a>seurat_integrated <span class="ot">&lt;-</span> <span class="fu">RenameIdents</span>(<span class="at">object =</span> seurat_integrated, </span>
-<span id="cb25-467"><a href="#cb25-467" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"0"</span> <span class="ot">=</span> <span class="st">"Naive or memory CD4+ T cells"</span>,</span>
-<span id="cb25-468"><a href="#cb25-468" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"CD14+ monocytes"</span>,</span>
-<span id="cb25-469"><a href="#cb25-469" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"Activated T cells"</span>,</span>
-<span id="cb25-470"><a href="#cb25-470" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"3"</span> <span class="ot">=</span> <span class="st">"CD14+ monocytes"</span>,</span>
-<span id="cb25-471"><a href="#cb25-471" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"4"</span> <span class="ot">=</span> <span class="st">"Stressed cells / Unknown"</span>,</span>
-<span id="cb25-472"><a href="#cb25-472" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"5"</span> <span class="ot">=</span> <span class="st">"CD8+ T cells"</span>,</span>
-<span id="cb25-473"><a href="#cb25-473" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"6"</span> <span class="ot">=</span> <span class="st">"Naive or memory CD4+ T cells"</span>,</span>
-<span id="cb25-474"><a href="#cb25-474" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"7"</span> <span class="ot">=</span> <span class="st">"B cells"</span>,</span>
-<span id="cb25-475"><a href="#cb25-475" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"8"</span> <span class="ot">=</span> <span class="st">"NK cells"</span>,</span>
-<span id="cb25-476"><a href="#cb25-476" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"9"</span> <span class="ot">=</span> <span class="st">"CD8+ T cells"</span>,</span>
-<span id="cb25-477"><a href="#cb25-477" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"10"</span> <span class="ot">=</span> <span class="st">"FCGR3A+ monocytes"</span>,</span>
-<span id="cb25-478"><a href="#cb25-478" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"11"</span> <span class="ot">=</span> <span class="st">"B cells"</span>,</span>
-<span id="cb25-479"><a href="#cb25-479" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"12"</span> <span class="ot">=</span> <span class="st">"NK cells"</span>,</span>
-<span id="cb25-480"><a href="#cb25-480" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"13"</span> <span class="ot">=</span> <span class="st">"B cells"</span>,</span>
-<span id="cb25-481"><a href="#cb25-481" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"14"</span> <span class="ot">=</span> <span class="st">"Conventional dendritic cells"</span>,</span>
-<span id="cb25-482"><a href="#cb25-482" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"15"</span> <span class="ot">=</span> <span class="st">"Megakaryocytes"</span>,</span>
-<span id="cb25-483"><a href="#cb25-483" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"16"</span> <span class="ot">=</span> <span class="st">"Plasmacytoid dendritic cells"</span>)</span>
-<span id="cb25-484"><a href="#cb25-484" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-459"><a href="#cb25-459" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-460"><a href="#cb25-460" aria-hidden="true" tabindex="-1"></a>We can then reassign the identity of the clusters to these cell types:</span>
+<span id="cb25-461"><a href="#cb25-461" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-464"><a href="#cb25-464" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-465"><a href="#cb25-465" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: rename_clusters</span></span>
+<span id="cb25-466"><a href="#cb25-466" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename all identities</span></span>
+<span id="cb25-467"><a href="#cb25-467" aria-hidden="true" tabindex="-1"></a>seurat_integrated <span class="ot">&lt;-</span> <span class="fu">RenameIdents</span>(<span class="at">object =</span> seurat_integrated, </span>
+<span id="cb25-468"><a href="#cb25-468" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"0"</span> <span class="ot">=</span> <span class="st">"Naive or memory CD4+ T cells"</span>,</span>
+<span id="cb25-469"><a href="#cb25-469" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"CD14+ monocytes"</span>,</span>
+<span id="cb25-470"><a href="#cb25-470" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"Activated T cells"</span>,</span>
+<span id="cb25-471"><a href="#cb25-471" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"3"</span> <span class="ot">=</span> <span class="st">"CD14+ monocytes"</span>,</span>
+<span id="cb25-472"><a href="#cb25-472" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"4"</span> <span class="ot">=</span> <span class="st">"Stressed cells / Unknown"</span>,</span>
+<span id="cb25-473"><a href="#cb25-473" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"5"</span> <span class="ot">=</span> <span class="st">"CD8+ T cells"</span>,</span>
+<span id="cb25-474"><a href="#cb25-474" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"6"</span> <span class="ot">=</span> <span class="st">"Naive or memory CD4+ T cells"</span>,</span>
+<span id="cb25-475"><a href="#cb25-475" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"7"</span> <span class="ot">=</span> <span class="st">"B cells"</span>,</span>
+<span id="cb25-476"><a href="#cb25-476" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"8"</span> <span class="ot">=</span> <span class="st">"NK cells"</span>,</span>
+<span id="cb25-477"><a href="#cb25-477" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"9"</span> <span class="ot">=</span> <span class="st">"CD8+ T cells"</span>,</span>
+<span id="cb25-478"><a href="#cb25-478" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"10"</span> <span class="ot">=</span> <span class="st">"FCGR3A+ monocytes"</span>,</span>
+<span id="cb25-479"><a href="#cb25-479" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"11"</span> <span class="ot">=</span> <span class="st">"B cells"</span>,</span>
+<span id="cb25-480"><a href="#cb25-480" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"12"</span> <span class="ot">=</span> <span class="st">"NK cells"</span>,</span>
+<span id="cb25-481"><a href="#cb25-481" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"13"</span> <span class="ot">=</span> <span class="st">"B cells"</span>,</span>
+<span id="cb25-482"><a href="#cb25-482" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"14"</span> <span class="ot">=</span> <span class="st">"Conventional dendritic cells"</span>,</span>
+<span id="cb25-483"><a href="#cb25-483" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"15"</span> <span class="ot">=</span> <span class="st">"Megakaryocytes"</span>,</span>
+<span id="cb25-484"><a href="#cb25-484" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"16"</span> <span class="ot">=</span> <span class="st">"Plasmacytoid dendritic cells"</span>)</span>
 <span id="cb25-485"><a href="#cb25-485" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-486"><a href="#cb25-486" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the UMAP</span></span>
-<span id="cb25-487"><a href="#cb25-487" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot</span>(<span class="at">object =</span> seurat_integrated, </span>
-<span id="cb25-488"><a href="#cb25-488" aria-hidden="true" tabindex="-1"></a>        <span class="at">reduction =</span> <span class="st">"umap"</span>, </span>
-<span id="cb25-489"><a href="#cb25-489" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb25-490"><a href="#cb25-490" aria-hidden="true" tabindex="-1"></a>        <span class="at">label.size =</span> <span class="dv">3</span>,</span>
-<span id="cb25-491"><a href="#cb25-491" aria-hidden="true" tabindex="-1"></a>        <span class="at">repel =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb25-492"><a href="#cb25-492" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-493"><a href="#cb25-493" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-486"><a href="#cb25-486" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-487"><a href="#cb25-487" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the UMAP</span></span>
+<span id="cb25-488"><a href="#cb25-488" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot</span>(<span class="at">object =</span> seurat_integrated, </span>
+<span id="cb25-489"><a href="#cb25-489" aria-hidden="true" tabindex="-1"></a>        <span class="at">reduction =</span> <span class="st">"umap"</span>, </span>
+<span id="cb25-490"><a href="#cb25-490" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb25-491"><a href="#cb25-491" aria-hidden="true" tabindex="-1"></a>        <span class="at">label.size =</span> <span class="dv">3</span>,</span>
+<span id="cb25-492"><a href="#cb25-492" aria-hidden="true" tabindex="-1"></a>        <span class="at">repel =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-493"><a href="#cb25-493" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb25-494"><a href="#cb25-494" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-495"><a href="#cb25-495" aria-hidden="true" tabindex="-1"></a>If we wanted to remove the potentially stressed cells, we could use the <span class="in">`subset()`</span> function:</span>
-<span id="cb25-496"><a href="#cb25-496" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-499"><a href="#cb25-499" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-500"><a href="#cb25-500" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: removed_dying_cells_DimPlot</span></span>
-<span id="cb25-501"><a href="#cb25-501" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the stressed or dying cells</span></span>
-<span id="cb25-502"><a href="#cb25-502" aria-hidden="true" tabindex="-1"></a>seurat_subset_labeled <span class="ot">&lt;-</span> <span class="fu">subset</span>(seurat_integrated,</span>
-<span id="cb25-503"><a href="#cb25-503" aria-hidden="true" tabindex="-1"></a>                               <span class="at">idents =</span> <span class="st">"Stressed cells / Unknown"</span>, <span class="at">invert =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb25-504"><a href="#cb25-504" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-505"><a href="#cb25-505" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-visualize the clusters</span></span>
-<span id="cb25-506"><a href="#cb25-506" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot</span>(<span class="at">object =</span> seurat_subset_labeled, </span>
-<span id="cb25-507"><a href="#cb25-507" aria-hidden="true" tabindex="-1"></a>        <span class="at">reduction =</span> <span class="st">"umap"</span>, </span>
-<span id="cb25-508"><a href="#cb25-508" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb25-509"><a href="#cb25-509" aria-hidden="true" tabindex="-1"></a>        <span class="at">label.size =</span> <span class="dv">3</span>,</span>
-<span id="cb25-510"><a href="#cb25-510" aria-hidden="true" tabindex="-1"></a>    <span class="at">repel =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb25-511"><a href="#cb25-511" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-512"><a href="#cb25-512" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-495"><a href="#cb25-495" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-496"><a href="#cb25-496" aria-hidden="true" tabindex="-1"></a>If we wanted to remove the potentially stressed cells, we could use the <span class="in">`subset()`</span> function:</span>
+<span id="cb25-497"><a href="#cb25-497" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-500"><a href="#cb25-500" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-501"><a href="#cb25-501" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: removed_dying_cells_DimPlot</span></span>
+<span id="cb25-502"><a href="#cb25-502" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the stressed or dying cells</span></span>
+<span id="cb25-503"><a href="#cb25-503" aria-hidden="true" tabindex="-1"></a>seurat_subset_labeled <span class="ot">&lt;-</span> <span class="fu">subset</span>(seurat_integrated,</span>
+<span id="cb25-504"><a href="#cb25-504" aria-hidden="true" tabindex="-1"></a>                               <span class="at">idents =</span> <span class="st">"Stressed cells / Unknown"</span>, <span class="at">invert =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-505"><a href="#cb25-505" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-506"><a href="#cb25-506" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-visualize the clusters</span></span>
+<span id="cb25-507"><a href="#cb25-507" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot</span>(<span class="at">object =</span> seurat_subset_labeled, </span>
+<span id="cb25-508"><a href="#cb25-508" aria-hidden="true" tabindex="-1"></a>        <span class="at">reduction =</span> <span class="st">"umap"</span>, </span>
+<span id="cb25-509"><a href="#cb25-509" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb25-510"><a href="#cb25-510" aria-hidden="true" tabindex="-1"></a>        <span class="at">label.size =</span> <span class="dv">3</span>,</span>
+<span id="cb25-511"><a href="#cb25-511" aria-hidden="true" tabindex="-1"></a>    <span class="at">repel =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-512"><a href="#cb25-512" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb25-513"><a href="#cb25-513" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-514"><a href="#cb25-514" aria-hidden="true" tabindex="-1"></a>Now we would want to save our final labelled Seurat object and the output of <span class="in">`sessionInfo()`</span>:</span>
-<span id="cb25-515"><a href="#cb25-515" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-518"><a href="#cb25-518" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-519"><a href="#cb25-519" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: save_output</span></span>
-<span id="cb25-520"><a href="#cb25-520" aria-hidden="true" tabindex="-1"></a><span class="co"># Save final R object</span></span>
-<span id="cb25-521"><a href="#cb25-521" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(seurat_integrated,</span>
-<span id="cb25-522"><a href="#cb25-522" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"results/seurat_labelled.rds"</span>)</span>
-<span id="cb25-523"><a href="#cb25-523" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-524"><a href="#cb25-524" aria-hidden="true" tabindex="-1"></a><span class="co"># Create and save a text file with sessionInfo</span></span>
-<span id="cb25-525"><a href="#cb25-525" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>(<span class="st">"results/sessionInfo_scrnaseq.txt"</span>)</span>
-<span id="cb25-526"><a href="#cb25-526" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
-<span id="cb25-527"><a href="#cb25-527" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>()</span>
-<span id="cb25-528"><a href="#cb25-528" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-529"><a href="#cb25-529" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-530"><a href="#cb25-530" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb25-531"><a href="#cb25-531" aria-hidden="true" tabindex="-1"></a>You can find out more about the <span class="in">`sink()`</span> function <span class="co">[</span><span class="ot">at this link</span><span class="co">](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/sink)</span>.</span>
-<span id="cb25-532"><a href="#cb25-532" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb25-533"><a href="#cb25-533" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-534"><a href="#cb25-534" aria-hidden="true" tabindex="-1"></a>***</span>
-<span id="cb25-535"><a href="#cb25-535" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-536"><a href="#cb25-536" aria-hidden="true" tabindex="-1"></a>Now that we have our clusters defined and the markers for each of our clusters, we have a few different questions we can answer:</span>
-<span id="cb25-537"><a href="#cb25-537" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-538"><a href="#cb25-538" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Determine if there is a shift in cell populations between <span class="in">`ctrl`</span> and <span class="in">`stim`</span>. Ideally this would be done with replicates to determine if the changes are significant.</span>
-<span id="cb25-539"><a href="#cb25-539" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-542"><a href="#cb25-542" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-543"><a href="#cb25-543" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: cells_per_celltype_plot</span></span>
-<span id="cb25-544"><a href="#cb25-544" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.width: 18</span></span>
-<span id="cb25-545"><a href="#cb25-545" aria-hidden="true" tabindex="-1"></a><span class="co"># Add celltype annotation as a column in meta.data </span></span>
-<span id="cb25-546"><a href="#cb25-546" aria-hidden="true" tabindex="-1"></a>seurat_subset_labeled<span class="sc">$</span>celltype <span class="ot">&lt;-</span> <span class="fu">Idents</span>(seurat_subset_labeled)</span>
-<span id="cb25-547"><a href="#cb25-547" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-548"><a href="#cb25-548" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute number of cells per celltype</span></span>
-<span id="cb25-549"><a href="#cb25-549" aria-hidden="true" tabindex="-1"></a>n_cells <span class="ot">&lt;-</span> <span class="fu">FetchData</span>(seurat_subset_labeled, </span>
-<span id="cb25-550"><a href="#cb25-550" aria-hidden="true" tabindex="-1"></a>                     <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"celltype"</span>, <span class="st">"sample"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb25-551"><a href="#cb25-551" aria-hidden="true" tabindex="-1"></a>        dplyr<span class="sc">::</span><span class="fu">count</span>(celltype, sample)</span>
-<span id="cb25-552"><a href="#cb25-552" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-553"><a href="#cb25-553" aria-hidden="true" tabindex="-1"></a><span class="co"># Barplot of number of cells per celltype by sample</span></span>
-<span id="cb25-554"><a href="#cb25-554" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(n_cells, <span class="fu">aes</span>(<span class="at">x=</span>celltype, <span class="at">y=</span>n, <span class="at">fill=</span>sample)) <span class="sc">+</span></span>
-<span id="cb25-555"><a href="#cb25-555" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="fu">position_dodge</span>(), <span class="at">stat=</span><span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb25-556"><a href="#cb25-556" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb25-557"><a href="#cb25-557" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>n), <span class="at">vjust =</span> <span class="sc">-</span>.<span class="dv">2</span>, <span class="at">position=</span><span class="fu">position_dodge</span>(<span class="dv">1</span>))</span>
-<span id="cb25-558"><a href="#cb25-558" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-559"><a href="#cb25-559" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-560"><a href="#cb25-560" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Perform differential expression analysis between conditions <span class="in">`ctrl`</span> and <span class="in">`stim`</span></span>
-<span id="cb25-561"><a href="#cb25-561" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Biological replicates are **necessary** to proceed with this analysis, and we have <span class="co">[</span><span class="ot">additional materials</span><span class="co">](https://hbctraining.github.io/Pseudobulk-for-scRNAseq/)</span> to help walk through this analysis.</span>
-<span id="cb25-562"><a href="#cb25-562" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>For a first pass look, we can use the <span class="in">`FindMarkers()`</span> function we have been using to do a simple wilcox test to see the difference in gene expression between conditions for the B cells</span>
-<span id="cb25-563"><a href="#cb25-563" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-566"><a href="#cb25-566" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-567"><a href="#cb25-567" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: FindMarkers_B_cells</span></span>
-<span id="cb25-568"><a href="#cb25-568" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset seurat object to just B cells</span></span>
-<span id="cb25-569"><a href="#cb25-569" aria-hidden="true" tabindex="-1"></a>seurat_b_cells <span class="ot">&lt;-</span> <span class="fu">subset</span>(seurat_subset_labeled, <span class="at">subset =</span> (celltype <span class="sc">==</span> <span class="st">"B cells"</span>))</span>
-<span id="cb25-570"><a href="#cb25-570" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-571"><a href="#cb25-571" aria-hidden="true" tabindex="-1"></a><span class="co"># Run a wilcox test to compare ctrl vs stim</span></span>
-<span id="cb25-572"><a href="#cb25-572" aria-hidden="true" tabindex="-1"></a><span class="fu">Idents</span>(seurat_b_cells) <span class="ot">&lt;-</span> <span class="st">"sample"</span></span>
-<span id="cb25-573"><a href="#cb25-573" aria-hidden="true" tabindex="-1"></a>b_markers <span class="ot">&lt;-</span> <span class="fu">FindMarkers</span>(seurat_b_cells,</span>
-<span id="cb25-574"><a href="#cb25-574" aria-hidden="true" tabindex="-1"></a>                          <span class="at">ident.1 =</span> <span class="st">"ctrl"</span>,</span>
-<span id="cb25-575"><a href="#cb25-575" aria-hidden="true" tabindex="-1"></a>                          <span class="at">ident.2 =</span> <span class="st">"stim"</span>,</span>
-<span id="cb25-576"><a href="#cb25-576" aria-hidden="true" tabindex="-1"></a>                          <span class="at">grouping.var =</span> <span class="st">"sample"</span>,</span>
-<span id="cb25-577"><a href="#cb25-577" aria-hidden="true" tabindex="-1"></a>                          <span class="at">only.pos =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb25-578"><a href="#cb25-578" aria-hidden="true" tabindex="-1"></a>                          <span class="at">logfc.threshold =</span> <span class="fl">0.25</span>)</span>
-<span id="cb25-579"><a href="#cb25-579" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(b_markers)</span>
-<span id="cb25-580"><a href="#cb25-580" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-581"><a href="#cb25-581" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-582"><a href="#cb25-582" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>For added visualization, we can used the <span class="in">`EnhancedVolcano()`</span> function to see how the genes fall on a volcano plot.</span>
-<span id="cb25-583"><a href="#cb25-583" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-586"><a href="#cb25-586" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-587"><a href="#cb25-587" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: B_cells_volcano_plot</span></span>
-<span id="cb25-588"><a href="#cb25-588" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.height: 6</span></span>
-<span id="cb25-589"><a href="#cb25-589" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.width: 10</span></span>
-<span id="cb25-590"><a href="#cb25-590" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(EnhancedVolcano)</span>
-<span id="cb25-591"><a href="#cb25-591" aria-hidden="true" tabindex="-1"></a><span class="fu">EnhancedVolcano</span>(b_markers,</span>
-<span id="cb25-592"><a href="#cb25-592" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row.names</span>(b_markers),</span>
-<span id="cb25-593"><a href="#cb25-593" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="st">"avg_log2FC"</span>,</span>
-<span id="cb25-594"><a href="#cb25-594" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="st">"p_val_adj"</span>,</span>
-<span id="cb25-595"><a href="#cb25-595" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span><span class="st">"B Cells"</span>,</span>
-<span id="cb25-596"><a href="#cb25-596" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle=</span><span class="st">"Stim vs. Ctrl"</span></span>
-<span id="cb25-597"><a href="#cb25-597" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb25-598"><a href="#cb25-598" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-599"><a href="#cb25-599" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-600"><a href="#cb25-600" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Experimentally validate intriguing markers for our identified cell types.</span>
-<span id="cb25-601"><a href="#cb25-601" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Explore a subset of the cell types to discover subclusters of cells as described <span class="co">[</span><span class="ot">here</span><span class="co">](Aside_seurat_subclustering.qmd)</span></span>
-<span id="cb25-602"><a href="#cb25-602" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Trajectory analysis, or lineage tracing, could be performed if trying to determine the progression between cell types or cell states. For example, we could explore any of the following using this type of analysis:</span>
-<span id="cb25-603"><a href="#cb25-603" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Differentiation processes</span>
-<span id="cb25-604"><a href="#cb25-604" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Expression changes over time</span>
-<span id="cb25-605"><a href="#cb25-605" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Cell state changes in expression</span>
+<span id="cb25-514"><a href="#cb25-514" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-515"><a href="#cb25-515" aria-hidden="true" tabindex="-1"></a>Now we would want to save our final labelled Seurat object and the output of <span class="in">`sessionInfo()`</span>:</span>
+<span id="cb25-516"><a href="#cb25-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-519"><a href="#cb25-519" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-520"><a href="#cb25-520" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: save_output</span></span>
+<span id="cb25-521"><a href="#cb25-521" aria-hidden="true" tabindex="-1"></a><span class="co"># Save final R object</span></span>
+<span id="cb25-522"><a href="#cb25-522" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(seurat_integrated,</span>
+<span id="cb25-523"><a href="#cb25-523" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"results/seurat_labelled.rds"</span>)</span>
+<span id="cb25-524"><a href="#cb25-524" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-525"><a href="#cb25-525" aria-hidden="true" tabindex="-1"></a><span class="co"># Create and save a text file with sessionInfo</span></span>
+<span id="cb25-526"><a href="#cb25-526" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>(<span class="st">"results/sessionInfo_scrnaseq.txt"</span>)</span>
+<span id="cb25-527"><a href="#cb25-527" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb25-528"><a href="#cb25-528" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>()</span>
+<span id="cb25-529"><a href="#cb25-529" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-530"><a href="#cb25-530" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-531"><a href="#cb25-531" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb25-532"><a href="#cb25-532" aria-hidden="true" tabindex="-1"></a>You can find out more about the <span class="in">`sink()`</span> function <span class="co">[</span><span class="ot">at this link</span><span class="co">](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/sink)</span>.</span>
+<span id="cb25-533"><a href="#cb25-533" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb25-534"><a href="#cb25-534" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-535"><a href="#cb25-535" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb25-536"><a href="#cb25-536" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-537"><a href="#cb25-537" aria-hidden="true" tabindex="-1"></a>Now that we have our clusters defined and the markers for each of our clusters, we have a few different questions we can answer:</span>
+<span id="cb25-538"><a href="#cb25-538" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-539"><a href="#cb25-539" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Determine if there is a shift in cell populations between <span class="in">`ctrl`</span> and <span class="in">`stim`</span>. Ideally this would be done with replicates to determine if the changes are significant.</span>
+<span id="cb25-540"><a href="#cb25-540" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-543"><a href="#cb25-543" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-544"><a href="#cb25-544" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: cells_per_celltype_plot</span></span>
+<span id="cb25-545"><a href="#cb25-545" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.width: 18</span></span>
+<span id="cb25-546"><a href="#cb25-546" aria-hidden="true" tabindex="-1"></a><span class="co"># Add celltype annotation as a column in meta.data </span></span>
+<span id="cb25-547"><a href="#cb25-547" aria-hidden="true" tabindex="-1"></a>seurat_subset_labeled<span class="sc">$</span>celltype <span class="ot">&lt;-</span> <span class="fu">Idents</span>(seurat_subset_labeled)</span>
+<span id="cb25-548"><a href="#cb25-548" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-549"><a href="#cb25-549" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute number of cells per celltype</span></span>
+<span id="cb25-550"><a href="#cb25-550" aria-hidden="true" tabindex="-1"></a>n_cells <span class="ot">&lt;-</span> <span class="fu">FetchData</span>(seurat_subset_labeled, </span>
+<span id="cb25-551"><a href="#cb25-551" aria-hidden="true" tabindex="-1"></a>                     <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"celltype"</span>, <span class="st">"sample"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-552"><a href="#cb25-552" aria-hidden="true" tabindex="-1"></a>        dplyr<span class="sc">::</span><span class="fu">count</span>(celltype, sample)</span>
+<span id="cb25-553"><a href="#cb25-553" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-554"><a href="#cb25-554" aria-hidden="true" tabindex="-1"></a><span class="co"># Barplot of number of cells per celltype by sample</span></span>
+<span id="cb25-555"><a href="#cb25-555" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(n_cells, <span class="fu">aes</span>(<span class="at">x=</span>celltype, <span class="at">y=</span>n, <span class="at">fill=</span>sample)) <span class="sc">+</span></span>
+<span id="cb25-556"><a href="#cb25-556" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="fu">position_dodge</span>(), <span class="at">stat=</span><span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb25-557"><a href="#cb25-557" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb25-558"><a href="#cb25-558" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>n), <span class="at">vjust =</span> <span class="sc">-</span>.<span class="dv">2</span>, <span class="at">position=</span><span class="fu">position_dodge</span>(<span class="dv">1</span>))</span>
+<span id="cb25-559"><a href="#cb25-559" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-560"><a href="#cb25-560" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-561"><a href="#cb25-561" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Perform differential expression analysis between conditions <span class="in">`ctrl`</span> and <span class="in">`stim`</span></span>
+<span id="cb25-562"><a href="#cb25-562" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Biological replicates are **necessary** to proceed with this analysis, and we have <span class="co">[</span><span class="ot">additional materials</span><span class="co">](https://hbctraining.github.io/Pseudobulk-for-scRNAseq/)</span> to help walk through this analysis.</span>
+<span id="cb25-563"><a href="#cb25-563" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>For a first pass look, we can use the <span class="in">`FindMarkers()`</span> function we have been using to do a simple wilcox test to see the difference in gene expression between conditions for the B cells</span>
+<span id="cb25-564"><a href="#cb25-564" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-567"><a href="#cb25-567" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-568"><a href="#cb25-568" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: FindMarkers_B_cells</span></span>
+<span id="cb25-569"><a href="#cb25-569" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset seurat object to just B cells</span></span>
+<span id="cb25-570"><a href="#cb25-570" aria-hidden="true" tabindex="-1"></a>seurat_b_cells <span class="ot">&lt;-</span> <span class="fu">subset</span>(seurat_subset_labeled, <span class="at">subset =</span> (celltype <span class="sc">==</span> <span class="st">"B cells"</span>))</span>
+<span id="cb25-571"><a href="#cb25-571" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-572"><a href="#cb25-572" aria-hidden="true" tabindex="-1"></a><span class="co"># Run a wilcox test to compare ctrl vs stim</span></span>
+<span id="cb25-573"><a href="#cb25-573" aria-hidden="true" tabindex="-1"></a><span class="fu">Idents</span>(seurat_b_cells) <span class="ot">&lt;-</span> <span class="st">"sample"</span></span>
+<span id="cb25-574"><a href="#cb25-574" aria-hidden="true" tabindex="-1"></a>b_markers <span class="ot">&lt;-</span> <span class="fu">FindMarkers</span>(seurat_b_cells,</span>
+<span id="cb25-575"><a href="#cb25-575" aria-hidden="true" tabindex="-1"></a>                          <span class="at">ident.1 =</span> <span class="st">"ctrl"</span>,</span>
+<span id="cb25-576"><a href="#cb25-576" aria-hidden="true" tabindex="-1"></a>                          <span class="at">ident.2 =</span> <span class="st">"stim"</span>,</span>
+<span id="cb25-577"><a href="#cb25-577" aria-hidden="true" tabindex="-1"></a>                          <span class="at">grouping.var =</span> <span class="st">"sample"</span>,</span>
+<span id="cb25-578"><a href="#cb25-578" aria-hidden="true" tabindex="-1"></a>                          <span class="at">only.pos =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb25-579"><a href="#cb25-579" aria-hidden="true" tabindex="-1"></a>                          <span class="at">logfc.threshold =</span> <span class="fl">0.25</span>)</span>
+<span id="cb25-580"><a href="#cb25-580" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(b_markers)</span>
+<span id="cb25-581"><a href="#cb25-581" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-582"><a href="#cb25-582" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-583"><a href="#cb25-583" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>For added visualization, we can used the <span class="in">`EnhancedVolcano()`</span> function to see how the genes fall on a volcano plot.</span>
+<span id="cb25-584"><a href="#cb25-584" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-587"><a href="#cb25-587" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-588"><a href="#cb25-588" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: B_cells_volcano_plot</span></span>
+<span id="cb25-589"><a href="#cb25-589" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.height: 6</span></span>
+<span id="cb25-590"><a href="#cb25-590" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.width: 10</span></span>
+<span id="cb25-591"><a href="#cb25-591" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(EnhancedVolcano)</span>
+<span id="cb25-592"><a href="#cb25-592" aria-hidden="true" tabindex="-1"></a><span class="fu">EnhancedVolcano</span>(b_markers,</span>
+<span id="cb25-593"><a href="#cb25-593" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row.names</span>(b_markers),</span>
+<span id="cb25-594"><a href="#cb25-594" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="st">"avg_log2FC"</span>,</span>
+<span id="cb25-595"><a href="#cb25-595" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="st">"p_val_adj"</span>,</span>
+<span id="cb25-596"><a href="#cb25-596" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span><span class="st">"B Cells"</span>,</span>
+<span id="cb25-597"><a href="#cb25-597" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle=</span><span class="st">"Stim vs. Ctrl"</span></span>
+<span id="cb25-598"><a href="#cb25-598" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-599"><a href="#cb25-599" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-600"><a href="#cb25-600" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-601"><a href="#cb25-601" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Experimentally validate intriguing markers for our identified cell types.</span>
+<span id="cb25-602"><a href="#cb25-602" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Explore a subset of the cell types to discover subclusters of cells as described <span class="co">[</span><span class="ot">here</span><span class="co">](Aside_seurat_subclustering.qmd)</span></span>
+<span id="cb25-603"><a href="#cb25-603" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Trajectory analysis, or lineage tracing, could be performed if trying to determine the progression between cell types or cell states. For example, we could explore any of the following using this type of analysis:</span>
+<span id="cb25-604"><a href="#cb25-604" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Differentiation processes</span>
+<span id="cb25-605"><a href="#cb25-605" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Expression changes over time</span>
+<span id="cb25-606"><a href="#cb25-606" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Cell state changes in expression</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

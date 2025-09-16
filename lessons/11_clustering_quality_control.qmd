@@ -399,7 +399,7 @@ DotPlot(seurat_integrated, markers, assay="RNA")
 
 
 ::: callout-tip
-# Exercises
+# [**Exercise 1**](11_clustering_quality_control-Answer_key.qmd#exercise-1)
 Hypothesize the clusters corresponding to each of the different clusters in the table:
 
 | Cell Type | Clusters |

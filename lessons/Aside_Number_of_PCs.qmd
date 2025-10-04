@@ -176,10 +176,10 @@ In practice, we usually use gene-wise covariance in scRNA-seq PCA, but the cell-
 
 Now that we have demonstrated how number of PCs = minimum(number_of_genes, number_of_cells), let's understand sources of data that reduce the number of PCs so that the number of PCs ≤ minimum(number_of_genes, number_of_cells). Four major sources of this come from:
 
-- Duplicated Data
-- Scaled Data
-- Linear Combinations of Data
-- Constants
+- [Duplicated Data](#duplicated-data)
+- [Scaled Data](#scaled-data)
+- [Linear Combinations of Data](#linear-combinations-of-data)
+- [Constants](#constants)
 
 We will provide examples of each below, but first let's make the expression matrix that we will be using:
 

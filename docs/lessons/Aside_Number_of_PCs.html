@@ -255,7 +255,7 @@ window.Quarto = {
 </section>
 <section id="number-of-pcs" class="level1">
 <h1>Number of PCs</h1>
-<p>When doing a Principal Components Analysis (PCA), you will be reducing the dimensionality of your data into Principal Components (PCs). The maximum number of PCs, sometimes called rank of the PCA, for scRNA-seq analysis will either be the the number of genes or the number of cells, whichever is fewer. In other words, <strong>the number of PCs ≤ minimum(number_of_genes, number_of_cells)</strong>. In the sections below we will discuss the reasons for this. For this lesson we will need to load <code>tidyverse</code>.</p>
+<p>When doing a Principal Components Analysis (PCA), you will be reducing the dimensionality of your data into Principal Components (PCs). The maximum number of PCs, sometimes called rank of the PCA, for scRNA-seq analysis will at most either be the the number of genes or the number of cells, whichever is fewer. In other words, <strong>the number of PCs ≤ minimum(number_of_genes, number_of_cells)</strong>. In the sections below we will discuss the reasons for this. For this lesson we will need to load <code>tidyverse</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load tidyverse</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1032,7 +1032,7 @@ Cell_4     -2  -9.25      0</code></pre>
 <span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-38"><a href="#cb30-38" aria-hidden="true" tabindex="-1"></a><span class="fu"># Number of PCs</span></span>
 <span id="cb30-39"><a href="#cb30-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a>When doing a Principal Components Analysis (PCA), you will be reducing the dimensionality of your data into Principal Components (PCs). The maximum number of PCs, sometimes called rank of the PCA, for scRNA-seq analysis will either be the the number of genes or the number of cells, whichever is fewer. In other words, **the number of PCs ≤ minimum(number_of_genes, number_of_cells)**. In the sections below we will discuss the reasons for this. For this lesson we will need to load <span class="in">`tidyverse`</span>.</span>
+<span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a>When doing a Principal Components Analysis (PCA), you will be reducing the dimensionality of your data into Principal Components (PCs). The maximum number of PCs, sometimes called rank of the PCA, for scRNA-seq analysis will at most either be the the number of genes or the number of cells, whichever is fewer. In other words, **the number of PCs ≤ minimum(number_of_genes, number_of_cells)**. In the sections below we will discuss the reasons for this. For this lesson we will need to load <span class="in">`tidyverse`</span>.</span>
 <span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-44"><a href="#cb30-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb30-45"><a href="#cb30-45" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load_tidyverse</span></span>

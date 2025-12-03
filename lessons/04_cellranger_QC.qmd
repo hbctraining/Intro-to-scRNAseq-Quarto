@@ -4,7 +4,7 @@ author: "Noor Sohail, Meeta Mistry"
 date: Thursday, June 25th 2024
 ---
 
-Approximate time: 30 minutes
+Approximate time: 15 minutes
 
 ## Learning Objectives:
 
@@ -12,7 +12,6 @@ Approximate time: 30 minutes
 * Review the cellranger generated QC report (web summary HTML)
 * Create plots with cellranger metrics
 
-# Single-cell RNA-seq: Quality control of Cellranger output
 
 ## Cellranger
 
@@ -45,24 +44,24 @@ While the focus of this workshop is scRNA, we also want to point out that there 
 | Hashtagging        |  Antibody/oligo tags to differentiate cells after pooling   | [cellranger multi](https://www.10xgenomics.com/support/software/cell-ranger/latest/analysis/) |
 
 
-## Running Cellranger on O2
+## Running Cellranger on a High-Performance Computing Cluster
 
 Running cellranger requires a lot of time and computational resources in order to process a single sample. Therefore, having access to a High Performance Computing (HPC) cluster is necessary to run it. Some sequencing cores will automatically process samples with cellranger and provide the outputs to you. 
 
 Note that prior to this step, **you must have a cellranger compatible reference genome generated**. If you are working with mouse or human, 10x has pre-generated the reference which can be downloaded from their [website](https://www.10xgenomics.com/support/software/cell-ranger/downloads) for use. If you are using another organism, cellranger has a mode called [mkref](https://www.10xgenomics.com/support/software/cell-ranger/latest/tutorials/cr-tutorial-mr) which will generate everything needed for a reference from the files you supply (GTF and fasta).
 
-Here we are showing an example of how to run `cellranger count` on Harvard's O2 HPC using SLURM. To run this script, you will have add additional information, such as:
+Here we are showing an example of how to run `cellranger count` on Harvard's O2 HPC using SLURM. To run this script, you will have to add additional information, such as:
 
 * The name of the project (the results will be placed in a folder of the same name)
 * Path to the FASTQ files from your experiment
 * Path to the reference genome 
 
-In the following **example script**, you would just have to change the variable specified in the ["Inputs for cellranger" section](https://www.10xgenomics.com/support/software/cell-ranger/latest/analysis/inputs/cr-inputs-overview) on eth 10x support site. We have already provided some optimal parameters in terms of runtime and memory for running `cellranger count`.
+In the following **example script**, you would just have to change the variable specified in the ["Inputs for cellranger" section](https://www.10xgenomics.com/support/software/cell-ranger/latest/analysis/inputs/cr-inputs-overview) on the 10x support site. We have already provided some optimal parameters in terms of runtime and memory for running `cellranger count`.
 
 **You do not need to run this script.**
 
 ```{r}
-#| label: cell_ranger
+#| label: SBATCH_script_cellranger
 #| eval: false
 #!/bin/bash
 
@@ -98,10 +97,10 @@ cellranger count \
 
 ## Cellranger outs
 
-Once cellranger has finished running, there will be a folder titled `outs/` in a directory named after the `project_name` variable set above. Generation of all the following files is expected from a succesful completion of the `cellranger counts` pipeline:
+Once cellranger has finished running, there will be a folder titled `outs/` in a directory named after the `project_name` variable set above. Generation of all the following files is expected from a successful completion of the `cellranger counts` pipeline:
 
 ```{r}
-#| label: directory_structure
+#| label: cellranger_output
 #| eval: false
 ├── cloupe.cloupe
 ├── filtered_feature_bc_matrix
@@ -125,10 +124,7 @@ Once cellranger has finished running, there will be a folder titled `outs/` in a
 
 The Web Summary HTML file is a great resource for looking at the basic quality of your sample before starting on an analysis. 10x has a [page describing each metric](https://www.10xgenomics.com/analysis-guides/quality-assessment-using-the-cell-ranger-web-summary) in depth. There are two pages/tabs included in a scRNA report titled "Summary" and "Gene Expression". 
 
-We have included these Web Summary files for the control and stimulated samples as links below. You can **download each, and move the HTML to your project `data` folder**:
-
-* [Control sample](https://www.dropbox.com/scl/fi/skjyyvs9078pbef7s4qvb/ctrl_web_summary.html?rlkey=335gw4qmy29uny5813wg0zakr&dl=1) report
-* [Stimulated sample](https://www.dropbox.com/scl/fi/r6n83y57cd7vhc130zm1g/stim_web_summary.html?rlkey=50ur193yfsy5ex9urkmr87h3c&dl=1) report
+We have included these Web Summary files for the control and stimulated samples your project `data` folder. You can click on them to open them in your web browser.
 
 ::: callout-note
 Some of the values in these reports will be slightly different from current standards, as these samples were generated using the version 1 chemistry kit and optimization have been made since then.
@@ -138,7 +134,7 @@ Some of the values in these reports will be slightly different from current stan
 
 At the top of the "Summary" tab, under the "Alerts" header, will be a list of warnings and messages on the quality/important information about the sample. These messages are very informative on what may have gone wrong with the sample or other flags that can be set in the `cellranger count` run to gain better results.
 
-Underneath the "Alerts" header, in green text, are the estimated number of high quality cells in the sample, average reads per cells, and median genes per cell. The number of cells will vary depending on how many were loaded in sample preparation, but some general recommendations are provided below:
+Underneath the "Summary" tab, in green text, are the estimated number of high quality cells in the sample, average reads per cells, and median genes per cell. The number of cells will vary depending on how many were loaded in sample preparation, but some general recommendations are provided below:
 
 * 500 cells is the **lower limit** for a good quality sample.
 * 10x also recommends a minimum of 20,000 reads per cell on average.
@@ -180,7 +176,7 @@ The shape of these plots can indicate a few different things about the sample:
 
 - **Typical**: Clear cliff and knee with separation between cells and background.
 - **Heterogeneous**: Bimodal plot with 2 cliffs and knees, with a clear divide between cells and background.
-- **Compromised**: Round curve with a steep drop-off at the end whih indicated low quality due to many factors.
+- **Compromised**: Round curve with a steep drop-off at the end which indicated low quality due to many factors.
 - **Compromised**: Defined cliff and knee, but with few barcodes detected could be due to inaccurate cell count or clogging.
 
 This section additionally describes averages and medians for number of genes and reads in the sample.
@@ -195,11 +191,11 @@ The sample section contains important metadata used by cellranger, such as what 
 
 ### Gene Expression
 
-The "Gene Expression" table contains information downstream of the basic QC, such as:
+The "Gene Expression" tab contains information downstream of the basic QC, such as:
 
 **t-SNE Projection**
 
-Dotplot showing the t-SNE projection of filtered cells colored by UMI counts and clusters. The report allows you select various values of K for the K-means clustering, showing different groupings that can be generated from the data.
+Dotplot showing the t-SNE projection of filtered cells colored by UMI counts and clusters. The report allows you to select various values of K for the K-means clustering, showing different groupings that can be generated from the data.
 
 
 <img src="../img/web_summary_tsne.png" width="800">
@@ -233,15 +229,18 @@ Similar to the sequencing saturation plot, looking at the median gene per cells 
 
 Many of the core pieces of information from the web summary are stored in the `metrics_summary.csv`. As this is a csv file, we can read it into R and generate plots to include in reports on the general quality of the samples.
 
-We have included these csv files for the control and stimulated samples as links below. You can right-click on the link and "Save as..." into your **project `data` folder**:
+We have included these csv files for the control and stimulated samples in your **`data` directory**:
 
-* [Control sample](https://www.dropbox.com/scl/fi/qnz44ng51ojmhu44acc8g/ctrl_metrics_summary.csv?rlkey=8zx5g1mtn6mrlwpv0syoz3bv4&st=9d0okyhf&dl=1) `metrics.csv` file
-* [Stimulated sample](https://www.dropbox.com/scl/fi/gaa4sabcbhwqpuogfh0us/stim_metrics_summary.csv?rlkey=h2uokc9r2edeinxtzgrpw3ds4&dl=1) `metrics.csv` file
+* Control sample `metrics.csv` file (`ctrl_metrics_summary.csv`)
+* Stimulated sample `metrics.csv` file (`stim_metrics_summary.csv`)
 
 First, to read the files in:
 
 ```{r}
-#| label: read_in_metrics_files
+#| label: load_metrics_data
+## Cellranger metrics evaluation
+
+# Load libraries
 library(tidyverse)
 library(reshape2)
 library(plyr)
@@ -255,29 +254,31 @@ for (sample in samples) {
     path_csv <- paste0("data/", sample, "_metrics_summary.csv")
     df <- read.csv(path_csv)
     rownames(df) <- sample
+    df$sample <- sample
     metrics[[sample]] <- df
 }
 # Concatenate each sample metrics together
 metrics <- ldply(metrics, rbind)
-# Remove periods and percentags to make the values numeric
+
+# Remove periods and percentages to make the values numeric
 metrics <- metrics %>%
-    column_to_rownames(".id") %>%
-    mutate_all(funs(parse_number(str_replace(., ",", "")))) %>%
-    mutate_all(funs(parse_number(str_replace(., "%", ""))))
-metrics$sample <- rownames(metrics)
+  column_to_rownames(".id") %>%
+  mutate(across(everything(), parse_number(str_replace(., ",", "")))) %>%
+  mutate(across(everything(), parse_number(str_replace(., "%", ""))))
 ```
 
 The information available in this file include: 
 
 ```{r}
-#| label: colnames_metrics_file
+#| label: columns_in_metrics_data
 colnames(metrics)
 ```
 
 With all of this information available as a dataframe, we can use ggplot to visualize these values. As an example of how this information can be used, we can display what percentage of reads map to the various parts of the genome (Intergentic, Intronic, and Exonic).
 
+
 ```{r}
-#| label: metrics_data_wrangling
+#| label: mapping_reads_to_regions_plot
 # Columns of interest
 cols <- c("Reads.Mapped.Confidently.to.Intergenic.Regions",
           "Reads.Mapped.Confidently.to.Intronic.Regions",
@@ -286,8 +287,8 @@ cols <- c("Reads.Mapped.Confidently.to.Intergenic.Regions",
 
 # Data wrangling to sculpt dataframe in a ggplot friendly manner
 df <- metrics %>%
-    select(cols) %>%
-    melt() %>%
+    select(all_of(cols)) %>%
+    melt(id.vars="sample") %>%
     mutate(variable = str_replace_all(variable, "Reads.Mapped.Confidently.to.", "")) %>%
     mutate(variable = str_replace_all(variable, ".Regions", ""))
 
@@ -303,6 +304,7 @@ df %>% ggplot() +
         y = "Percentage of Reads",
         title = "Percent of Reads Mapped to Each Region",
         fill = "Region")
+
 ```
 
 
@@ -310,7 +312,7 @@ df %>% ggplot() +
 
 The most important files that are generated during this cellranger run are the two matrix folders, which contain the count matrices from the experiment:
 
-- raw_feature_bc_matrix
-- filtered_feature_bc_matrix
+- `raw_feature_bc_matrix`
+- `filtered_feature_bc_matrix`
 
- In the previous lesson, we used `raw_feature_bc_matrix` to load the counts into Seurat. You can similarly do the same with `filtered_feature_bc_matrix`, the difference being that the filtered matrix has removed cells that cellranger determined as low quality using a variety of different tools. We chose to start with the raw counts matrix in this lesson so that you can better see what metrics are used to determine which cells are considered high quality.
+In the **next lesson, we will use `raw_feature_bc_matrix`** to load the counts into Seurat. You can similarly do the same with `filtered_feature_bc_matrix`, the difference being that the filtered matrix has removed cells that cellranger determined as low quality using a variety of different tools. We chose to start with the raw counts matrix in this lesson so that you can better see what metrics are used to determine which cells are considered high quality.
